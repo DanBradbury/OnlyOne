@@ -13,7 +13,9 @@
     <sprite>sprites\spr_jump</sprite>
     <sprite>sprites\spr_cmd_jump</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_player</object>
