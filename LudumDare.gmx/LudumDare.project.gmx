@@ -20,6 +20,7 @@
     <sprite>sprites\spr_lives</sprite>
     <sprite>sprites\spr_revolver</sprite>
     <sprite>sprites\spr_shot_revolver</sprite>
+    <sprite>sprites\spr_bounce_wall</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -45,9 +46,11 @@
     <object>objects\obj_pause</object>
     <object>objects\obj_shot_revolver</object>
     <object>objects\obj_transition1</object>
+    <object>objects\obj_bouce_wall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
