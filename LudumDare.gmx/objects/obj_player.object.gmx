@@ -383,7 +383,7 @@ if(slow_mo==true){
           <argument>
             <kind>1</kind>
             <string>/// Create the pause object, thus pausing the game
-instance_create(0,0,obj_pause);
+instance_create(ex_camera_get_x(global._camera),ex_camera_get_y(global._camera),obj_pause);
 </string>
           </argument>
         </arguments>
