@@ -3,7 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\exCamera</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\sound1</sound>
   </sounds>
@@ -51,6 +53,7 @@
     <object>objects\obj_transition1</object>
     <object>objects\obj_bouce_wall_up</object>
     <object>objects\obj_bw_down</object>
+    <object>objects\obj_ex_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
