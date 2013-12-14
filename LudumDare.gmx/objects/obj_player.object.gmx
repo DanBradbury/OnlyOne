@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
+image_speed = 0;
 base_ms = 5.75;
 accel = 0.545
 moving = false;
@@ -177,7 +178,7 @@ gravity = 0;
             <string>hspeed = (base_ms+accel);
 moving = true;
 mov_dir = "right";
-image_xscale = 1;
+image_index = 0;
 
 </string>
           </argument>
@@ -204,7 +205,7 @@ image_xscale = 1;
             <string>hspeed = -(base_ms+accel);
 mov_dir = "left";
 moving = true;
-image_xscale = -1;
+image_index = 1;
 
 </string>
           </argument>
@@ -255,6 +256,11 @@ draw_sprite(spr_cmd_jump,0,self.x, self.y);
           <argument>
             <kind>1</kind>
             <string>draw_sprite(spr_player,image_index,self.x,self.y);
+if(image_index==0){
+    draw_sprite(spr_revolver,image_index,self.x+8,self.y);
+}else{
+    draw_sprite(spr_revolver,image_index,self.x,self.y);
+}
 </string>
           </argument>
         </arguments>
