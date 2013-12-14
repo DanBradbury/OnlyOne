@@ -21,6 +21,7 @@
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_lives</sprite>
     <sprite>sprites\spr_revolver</sprite>
+    <sprite>sprites\spr_revolver_icon</sprite>
     <sprite>sprites\spr_shot_revolver</sprite>
     <sprite>sprites\spr_bounce_wall</sprite>
     <sprite>sprites\spr_bounce_down</sprite>

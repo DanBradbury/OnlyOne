@@ -36,6 +36,7 @@ jump = false;
 last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
+active_item = spr_revolver_icon;
 
 global._camera = ex_camera_create(0, obj_player);
 
@@ -128,9 +129,11 @@ gravity = 0;
           <argument>
             <kind>1</kind>
             <string>if(other.side=="right"){   
-    self.x = other.x+32+12;
+    self.x = other.x+32+3;
+    gravity=1;
 }else if(other.side=="left"){
-    self.x = other.x-12;
+    self.x = other.x-13;
+    gravity = 1;
 }   
 //motion_set(0,0);
 
@@ -273,7 +276,7 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>if(jump==true){
-draw_sprite(spr_cmd_jump,0,self.x, self.y);
+    draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
 }
 </string>
           </argument>
@@ -297,9 +300,10 @@ draw_sprite(spr_cmd_jump,0,self.x, self.y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_stretched(spr_lives,0,10,10,32,32);
-draw_healthbar(10,50,72,82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
-
+            <string>draw_sprite_stretched(spr_lives,0, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
+draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y(global._camera)-view_hview[0]/2+50,ex_camera_get_x(global._camera)-view_wview[0]/2+90,ex_camera_get_y(global._camera)-view_hview[0]/2+82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
+// draw active item sprite
+draw_sprite(active_item,0,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
 draw_sprite(spr_player,image_index,self.x,self.y);
 if(image_index==0){
     draw_sprite(spr_revolver,image_index,self.x+8,self.y);
