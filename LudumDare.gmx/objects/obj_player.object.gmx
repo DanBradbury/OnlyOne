@@ -32,6 +32,7 @@ moving = false;
 mov_dir = "none";
 falling = false;
 jump = false;
+last_touched_pad = self;
 
 
 </string>
@@ -231,6 +232,7 @@ draw_sprite(spr_cmd_jump,0,self.x, self.y);
             <string>if(jump == true){
     vspeed = -28;
     jump = false;
+    obj_jump_pad.active = false;
 }
 </string>
           </argument>

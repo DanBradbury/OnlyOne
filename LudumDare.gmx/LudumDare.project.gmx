@@ -11,6 +11,7 @@
     <sprite>sprites\spr_verticals</sprite>
     <sprite>sprites\spr_verticals2</sprite>
     <sprite>sprites\spr_jump</sprite>
+    <sprite>sprites\spr_inactive_jump</sprite>
     <sprite>sprites\spr_cmd_jump</sprite>
   </sprites>
   <backgrounds name="background">
