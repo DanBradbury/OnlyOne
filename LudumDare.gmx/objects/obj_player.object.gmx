@@ -229,8 +229,7 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_stretched(spr_lives,0,10,10,32,32);
-if(jump==true){
+            <string>if(jump==true){
 draw_sprite(spr_cmd_jump,0,self.x, self.y);
 }
 </string>
@@ -255,7 +254,9 @@ draw_sprite(spr_cmd_jump,0,self.x, self.y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_player,image_index,self.x,self.y);
+            <string>draw_sprite_stretched(spr_lives,0,10,10,32,32);
+
+draw_sprite(spr_player,image_index,self.x,self.y);
 if(image_index==0){
     draw_sprite(spr_revolver,image_index,self.x+8,self.y);
 }else{

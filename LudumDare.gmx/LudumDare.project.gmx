@@ -40,6 +40,7 @@
     <object>objects\obj_target</object>
     <object>objects\obj_pause</object>
     <object>objects\obj_shot_revolver</object>
+    <object>objects\obj_transition1</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
