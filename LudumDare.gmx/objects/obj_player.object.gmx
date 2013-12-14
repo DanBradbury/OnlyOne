@@ -37,6 +37,15 @@ last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
 
+global._camera = ex_camera_create(0, obj_player);
+
+//ALTERNATIVE METHOD
+//global._camera = ex_camera_create(0, noone); //let's say you want to define this in a script
+//ex_camera_set_tracking_object(global._camera, obj_player);
+
+ex_camera_set_fade_alpha(global._camera, 1);
+ex_camera_fade_in(global._camera, 60);
+
 </string>
           </argument>
         </arguments>
