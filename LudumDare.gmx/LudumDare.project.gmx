@@ -19,6 +19,7 @@
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_lives</sprite>
     <sprite>sprites\spr_revolver</sprite>
+    <sprite>sprites\spr_shot_revolver</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -38,6 +39,7 @@
     <object>objects\obj_spike</object>
     <object>objects\obj_target</object>
     <object>objects\obj_pause</object>
+    <object>objects\obj_shot_revolver</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

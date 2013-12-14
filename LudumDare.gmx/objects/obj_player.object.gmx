@@ -30,7 +30,7 @@ image_speed = 0;
 base_ms = 5.75;
 accel = 0.545
 moving = false;
-mov_dir = "none";
+mov_dir = "right";
 falling = false;
 jump = false;
 last_touched_pad = self;
@@ -289,6 +289,29 @@ if(image_index==0){
     ob = collision_rectangle(self.x-sprite_xoffset,self.y,self.x+32-sprite_xoffset, self.y+10, obj_jump_pad, true, true);
     ob.active = false;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(self.x+10,self.y-32,obj_shot_revolver);
 </string>
           </argument>
         </arguments>
