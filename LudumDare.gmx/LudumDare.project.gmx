@@ -17,6 +17,7 @@
     <sprite>sprites\spr_cmd_jump</sprite>
     <sprite>sprites\spr_spike</sprite>
     <sprite>sprites\spr_target</sprite>
+    <sprite>sprites\spr_lives</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

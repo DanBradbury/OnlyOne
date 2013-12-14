@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_player,image_index,self.x,self.y);
+            <string>draw_sprite(spr_spike,image_index,self.x,self.y);
 </string>
           </argument>
         </arguments>

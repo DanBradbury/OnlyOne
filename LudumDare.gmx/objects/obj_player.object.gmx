@@ -228,7 +228,8 @@ image_xscale = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(jump==true){
+            <string>draw_sprite_stretched(spr_lives,0,10,10,32,32);
+if(jump==true){
 draw_sprite(spr_cmd_jump,0,self.x, self.y);
 }
 </string>
