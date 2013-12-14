@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sound1</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_block</sprite>
@@ -14,6 +16,7 @@
     <sprite>sprites\spr_inactive_jump</sprite>
     <sprite>sprites\spr_cmd_jump</sprite>
     <sprite>sprites\spr_spike</sprite>
+    <sprite>sprites\spr_target</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -28,6 +31,7 @@
     <object>objects\obj_block_rl</object>
     <object>objects\obj_jump_pad</object>
     <object>objects\obj_spike</object>
+    <object>objects\obj_target</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
