@@ -31,6 +31,7 @@ accel = 0.545
 moving = false;
 mov_dir = "none";
 falling = false;
+jump = false;
 
 
 </string>
@@ -118,8 +119,7 @@ if(moving==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    // if we are on top of the floor
-    
+            <string>    // if we are on top of the floor    
     if(gravity==1){
         gravity = 0;
         self.y = other.y;   
@@ -181,6 +181,31 @@ mov_dir = "left";
 moving = true;
 image_xscale = -1;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(jump==true){
+draw_sprite(spr_cmd_jump,0,self.x, self.y);
+}
 </string>
           </argument>
         </arguments>

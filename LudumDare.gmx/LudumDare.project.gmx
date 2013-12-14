@@ -10,6 +10,8 @@
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_verticals</sprite>
     <sprite>sprites\spr_verticals2</sprite>
+    <sprite>sprites\spr_jump</sprite>
+    <sprite>sprites\spr_cmd_jump</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -20,6 +22,7 @@
     <object>objects\obj_block</object>
     <object>objects\obj_block_rv</object>
     <object>objects\obj_block_rl</object>
+    <object>objects\obj_jump_pad</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
