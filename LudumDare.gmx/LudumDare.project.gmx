@@ -13,6 +13,7 @@
     <sprite>sprites\spr_jump</sprite>
     <sprite>sprites\spr_inactive_jump</sprite>
     <sprite>sprites\spr_cmd_jump</sprite>
+    <sprite>sprites\spr_spike</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -26,6 +27,7 @@
     <object>objects\obj_block_rv</object>
     <object>objects\obj_block_rl</object>
     <object>objects\obj_jump_pad</object>
+    <object>objects\obj_spike</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
