@@ -28,6 +28,10 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shade_blur.shader</shader>
   </shaders>
+  <fonts name="fonts">
+    <font>fonts\menu_title</font>
+    <font>fonts\menu_items</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_floor</object>
