@@ -34,7 +34,8 @@ mov_dir = "right";
 falling = false;
 jump = false;
 last_touched_pad = self;
-
+slow_mo = false;
+slow_meter = 10;
 
 </string>
           </argument>
@@ -59,6 +60,9 @@ last_touched_pad = self;
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
+if(slow_mo==true){
+    slow_meter -= 0.1;
+}
 /*
 if(moving==true){
     if(mov_dir=="right"){
@@ -212,6 +216,36 @@ image_index = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(slow_meter&gt;=0){
+    slow_mo = true;
+    
+    with(all)
+    {
+      speed *= 10/30;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -255,12 +289,16 @@ draw_sprite(spr_cmd_jump,0,self.x, self.y);
           <argument>
             <kind>1</kind>
             <string>draw_sprite_stretched(spr_lives,0,10,10,32,32);
+draw_healthbar(10,50,72,82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
 
 draw_sprite(spr_player,image_index,self.x,self.y);
 if(image_index==0){
     draw_sprite(spr_revolver,image_index,self.x+8,self.y);
 }else{
     draw_sprite(spr_revolver,image_index,self.x,self.y);
+}
+if(slow_mo==true){
+    
 }
 </string>
           </argument>
@@ -387,6 +425,30 @@ hspeed = 0;
             <string>moving = false;
 hspeed = 0;
 //motion_set(0,0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>slow_mo = false;
+
 </string>
           </argument>
         </arguments>
