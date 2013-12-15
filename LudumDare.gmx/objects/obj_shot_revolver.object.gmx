@@ -26,10 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>effect_create_above(ef_explosion, self.x, self.y, 0.5, c_white);
+
 if(obj_player.mov_dir=="right"){
-    hspeed = 12;
+    move_speed = 12;
 }else{
-    hspeed = -12;
+    move_speed = -12;
     image_xscale = -1;
 }
 </string>
@@ -54,12 +55,9 @@ if(obj_player.mov_dir=="right"){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_player.mov_dir=="right"){
-    hspeed = 12;
-}else{
-    hspeed = -12;
-    image_xscale = -1;
-}
+            <string>
+    hspeed = move_speed;
+
 </string>
           </argument>
         </arguments>

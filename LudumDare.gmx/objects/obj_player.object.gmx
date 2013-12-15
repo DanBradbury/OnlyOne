@@ -36,8 +36,9 @@ jump = false;
 last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
-active_item = spr_revolver;
+active_item = spr_revolver_icon;
 global._active_item = "REVOLVER";
+shot_used = false;
 
 global._camera = ex_camera_create(0, obj_player);
 
@@ -304,7 +305,16 @@ image_index = 1;
             <string>draw_sprite_stretched(spr_lives,0, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
 draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y(global._camera)-view_hview[0]/2+50,ex_camera_get_x(global._camera)-view_wview[0]/2+90,ex_camera_get_y(global._camera)-view_hview[0]/2+82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
 // draw active item sprite
-draw_sprite(active_item,0,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
+in = 0;
+if(shot_used==true){
+    in = 1;
+}
+if(global._active_item=="REVOLVER"){
+    draw_sprite(spr_revolver_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
+}else if(global._active_item=="LASER"){
+    draw_sprite(spr_laser_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
+}
+
 draw_sprite(spr_player,image_index,self.x,self.y);
 
 if(global._active_item=="REVOLVER"){
@@ -373,7 +383,10 @@ if(slow_mo==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(self.x+10,self.y-32,obj_shot_revolver);
+            <string>if(shot_used==false){
+    shot_used = true;
+    instance_create(self.x+10,self.y-32,obj_shot_revolver);
+}
 </string>
           </argument>
         </arguments>

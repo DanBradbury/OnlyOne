@@ -218,6 +218,7 @@ draw_set_alpha(1);
             <kind>1</kind>
             <string>if(global._active_item=="REVOLVER"){
     global._active_item = "LASER";
+    obj_player.active_item = spr_laser_icon;
 }
 </string>
           </argument>
@@ -243,6 +244,7 @@ draw_set_alpha(1);
             <kind>1</kind>
             <string>
 global._active_item = "REVOLVER";
+obj_player.active_item = spr_revolver_icon;
 
 </string>
           </argument>

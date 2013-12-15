@@ -26,6 +26,7 @@
     <sprite>sprites\spr_bounce_wall</sprite>
     <sprite>sprites\spr_bounce_down</sprite>
     <sprite>sprites\spr_laser_gun</sprite>
+    <sprite>sprites\spr_laser_icon</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
