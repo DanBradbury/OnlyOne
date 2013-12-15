@@ -137,6 +137,10 @@ draw_sprite_stretched(spr_laser_gun,0,view_wview[0]-5, view_hview[0]/2+256,128,1
 if(global._active_item=="REVOLVER"){
     draw_set_color(c_yellow);
     draw_rectangle(view_wview[0]-5, view_hview[0]/2, view_wview[0]-5+128, view_hview[0]/2+128, true);
+}else if(global._active_item=="LASER"){
+     draw_set_color(c_yellow); 
+    draw_rectangle(view_wview[0]-5, view_hview[0]/2+256, view_wview[0]-5+128, view_hview[0]/2+256+128, true);
+
 }
 </string>
           </argument>
@@ -190,6 +194,56 @@ draw_set_color(c_black);
 draw_set_alpha(0.5);
 draw_rectangle(0,0,room_width,room_height,0);
 draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global._active_item=="REVOLVER"){
+    global._active_item = "LASER";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+global._active_item = "REVOLVER";
+
 </string>
           </argument>
         </arguments>
