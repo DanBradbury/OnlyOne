@@ -50,6 +50,7 @@
     <object>objects\obj_spike</object>
     <object>objects\obj_target</object>
     <object>objects\obj_pause</object>
+    <object>objects\obj_shot_select</object>
     <object>objects\obj_shot_revolver</object>
     <object>objects\obj_transition1</object>
     <object>objects\obj_bouce_wall_up</object>

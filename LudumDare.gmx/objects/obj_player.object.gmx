@@ -36,7 +36,8 @@ jump = false;
 last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
-active_item = spr_revolver_icon;
+active_item = spr_revolver;
+global._active_item = "REVOLVER";
 
 global._camera = ex_camera_create(0, obj_player);
 
@@ -388,6 +389,30 @@ if(slow_mo==true){
             <kind>1</kind>
             <string>/// Create the pause object, thus pausing the game
 instance_create(ex_camera_get_x(global._camera),ex_camera_get_y(global._camera),obj_pause);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Create the pause object, thus pausing the game
+instance_create(ex_camera_get_x(global._camera),ex_camera_get_y(global._camera),obj_shot_select);
 </string>
           </argument>
         </arguments>
