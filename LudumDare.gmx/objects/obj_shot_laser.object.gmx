@@ -36,7 +36,7 @@ if(obj_player.mov_dir=="right"){
     move_speed = -15;
     image_xscale = -1;
 }
-laser_count = 20;
+laser_count = 50;
 
 </string>
           </argument>
@@ -62,10 +62,55 @@ laser_count = 20;
             <kind>1</kind>
             <string>
 hspeed = move_speed;
-if(laser_count&lt;12){
-    laser_counter+=1;
-}
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_bw_right">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>motion_set(180,10);
+move_speed = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_bw_left">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>motion_set(0,10);
+move_speed = -10;
 </string>
           </argument>
         </arguments>
@@ -89,6 +134,30 @@ if(laser_count&lt;12){
           <argument>
             <kind>1</kind>
             <string>motion_set(-90,10);
+move_speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_bouce_wall_up">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>motion_set(90,10);
 move_speed = 0;
 </string>
           </argument>
