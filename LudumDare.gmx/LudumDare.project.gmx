@@ -8,6 +8,8 @@
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sound1</sound>
+    <sound>sound\snd_jump</sound>
+    <sound>sound\snd_shot</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
@@ -55,6 +57,8 @@
     <object>objects\obj_spike</object>
     <object>objects\obj_target</object>
     <object>objects\obj_pause</object>
+    <object>objects\obj_death</object>
+    <object>objects\obj_death_menu</object>
     <object>objects\obj_shot_select</object>
     <object>objects\obj_shot_revolver</object>
     <object>objects\obj_shot_laser</object>

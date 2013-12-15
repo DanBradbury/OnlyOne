@@ -119,6 +119,11 @@ if(moving==true){
             <kind>1</kind>
             <string>motion_set(90,10);
 gravity = 0;
+
+ex_camera_set_zoom_scale(global._camera, 50);
+
+instance_create(0,0,obj_death);
+
 </string>
           </argument>
         </arguments>
@@ -424,6 +429,7 @@ if(slow_mo==true){
     jump = false;
     ob = collision_rectangle(self.x-sprite_xoffset,self.y,self.x+32-sprite_xoffset, self.y+10, obj_jump_pad, true, true);
     ob.active = false;
+    audio_play_sound(snd_jump, 1, false);
 }
 </string>
           </argument>
@@ -450,6 +456,7 @@ if(slow_mo==true){
             <string>if(shot_used==false){
     shot_used = true;
     if(global._active_item=="REVOLVER"){
+        audio_play_sound(snd_shot, 1, false);
         instance_create(self.x+10,self.y-32,obj_shot_revolver);
         ex_camera_set_tracking_object(global._camera, obj_shot_revolver);
         global._super_slow = true;
