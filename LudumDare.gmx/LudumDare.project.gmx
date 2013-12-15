@@ -64,10 +64,11 @@
     <object>objects\obj_bw_left</object>
     <object>objects\obj_bw_right</object>
     <object>objects\obj_ex_camera</object>
+    <object>objects\obj_next_level</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room0</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

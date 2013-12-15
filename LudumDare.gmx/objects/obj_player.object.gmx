@@ -39,6 +39,7 @@ slow_meter = 10;
 active_item = spr_revolver_icon;
 global._active_item = "REVOLVER";
 shot_used = false;
+ global._super_slow = false;
 
 global._camera = ex_camera_create(0, obj_player);
 
@@ -74,6 +75,16 @@ ex_camera_fade_in(global._camera, 60);
             <string>gravity = 1;
 if(slow_mo==true){
     slow_meter -= 0.1;
+}
+if( global._super_slow == true){
+    with(all){
+        speed *= 10/30;
+        hspeed *= 10/30;
+    }
+    cur = ex_camera_get_zoom_scale(global._camera);
+    if(cur&gt;70){
+        ex_camera_set_zoom_scale(global._camera, cur-2);
+    }
 }
 /*
 if(moving==true){
@@ -278,7 +289,7 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>cur = ex_camera_get_zoom_scale(global._camera);
-if(cur&lt;175){
+if(cur&lt;150){
     ex_camera_set_zoom_scale(global._camera,cur+25);
 }
 </string>
@@ -354,19 +365,20 @@ if(cur&gt;75){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_stretched(spr_lives,0, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
-draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y(global._camera)-view_hview[0]/2+50,ex_camera_get_x(global._camera)-view_wview[0]/2+90,ex_camera_get_y(global._camera)-view_hview[0]/2+82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
-// draw active item sprite
-in = 0;
-if(shot_used==true){
-    in = 1;
-}
-if(global._active_item=="REVOLVER"){
-    draw_sprite(spr_revolver_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
-}else if(global._active_item=="LASER"){
-    draw_sprite(spr_laser_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
-}
-
+            <string>if(global._super_slow==false){
+    draw_sprite_stretched(spr_lives,0, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
+    draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y(global._camera)-view_hview[0]/2+50,ex_camera_get_x(global._camera)-view_wview[0]/2+90,ex_camera_get_y(global._camera)-view_hview[0]/2+82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
+    // draw active item sprite
+    in = 0;
+    if(shot_used==true){
+        in = 1;
+    }
+    if(global._active_item=="REVOLVER"){
+        draw_sprite(spr_revolver_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
+    }else if(global._active_item=="LASER"){
+        draw_sprite(spr_laser_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
+    }
+}//end super slow mo if
 draw_sprite(spr_player,image_index,self.x,self.y);
 
 if(global._active_item=="REVOLVER"){
@@ -439,8 +451,12 @@ if(slow_mo==true){
     shot_used = true;
     if(global._active_item=="REVOLVER"){
         instance_create(self.x+10,self.y-32,obj_shot_revolver);
+        ex_camera_set_tracking_object(global._camera, obj_shot_revolver);
+        global._super_slow = true;
     }else if(global._active_item=="LASER"){
         instance_create(self.x+10,self.y-32,obj_shot_laser);
+        ex_camera_set_tracking_object(global._camera, obj_shot_laser);
+        global._super_slow = true;
     }
 }
 </string>
