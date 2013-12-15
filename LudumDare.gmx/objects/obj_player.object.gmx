@@ -385,7 +385,11 @@ if(slow_mo==true){
             <kind>1</kind>
             <string>if(shot_used==false){
     shot_used = true;
-    instance_create(self.x+10,self.y-32,obj_shot_revolver);
+    if(global._active_item=="REVOLVER"){
+        instance_create(self.x+10,self.y-32,obj_shot_revolver);
+    }else if(global._active_item=="LASER"){
+        instance_create(self.x+10,self.y-32,obj_shot_laser);
+    }
 }
 </string>
           </argument>
