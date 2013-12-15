@@ -105,7 +105,7 @@ if(moving==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>motion_set(0,0);
+            <string>motion_set(90,10);
 gravity = 0;
 </string>
           </argument>
@@ -306,10 +306,19 @@ draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y
 // draw active item sprite
 draw_sprite(active_item,0,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
 draw_sprite(spr_player,image_index,self.x,self.y);
-if(image_index==0){
-    draw_sprite(spr_revolver,image_index,self.x+8,self.y);
-}else{
-    draw_sprite(spr_revolver,image_index,self.x,self.y);
+
+if(global._active_item=="REVOLVER"){
+    if(image_index==0){
+        draw_sprite(spr_revolver,image_index,self.x+8,self.y);
+    }else{
+        draw_sprite(spr_revolver,image_index,self.x,self.y);
+    }
+}else if(global._active_item=="LASER"){
+    if(image_index==0){
+        draw_sprite(spr_laser_gun,image_index,self.x+8,self.y);
+    }else{
+        draw_sprite(spr_laser_gun,image_index,self.x,self.y);
+    }
 }
 if(slow_mo==true){
     
