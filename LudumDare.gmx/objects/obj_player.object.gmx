@@ -370,7 +370,7 @@ if(global._active_item=="REVOLVER"){
     if(image_index==0){
         draw_sprite(spr_revolver,image_index,self.x+8,self.y);
     }else{
-        draw_sprite(spr_revolver,image_index,self.x,self.y);
+        draw_sprite(spr_revolver,image_index,self.x-60,self.y);
     }
 }else if(global._active_item=="LASER"){
     if(mov_dir = "right"){
