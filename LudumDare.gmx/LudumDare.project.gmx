@@ -44,6 +44,7 @@
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>
+    <font>fonts\tutorial_font</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -69,6 +70,7 @@
     <object>objects\obj_bw_right</object>
     <object>objects\obj_ex_camera</object>
     <object>objects\obj_next_level</object>
+    <object>objects\obj_tutorial</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

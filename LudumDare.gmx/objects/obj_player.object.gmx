@@ -49,6 +49,7 @@ global._camera = ex_camera_create(0, obj_player);
 
 ex_camera_set_fade_alpha(global._camera, 1);
 ex_camera_fade_in(global._camera, 60);
+instance_create(0,0,obj_tutorial);
 
 </string>
           </argument>
@@ -328,31 +329,6 @@ if(cur&gt;75){
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(jump==true){
-    draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -399,8 +375,8 @@ if(global._active_item=="REVOLVER"){
         draw_sprite(spr_laser_gun,image_index,self.x,self.y);
     }
 }
-if(slow_mo==true){
-    
+if(jump==true){
+    draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
 }
 </string>
           </argument>

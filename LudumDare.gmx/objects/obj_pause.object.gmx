@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Create surface, draw everything to it, deactivate all other instances
 
-surf = surface_create( 1024, 1024 );
+surf = surface_create( 1280, 960 );
 // Unfortunately, for this method to work, the surface has to be the size of the entire room and not just the size of the view.
 // So, if you have a very large room size, this method may not work well for you...   :(
 
