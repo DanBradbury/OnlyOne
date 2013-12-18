@@ -39,7 +39,9 @@ slow_meter = 10;
 active_item = spr_revolver_icon;
 global._active_item = "REVOLVER";
 shot_used = false;
- global._super_slow = false;
+global._super_slow = false;
+l_index = 0;
+h_index = 0;
 
 global._camera = ex_camera_create(0, obj_player);
 
@@ -49,7 +51,7 @@ global._camera = ex_camera_create(0, obj_player);
 
 ex_camera_set_fade_alpha(global._camera, 1);
 ex_camera_fade_in(global._camera, 60);
-instance_create(0,0,obj_tutorial);
+//instance_create(0,0,obj_tutorial);
 
 </string>
           </argument>
@@ -87,6 +89,8 @@ if( global._super_slow == true){
         ex_camera_set_zoom_scale(global._camera, cur-2);
     }
 }
+l_index += 1;
+h_index += 1;
 /*
 if(moving==true){
     if(mov_dir=="right"){
@@ -347,7 +351,7 @@ if(cur&gt;75){
           <argument>
             <kind>1</kind>
             <string>if(global._super_slow==false){
-    draw_sprite_stretched(spr_lives,0, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
+    draw_sprite_stretched(spr_lives,h_index, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
     draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y(global._camera)-view_hview[0]/2+50,ex_camera_get_x(global._camera)-view_wview[0]/2+90,ex_camera_get_y(global._camera)-view_hview[0]/2+82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
     // draw active item sprite
     in = 0;
@@ -369,10 +373,10 @@ if(global._active_item=="REVOLVER"){
         draw_sprite(spr_revolver,image_index,self.x,self.y);
     }
 }else if(global._active_item=="LASER"){
-    if(image_index==0){
-        draw_sprite(spr_laser_gun,image_index,self.x+8,self.y);
+    if(mov_dir = "right"){
+        draw_sprite_stretched(spr_laser_gun_right,l_index,self.x-12,self.y-40,40,32);
     }else{
-        draw_sprite(spr_laser_gun,image_index,self.x,self.y);
+        draw_sprite_stretched(spr_laser_gun_left,l_index,self.x-20,self.y-40,40,32);
     }
 }
 if(jump==true){

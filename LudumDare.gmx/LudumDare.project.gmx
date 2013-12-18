@@ -29,7 +29,8 @@
     <sprite>sprites\spr_bounce_down</sprite>
     <sprite>sprites\spr_bounce_right</sprite>
     <sprite>sprites\spr_bouce_left</sprite>
-    <sprite>sprites\spr_laser_gun</sprite>
+    <sprite>sprites\spr_laser_gun_right</sprite>
+    <sprite>sprites\spr_laser_gun_left</sprite>
     <sprite>sprites\spr_laser_icon</sprite>
     <sprite>sprites\spr_shot_laser</sprite>
   </sprites>
