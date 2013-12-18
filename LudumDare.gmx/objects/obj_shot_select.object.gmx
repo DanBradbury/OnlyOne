@@ -132,7 +132,7 @@ draw_set_color(c_white);
 draw_text( view_wview[0], view_hview[0]/3, "SHOT SELECTION");
 //draw_set_font(menu_items);
 draw_sprite_stretched(spr_revolver,0,view_wview[0]-5, view_hview[0]/2,128,128);
-draw_sprite_stretched(spr_laser_gun,0,view_wview[0]-5, view_hview[0]/2+256,128,128);
+draw_sprite_stretched(spr_laser_gun_right,0,view_wview[0]-5, view_hview[0]/2+256,128,128);
 
 if(global._active_item=="REVOLVER"){
     draw_set_color(c_yellow);
