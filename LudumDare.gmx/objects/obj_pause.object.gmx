@@ -34,7 +34,7 @@ surf = surface_create( 1280, 960 );
 surface_set_target(surf);
 draw_clear_alpha(c_black, 0); // Clears surface.
 
-draw_background_tiled(background_index[0], view_xview[0], view_yview[0]);
+//draw_background_tiled(background_index[0], view_xview[0], view_yview[0]);
 // This is required if you want the background to be blurred as well.
 // If you have more than one background, or your background isn't tiled, you'll have to change this.
 

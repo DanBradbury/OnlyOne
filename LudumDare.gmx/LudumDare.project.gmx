@@ -57,10 +57,10 @@
     <object>objects\obj_jump_pad</object>
     <object>objects\obj_spike</object>
     <object>objects\obj_target</object>
-    <object>objects\obj_pause</object>
     <object>objects\obj_death</object>
     <object>objects\obj_death_menu</object>
     <object>objects\obj_shot_select</object>
+    <object>objects\obj_pause</object>
     <object>objects\obj_shot_revolver</object>
     <object>objects\obj_shot_laser</object>
     <object>objects\obj_transition1</object>
