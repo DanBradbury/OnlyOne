@@ -61,6 +61,7 @@
     <object>objects\obj_death_menu</object>
     <object>objects\obj_shot_select</object>
     <object>objects\obj_pause</object>
+    <object>objects\obj_slow_mo</object>
     <object>objects\obj_shot_revolver</object>
     <object>objects\obj_shot_laser</object>
     <object>objects\obj_transition1</object>
