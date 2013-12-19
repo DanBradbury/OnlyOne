@@ -49,7 +49,7 @@ global._camera = ex_camera_create(0, obj_player);
 
 ex_camera_set_fade_alpha(global._camera, 1);
 ex_camera_fade_in(global._camera, 60);
-instance_create(0,0,obj_tutorial);
+//instance_create(0,0,obj_tutorial);
 
 </string>
           </argument>
@@ -271,6 +271,7 @@ image_index = 1;
     {
       speed *= 10/30;
     }
+    instance_create(0,0,obj_slow_mo);
 }
 </string>
           </argument>
