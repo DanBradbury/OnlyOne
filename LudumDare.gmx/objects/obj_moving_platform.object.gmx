@@ -98,6 +98,7 @@ alarm[1] = 60;
           <argument>
             <kind>1</kind>
             <string>  other.jump = false;
+  other.hspeed += self.hspeed;
 </string>
           </argument>
         </arguments>
