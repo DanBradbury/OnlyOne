@@ -27,30 +27,46 @@
             <kind>1</kind>
             <string>gravity = 1;
 image_speed = 0;
-base_ms = 5.75;
+base_ms = 7.75;
 accel = 0.545
 moving = false;
 mov_dir = "right";
 falling = false;
 jump = false;
+global._jump = false;
 last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
 active_item = spr_revolver_icon;
 global._active_item = "REVOLVER";
 shot_used = false;
- global._super_slow = false;
+global._super_slow = false;
+global._can_jump = false;
+delay_jump = false;
 
-global._camera = ex_camera_create(0, obj_player);
-
-//ALTERNATIVE METHOD
-//global._camera = ex_camera_create(0, noone); //let's say you want to define this in a script
-//ex_camera_set_tracking_object(global._camera, obj_player);
-
-ex_camera_set_fade_alpha(global._camera, 1);
-ex_camera_fade_in(global._camera, 60);
-instance_create(0,0,obj_tutorial);
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>delay_jump = false;
 </string>
           </argument>
         </arguments>
@@ -74,18 +90,11 @@ instance_create(0,0,obj_tutorial);
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-if(slow_mo==true){
-    slow_meter -= 0.1;
+if(vspeed &gt; 0){
+    global._jump = false;
 }
-if( global._super_slow == true){
-    with(all){
-        speed *= 10/30;
-        hspeed *= 10/30;
-    }
-    cur = ex_camera_get_zoom_scale(global._camera);
-    if(cur&gt;70){
-        ex_camera_set_zoom_scale(global._camera, cur-2);
-    }
+if(delay_jump == true){
+    global._can_jump = false;
 }
 /*
 if(moving==true){
@@ -96,6 +105,83 @@ if(moving==true){
     }
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_moving_platform">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// if we are on top of the floor    
+if(gravity==1){
+    if(global._jump == true){
+        //vspeed = 0;
+        delay_jump = true;
+        alarm[0] = 5;
+    }else{
+        gravity = 0;
+        self.y = other.y;   
+        motion_set(0,0);    
+    }
+        
+}
+global._can_jump = true; 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_ramp">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(moving == true){ 
+ self.x += 1;
+ self.y = other.y+3
+}else{
+    if(gravity==1){
+        gravity = 0;
+        self.y = other.y;   
+        motion_set(0,0);
+    }
+    global._can_jump = true; 
+}
+
+
+//motion_set(0,0);
+
+
+
 </string>
           </argument>
         </arguments>
@@ -120,8 +206,6 @@ if(moving==true){
             <kind>1</kind>
             <string>motion_set(90,10);
 gravity = 0;
-
-ex_camera_set_zoom_scale(global._camera, 50);
 
 instance_create(0,0,obj_death);
 
@@ -180,12 +264,13 @@ instance_create(0,0,obj_death);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    // if we are on top of the floor    
-    if(gravity==1){
+            <string>// if we are on top of the floor    
+if(gravity==1){
         gravity = 0;
         self.y = other.y;   
         motion_set(0,0);
-    }
+}
+global._can_jump = true; 
 
 
 </string>
@@ -247,6 +332,33 @@ image_index = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global._can_jump == true ) {
+    vspeed = -20;
+    global._can_jump = false;
+    global._jump = true;    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="5" enumb="16">
       <action>
         <libid>1</libid>
@@ -277,58 +389,6 @@ image_index = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="61">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>cur = ex_camera_get_zoom_scale(global._camera);
-if(cur&lt;150){
-    ex_camera_set_zoom_scale(global._camera,cur+25);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="60">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>cur = ex_camera_get_zoom_scale(global._camera);
-if(cur&gt;75){
-    ex_camera_set_zoom_scale(global._camera,cur-25);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -346,20 +406,7 @@ if(cur&gt;75){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._super_slow==false){
-    draw_sprite_stretched(spr_lives,0, ex_camera_get_x(global._camera)-view_wview[0]/2,ex_camera_get_y(global._camera)-view_hview[0]/2,32,32);
-    draw_healthbar(ex_camera_get_x(global._camera)-view_wview[0]/2+5,ex_camera_get_y(global._camera)-view_hview[0]/2+50,ex_camera_get_x(global._camera)-view_wview[0]/2+90,ex_camera_get_y(global._camera)-view_hview[0]/2+82,(slow_meter / 10 * 100),c_black,c_yellow,c_green,0,false,true);
-    // draw active item sprite
-    in = 0;
-    if(shot_used==true){
-        in = 1;
-    }
-    if(global._active_item=="REVOLVER"){
-        draw_sprite(spr_revolver_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
-    }else if(global._active_item=="LASER"){
-        draw_sprite(spr_laser_icon,in,ex_camera_get_x(global._camera)-view_wview[0]/2+32,ex_camera_get_y(global._camera)-view_hview[0]/2);
-    }
-}//end super slow mo if
+            <string>
 draw_sprite(spr_player,image_index,self.x,self.y);
 
 if(global._active_item=="REVOLVER"){
@@ -412,41 +459,6 @@ if(jump==true){
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(shot_used==false){
-    shot_used = true;
-    if(global._active_item=="REVOLVER"){
-        audio_play_sound(snd_shot, 1, false);
-        instance_create(self.x+10,self.y-32,obj_shot_revolver);
-        ex_camera_set_tracking_object(global._camera, obj_shot_revolver);
-        global._super_slow = true;
-    }else if(global._active_item=="LASER"){
-        instance_create(self.x+10,self.y-32,obj_shot_laser);
-        ex_camera_set_tracking_object(global._camera, obj_shot_laser);
-        global._super_slow = true;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="9" enumb="27">
       <action>
         <libid>1</libid>
@@ -465,31 +477,7 @@ if(jump==true){
           <argument>
             <kind>1</kind>
             <string>/// Create the pause object, thus pausing the game
-instance_create(ex_camera_get_x(global._camera),ex_camera_get_y(global._camera),obj_pause);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Create the pause object, thus pausing the game
-instance_create(ex_camera_get_x(global._camera),ex_camera_get_y(global._camera),obj_shot_select);
+instance_create(0,0,obj_pause);
 </string>
           </argument>
         </arguments>
@@ -545,7 +533,7 @@ hspeed = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="10" enumb="16">
+    <event eventtype="10" enumb="32">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -562,8 +550,11 @@ hspeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>slow_mo = false;
-
+            <string>if( vspeed &lt; 0 ) {
+    vspeed = 0;
+}
+global._jump = false;
+     
 </string>
           </argument>
         </arguments>

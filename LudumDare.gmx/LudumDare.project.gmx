@@ -3,9 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions>
-    <extension index="0">extensions\exCamera</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound">
     <sound>sound\sound1</sound>
     <sound>sound\snd_jump</sound>
@@ -14,6 +12,7 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_block</sprite>
+    <sprite>sprites\spr_block2</sprite>
     <sprite>sprites\spr_verticals</sprite>
     <sprite>sprites\spr_verticals2</sprite>
     <sprite>sprites\spr_jump</sprite>
@@ -32,6 +31,8 @@
     <sprite>sprites\spr_laser_gun</sprite>
     <sprite>sprites\spr_laser_icon</sprite>
     <sprite>sprites\spr_shot_laser</sprite>
+    <sprite>sprites\spr_ramp</sprite>
+    <sprite>sprites\spr_moving_platform</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -52,6 +53,7 @@
     <object>objects\obj_wall</object>
     <object>objects\obj_bounce_wall</object>
     <object>objects\obj_block</object>
+    <object>objects\obj_block2</object>
     <object>objects\obj_block_rv</object>
     <object>objects\obj_block_rl</object>
     <object>objects\obj_jump_pad</object>
@@ -68,13 +70,12 @@
     <object>objects\obj_bw_down</object>
     <object>objects\obj_bw_left</object>
     <object>objects\obj_bw_right</object>
-    <object>objects\obj_ex_camera</object>
     <object>objects\obj_next_level</object>
-    <object>objects\obj_tutorial</object>
+    <object>objects\obj_ramp</object>
+    <object>objects\obj_moving_platform</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
-    <room>rooms\room1</room>
+    <room>rooms\room3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
