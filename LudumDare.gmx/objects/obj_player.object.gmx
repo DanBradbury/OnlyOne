@@ -97,9 +97,17 @@ if(moving==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> 
- self.x += 3;
+            <string>if(moving == true &amp;&amp; mov_dir = "right"){ 
+ self.x += 1;
  self.y = other.y+3
+}else{
+    if(gravity==1){
+        gravity = 0;
+        self.y = other.y;   
+        motion_set(0,0);
+    }
+    global._can_jump = true; 
+}
 
 
 //motion_set(0,0);
