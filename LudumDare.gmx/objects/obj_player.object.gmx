@@ -282,7 +282,7 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>if (global._can_jump == true ) {
-    vspeed = -28;
+    vspeed = -20;
     global._can_jump = false;    
 }
 </string>
