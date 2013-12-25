@@ -33,6 +33,7 @@ moving = false;
 mov_dir = "right";
 falling = false;
 jump = false;
+global._jump = false;
 last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
@@ -41,7 +42,31 @@ global._active_item = "REVOLVER";
 shot_used = false;
 global._super_slow = false;
 global._can_jump = false;
+delay_jump = false;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>delay_jump = false;
 </string>
           </argument>
         </arguments>
@@ -65,7 +90,12 @@ global._can_jump = false;
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-
+if(vspeed &gt; 0){
+    global._jump = false;
+}
+if(delay_jump == true){
+    global._can_jump = false;
+}
 /*
 if(moving==true){
     if(mov_dir=="right"){
@@ -75,6 +105,44 @@ if(moving==true){
     }
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_moving_platform">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// if we are on top of the floor    
+if(gravity==1){
+    if(global._jump == true){
+        //vspeed = 0;
+        delay_jump = true;
+        alarm[0] = 5;
+    }else{
+        gravity = 0;
+        self.y = other.y;   
+        motion_set(0,0);    
+    }
+        
+}
+global._can_jump = true; 
+
+
 </string>
           </argument>
         </arguments>
@@ -196,12 +264,12 @@ instance_create(0,0,obj_death);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    // if we are on top of the floor    
-    if(gravity==1){
+            <string>// if we are on top of the floor    
+if(gravity==1){
         gravity = 0;
         self.y = other.y;   
         motion_set(0,0);
-    }
+}
 global._can_jump = true; 
 
 
@@ -283,7 +351,8 @@ image_index = 1;
             <kind>1</kind>
             <string>if (global._can_jump == true ) {
     vspeed = -20;
-    global._can_jump = false;    
+    global._can_jump = false;
+    global._jump = true;    
 }
 </string>
           </argument>
@@ -484,6 +553,7 @@ hspeed = 0;
             <string>if( vspeed &lt; 0 ) {
     vspeed = 0;
 }
+global._jump = false;
      
 </string>
           </argument>
