@@ -97,7 +97,7 @@ if(moving==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(moving == true &amp;&amp; mov_dir = "right"){ 
+            <string>if(moving == true){ 
  self.x += 1;
  self.y = other.y+3
 }else{
