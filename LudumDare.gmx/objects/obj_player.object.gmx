@@ -214,6 +214,46 @@ instance_create(0,0,obj_death);
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_block2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// if we are on top of the floor    
+if(gravity==1){
+       if(global._jump == true &amp;&amp; self.y &gt; other.y){
+         motion_set(0,0);
+         self.y = other.y+32;
+         global._can_jump = false;  
+        //delay_jump = true;
+        //alarm[0] = 5;
+    }else{
+        gravity = 0;
+        self.y = other.y;   
+        motion_set(0,0);
+        global._can_jump = true;     
+    }
+}
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_wall">
       <action>
         <libid>1</libid>
