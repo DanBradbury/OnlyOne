@@ -30,6 +30,7 @@
     <sprite>sprites\spr_laser_gun</sprite>
     <sprite>sprites\spr_laser_icon</sprite>
     <sprite>sprites\spr_shot_laser</sprite>
+    <sprite>sprites\spr_ramp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -67,6 +68,7 @@
     <object>objects\obj_bw_left</object>
     <object>objects\obj_bw_right</object>
     <object>objects\obj_next_level</object>
+    <object>objects\obj_ramp</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>

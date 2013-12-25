@@ -80,6 +80,37 @@ if(moving==true){
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_ramp">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string> 
+ self.x += 3;
+ self.y = other.y+3
+
+
+//motion_set(0,0);
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_spike">
       <action>
         <libid>1</libid>
