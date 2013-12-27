@@ -10,7 +10,6 @@
     <sound>sound\snd_shot</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_block2</sprite>
     <sprite>sprites\spr_verticals</sprite>
@@ -33,10 +32,12 @@
     <sprite>sprites\spr_shot_laser</sprite>
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_moving_platform</sprite>
+    <sprite>sprites\spr_player</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\background1</background>
+    <background>background\cityscape</background>
   </backgrounds>
   <paths name="paths"/>
   <shaders name="shaders">
@@ -75,7 +76,7 @@
     <object>objects\obj_moving_platform</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room3</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

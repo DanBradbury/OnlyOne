@@ -43,6 +43,9 @@ shot_used = false;
 global._super_slow = false;
 global._can_jump = false;
 delay_jump = false;
+image_xscale = 1;
+image_yscale = 1;
+
 
 </string>
           </argument>
@@ -95,6 +98,11 @@ if(vspeed &gt; 0){
 }
 if(delay_jump == true){
     global._can_jump = false;
+}
+if(moving == true){
+    image_speed = 0.5;
+}else{
+    image_speed = 0;
 }
 /*
 if(moving==true){
@@ -338,7 +346,7 @@ global._can_jump = true;
             <string>hspeed = (base_ms+accel);
 moving = true;
 mov_dir = "right";
-image_index = 0;
+image_xscale = 1;
 
 </string>
           </argument>
@@ -365,7 +373,9 @@ image_index = 0;
             <string>hspeed = -(base_ms+accel);
 mov_dir = "left";
 moving = true;
-image_index = 1;
+image_xscale = -1;
+
+
 
 </string>
           </argument>
@@ -446,25 +456,10 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_sprite(spr_player,image_index,self.x,self.y);
+            <string>draw_sprite_ext(spr_player,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
+//draw_sprite(spr_player,image_index,self.x,self.y);
 
-if(global._active_item=="REVOLVER"){
-    if(image_index==0){
-        draw_sprite(spr_revolver,image_index,self.x+8,self.y);
-    }else{
-        draw_sprite(spr_revolver,image_index,self.x,self.y);
-    }
-}else if(global._active_item=="LASER"){
-    if(image_index==0){
-        draw_sprite(spr_laser_gun,image_index,self.x+8,self.y);
-    }else{
-        draw_sprite(spr_laser_gun,image_index,self.x,self.y);
-    }
-}
-if(jump==true){
-    draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
-}
+
 </string>
           </argument>
         </arguments>
@@ -567,6 +562,7 @@ hspeed = 0;
             <kind>1</kind>
             <string>moving = false;
 hspeed = 0;
+
 //motion_set(0,0);
 </string>
           </argument>
