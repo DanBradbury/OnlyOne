@@ -537,6 +537,7 @@ instance_create(0,0,obj_pause);
             <kind>1</kind>
             <string>moving = false;
 hspeed = 0;
+image_index = 0;
 //motion_set(0,0);
 </string>
           </argument>
@@ -562,7 +563,7 @@ hspeed = 0;
             <kind>1</kind>
             <string>moving = false;
 hspeed = 0;
-
+image_index = 0;
 //motion_set(0,0);
 </string>
           </argument>
