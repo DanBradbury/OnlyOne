@@ -425,11 +425,13 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
         //image_index = 0;
     }else{
         if(global._jump==false){
-            _draw_sprite = spr_player_running;
-        }else{
+            if(run_rev == true){
+                _draw_sprite = spr_player_running;
+            }else{
                 global._run_start = true;
                 starting_up = true;
                 _draw_sprite = spr_player_start_run;
+            }
         }
     }
     hspeed = (base_ms+accel);
