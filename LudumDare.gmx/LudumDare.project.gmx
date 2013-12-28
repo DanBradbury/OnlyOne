@@ -41,6 +41,9 @@
     <sprite>sprites\spr_player_turn</sprite>
     <sprite>sprites\spr_player_start_run</sprite>
     <sprite>sprites\spr_player_crouching</sprite>
+    <sprite>sprites\spr_hud_base</sprite>
+    <sprite>sprites\spr_hud_roa</sprite>
+    <sprite>sprites\spr_hud_special</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -58,6 +61,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <object>objects\obj_hud</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_bounce_wall</object>

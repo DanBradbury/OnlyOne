@@ -56,7 +56,7 @@ run_rev = false;
 starting_up = false;
 global._run_start = false;
 crouch_completed = false;
-
+instance_create(0,0, obj_hud);
 
 </string>
           </argument>
@@ -138,12 +138,12 @@ if(delay_jump == true){
 }
 
 if(moving == true){
-    image_speed = 0.3;
+    image_speed = 0.6;
 }
 else if(global._jump==true){
     image_speed = 0.5;
 }else{
-    image_speed = 0.3;
+    image_speed = 0.6;
 }
 
 if(global._jump == true || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true){
@@ -511,7 +511,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
             <kind>1</kind>
             <string>
 if (global._can_jump == true &amp;&amp; global._slide == false) {
-    vspeed = -20;
+    vspeed = -30;
     global._can_jump = false;
     global._jump = true; 
     image_index = 0;
@@ -576,6 +576,11 @@ if (global._can_jump == true &amp;&amp; global._slide == false) {
             <kind>1</kind>
             <string>draw_sprite_ext(_draw_sprite,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
 //draw_sprite(spr_player,image_index,self.x,self.y);
+draw_sprite_ext(spr_hud_base, 0, view_xview[0], view_yview[0], 1.5, 1.5, 0, c_white, 1);
+draw_sprite_ext(spr_hud_roa, 0, view_xview[0]+25, view_yview[0]+6, 1.5, 1.5, 0, c_white, 1);
+draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100, view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);
+draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+53, view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);
+draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);
 
 
 </string>
