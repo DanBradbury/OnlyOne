@@ -33,6 +33,8 @@
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_moving_platform</sprite>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_player_running</sprite>
+    <sprite>sprites\spr_player_jumping</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

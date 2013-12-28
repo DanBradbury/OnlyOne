@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>gravity = 1;
 image_speed = 0;
-base_ms = 7.75;
+base_ms = 15;
 accel = 0.545
 moving = false;
 mov_dir = "right";
@@ -43,8 +43,9 @@ shot_used = false;
 global._super_slow = false;
 global._can_jump = false;
 delay_jump = false;
-image_xscale = 1;
-image_yscale = 1;
+image_xscale = 2;
+image_yscale = 2;
+_draw_sprite = spr_player_jumping;
 
 
 </string>
@@ -93,16 +94,27 @@ image_yscale = 1;
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-if(vspeed &gt; 0){
+image_index += 1;
+if(vspeed &gt; 15){
     global._jump = false;
 }
 if(delay_jump == true){
     global._can_jump = false;
 }
+
 if(moving == true){
+    image_speed = 0.5;
+}
+else if(global._jump==true){
     image_speed = 0.5;
 }else{
     image_speed = 0;
+}
+
+if(global._jump == true){
+    if(image_index &gt; 3){
+        image_index = 3;
+    }
 }
 /*
 if(moving==true){
@@ -319,6 +331,10 @@ if(gravity==1){
         motion_set(0,0);
 }
 global._can_jump = true; 
+global._jump = false;
+if(moving == false &amp;&amp; global._jump == false){
+    _draw_sprite = spr_player;
+}
 
 
 </string>
@@ -346,8 +362,10 @@ global._can_jump = true;
             <string>hspeed = (base_ms+accel);
 moving = true;
 mov_dir = "right";
-image_xscale = 1;
-
+image_xscale = 2;
+if(global._jump==false){
+    _draw_sprite = spr_player_running;
+}
 </string>
           </argument>
         </arguments>
@@ -373,8 +391,10 @@ image_xscale = 1;
             <string>hspeed = -(base_ms+accel);
 mov_dir = "left";
 moving = true;
-image_xscale = -1;
-
+image_xscale = -2;
+if(global._jump==false){
+    _draw_sprite = spr_player_running;
+}
 
 
 </string>
@@ -402,7 +422,10 @@ image_xscale = -1;
             <string>if (global._can_jump == true ) {
     vspeed = -20;
     global._can_jump = false;
-    global._jump = true;    
+    global._jump = true; 
+    image_index = 0;
+    _draw_sprite = spr_player_jumping;
+   
 }
 </string>
           </argument>
@@ -456,7 +479,7 @@ image_xscale = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_player,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
+            <string>draw_sprite_ext(_draw_sprite,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
 //draw_sprite(spr_player,image_index,self.x,self.y);
 
 
@@ -538,6 +561,8 @@ instance_create(0,0,obj_pause);
             <string>moving = false;
 hspeed = 0;
 image_index = 0;
+_draw_sprite = spr_player;
+
 //motion_set(0,0);
 </string>
           </argument>
@@ -564,6 +589,7 @@ image_index = 0;
             <string>moving = false;
 hspeed = 0;
 image_index = 0;
+_draw_sprite = spr_player;
 //motion_set(0,0);
 </string>
           </argument>
@@ -590,7 +616,7 @@ image_index = 0;
             <string>if( vspeed &lt; 0 ) {
     vspeed = 0;
 }
-global._jump = false;
+//global._jump = false;
      
 </string>
           </argument>
