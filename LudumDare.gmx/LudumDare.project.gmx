@@ -38,6 +38,7 @@
     <sprite>sprites\spr_player_crouch</sprite>
     <sprite>sprites\spr_player_jump_forward</sprite>
     <sprite>sprites\spr_player_slide</sprite>
+    <sprite>sprites\spr_player_turn</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

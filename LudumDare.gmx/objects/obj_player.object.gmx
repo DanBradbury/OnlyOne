@@ -51,6 +51,7 @@ image_xscale = 2;
 image_yscale = 2;
 _draw_sprite = spr_player_jumping;
 delay = false;
+turning = false;
 
 
 </string>
@@ -138,7 +139,7 @@ if(moving == true){
 else if(global._jump==true){
     image_speed = 0.5;
 }else{
-    image_speed = 0.5;
+    image_speed = 0.3;
 }
 
 if(global._jump == true || global._crouch == true || global._slide == true){
@@ -148,6 +149,12 @@ if(global._jump == true || global._crouch == true || global._slide == true){
             alarm[1] = 12;
             delay = true;
         }
+    }
+}
+if(turning == true){
+    if(image_index &gt; 5){
+        turning = false;
+        _draw_sprite = spr_player;
     }
 }
 
@@ -374,7 +381,7 @@ if(gravity==1){
 }
 global._can_jump = true; 
 global._jump = false;
-if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch == false &amp;&amp; global._slide == false){
+if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch == false &amp;&amp; global._slide == false &amp;&amp; turning == false){
     _draw_sprite = spr_player;
 }
 
@@ -402,13 +409,19 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
           <argument>
             <kind>1</kind>
             <string>if(global._slide == false){
+    if(mov_dir=="left" || turning == true){
+        _draw_sprite = spr_player_turn;
+        turning = true;
+        //image_index = 0;
+    }else{
+        if(global._jump==false){
+            _draw_sprite = spr_player_running;
+        }
+    }
     hspeed = (base_ms+accel);
     moving = true;
     mov_dir = "right";
     image_xscale = 2;
-    if(global._jump==false){
-        _draw_sprite = spr_player_running;
-    }
 }
 </string>
           </argument>
@@ -433,13 +446,19 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
           <argument>
             <kind>1</kind>
             <string>if(global._slide == false){
+    if(mov_dir=="right" || turning == true){
+        _draw_sprite = spr_player_turn;
+        turning = true;
+        //image_index = 0;
+    }else{
+        if(global._jump==false){
+            _draw_sprite = spr_player_running;
+        }
+    }
     hspeed = -(base_ms+accel);
     mov_dir = "left";
     moving = true;
     image_xscale = -2;
-    if(global._jump==false){
-        _draw_sprite = spr_player_running;
-    }
 }
 
 </string>
