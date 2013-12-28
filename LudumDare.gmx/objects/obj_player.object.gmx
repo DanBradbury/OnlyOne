@@ -52,6 +52,9 @@ image_yscale = 2;
 _draw_sprite = spr_player_jumping;
 delay = false;
 turning = false;
+run_rev = false;
+starting_up = false;
+global._run_start = false;
 
 
 </string>
@@ -149,6 +152,13 @@ if(global._jump == true || global._crouch == true || global._slide == true){
             alarm[1] = 12;
             delay = true;
         }
+    }
+}
+if(starting_up == true){
+    if(image_index &gt; 3){
+        run_rev = true;
+        starting_up = false;
+        _draw_sprite = spr_player_running;
     }
 }
 if(turning == true){
@@ -416,6 +426,10 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
     }else{
         if(global._jump==false){
             _draw_sprite = spr_player_running;
+        }else{
+                global._run_start = true;
+                starting_up = true;
+                _draw_sprite = spr_player_start_run;
         }
     }
     hspeed = (base_ms+accel);
@@ -449,10 +463,15 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
     if(mov_dir=="right" || turning == true){
         _draw_sprite = spr_player_turn;
         turning = true;
-        //image_index = 0;
     }else{
         if(global._jump==false){
-            _draw_sprite = spr_player_running;
+            if(run_rev == true){
+                _draw_sprite = spr_player_running;
+            }else{
+                global._run_start = true;
+                starting_up = true;
+                _draw_sprite = spr_player_start_run;
+            }
         }
     }
     hspeed = -(base_ms+accel);
@@ -710,7 +729,9 @@ instance_create(0,0,obj_pause);
     hspeed = 0;
     image_index = 0;
     _draw_sprite = spr_player;
-    
+     run_rev = false;
+    starting_up = false;
+    global._run_start = false;
     //motion_set(0,0);
 }
 </string>
@@ -741,6 +762,9 @@ instance_create(0,0,obj_pause);
     image_index = 0;
     _draw_sprite = spr_player;
     //motion_set(0,0);
+    run_rev = false;
+    starting_up = false;
+    global._run_start = false;
 }
 </string>
           </argument>
