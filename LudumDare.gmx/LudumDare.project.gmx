@@ -35,11 +35,12 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_player_running</sprite>
     <sprite>sprites\spr_player_jumping</sprite>
-    <sprite>sprites\spr_player_crouch</sprite>
+    <sprite>sprites\spr_player_to_crouch</sprite>
     <sprite>sprites\spr_player_jump_forward</sprite>
     <sprite>sprites\spr_player_slide</sprite>
     <sprite>sprites\spr_player_turn</sprite>
     <sprite>sprites\spr_player_start_run</sprite>
+    <sprite>sprites\spr_player_crouching</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
