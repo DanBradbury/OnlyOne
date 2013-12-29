@@ -57,7 +57,7 @@ starting_up = false;
 global._run_start = false;
 crouch_completed = false;
 instance_create(0,0, obj_hud);
-
+attacking = false;
 </string>
           </argument>
         </arguments>
@@ -164,6 +164,11 @@ if(starting_up == true){
         run_rev = true;
         starting_up = false;
         _draw_sprite = spr_player_running;
+    }
+}
+if(attacking == true){
+    if(image_index &gt; 11){
+        attacking = false;
     }
 }
 if(turning == true){
@@ -396,7 +401,7 @@ if(gravity==1){
 }
 global._can_jump = true; 
 global._jump = false;
-if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch == false &amp;&amp; global._slide == false &amp;&amp; turning == false &amp;&amp; crouch_completed == false){
+if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch == false &amp;&amp; global._slide == false &amp;&amp; turning == false &amp;&amp; crouch_completed == false &amp;&amp; attacking == false){
     _draw_sprite = spr_player;
 }
 
@@ -588,6 +593,31 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>attacking = true;
+_draw_sprite = spr_player_standing_right;
+image_index = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="83">
       <action>
         <libid>1</libid>
@@ -612,6 +642,31 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
     global._can_slide = false;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>attacking = true;
+_draw_sprite = spr_player_standing_left;
+image_index = 0;
 </string>
           </argument>
         </arguments>

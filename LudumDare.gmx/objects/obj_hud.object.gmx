@@ -25,10 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_healthbar(view_xview[0]+120,  view_yview[0], view_xview[0]+360,  view_yview[0]+24, 100, c_black, c_red, c_green, 0, true, true);
+            <string>/// draw menu bars
+draw_healthbar(view_xview[0]+120,  view_yview[0], view_xview[0]+360,  view_yview[0]+24, 100, c_black, c_red, c_green, 0, true, true);
 draw_set_color(c_green);
 //fill that little corner
 draw_rectangle(view_xview[0]+360,  view_yview[0], view_xview[0]+372,  view_yview[0]+14, false);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// for demo only
+draw_set_color(c_red);
+draw_set_font(tutorial_font);
+draw_text(view_xview[0]+25, view_yview[0]+200, "Left Attack: Q");
+draw_text(view_xview[0]+25, view_yview[0]+250, "Right Attack: W");
 </string>
           </argument>
         </arguments>
