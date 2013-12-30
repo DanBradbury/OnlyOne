@@ -1,0 +1,36 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   LudumDare.gmx/LudumDare.project.gmx
+#	modified:   LudumDare.gmx/objects/obj_player.object.gmx
+#	modified:   LudumDare.gmx/objects/obj_shot_laser.object.gmx
+#	modified:   LudumDare.gmx/objects/obj_shot_revolver.object.gmx
+#	modified:   LudumDare.gmx/rooms/room0.room.gmx
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	LudumDare.gmx/objects/obj_checkpoint.object.gmx
+#	LudumDare.gmx/sprites/images/spr_checkpoint_0.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_1.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_10.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_11.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_12.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_13.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_14.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_15.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_2.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_3.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_4.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_5.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_6.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_7.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_8.png
+#	LudumDare.gmx/sprites/images/spr_checkpoint_9.png
+#	LudumDare.gmx/sprites/spr_checkpoint.sprite.gmx
+#	LudumDare.gmx/timelines/
+

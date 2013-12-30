@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
+            <string>lives = 3;
+gravity = 1;
 image_speed = 0;
 base_ms = 5.75;
 accel = 0.545
@@ -118,13 +119,19 @@ if(moving==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>motion_set(90,10);
-gravity = 0;
+            <string>if(lives = 1){
+    lives -= 1;
+    motion_set(90,10);
+    gravity = 0;
 
-ex_camera_set_zoom_scale(global._camera, 50);
+    ex_camera_set_zoom_scale(global._camera, 50);
 
-instance_create(0,0,obj_death);
-
+    instance_create(0,0,obj_death);
+    }else{
+    lives -= 1;
+    x = global.lastcheckpointx
+    y = global.lastcheckpointy
+    }
 </string>
           </argument>
         </arguments>
