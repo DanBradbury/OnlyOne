@@ -34,6 +34,7 @@ mov_dir = "right";
 image_xscale = 1;
 image_yscale = 1;
 turning = false;
+attacking = false;
 </string>
           </argument>
         </arguments>
@@ -66,25 +67,37 @@ if(obj_player.x &gt; self.x-80 ){
         mov_dir = "right";
         image_xscale = 1;
         turning = true;
-        hspeed = 13;
+        if(aggro == true){
+            hspeed = 13;
+        }
     }
 }else{
     if(mov_dir=="right"){
         mov_dir = "left";
          image_xscale = -1;
          turning = true;
-         hspeed = -13;
+         if(aggro == true){
+            hspeed = -13;
+         }
     }
 }
-
 
 if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
     aggro = true;
     _draw_sprite = spr_spider_to_aggro;
     turning_aggro = true;
     image_index = 0;
+}else if(distance_to_object(obj_player)&gt;300){
+    _draw_sprite = spr_spider_idle;
 }
-
+// temp idea
+/*
+if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false){
+    attacking = true;
+    _draw_sprite = spr_spider_aggro_left_slash;
+    image_index = 0;
+}
+*/
 // handle animation specific stuff here
 if(turning_aggro == true){
     if(image_index &gt; 6){
