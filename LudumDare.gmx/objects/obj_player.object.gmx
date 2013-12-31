@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
+            <string>///create event
+gravity = 1;
 image_speed = 0;
 base_ms = 7.75;
 accel = 0.545
