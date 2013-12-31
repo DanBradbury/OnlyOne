@@ -194,7 +194,11 @@ if(starting_up == true){
 }
 if(attacking == true){
     if(image_index &gt; 6 &amp;&amp; image_index &lt; 7){
+    if(crouch_completed == true){
+        instance_create(self.x+30, self.y-120, obj_regular_shot);        
+    }else{
         instance_create(self.x+30, self.y-190, obj_regular_shot);
+    }
     }
     if(image_index &gt; 11){
         attacking = false;
@@ -765,10 +769,12 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    image_index = 0;
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false ){
+    image_index = 0;
     _draw_sprite = spr_player_to_crouch;  
     global._crouch = true;
     moving = false;
+}
     
 
 </string>
