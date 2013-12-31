@@ -10,26 +10,6 @@
     <sound>sound\snd_shot</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_block</sprite>
-    <sprite>sprites\spr_block2</sprite>
-    <sprite>sprites\spr_verticals</sprite>
-    <sprite>sprites\spr_verticals2</sprite>
-    <sprite>sprites\spr_jump</sprite>
-    <sprite>sprites\spr_inactive_jump</sprite>
-    <sprite>sprites\spr_cmd_jump</sprite>
-    <sprite>sprites\spr_spike</sprite>
-    <sprite>sprites\spr_target</sprite>
-    <sprite>sprites\spr_lives</sprite>
-    <sprite>sprites\spr_revolver</sprite>
-    <sprite>sprites\spr_revolver_icon</sprite>
-    <sprite>sprites\spr_shot_revolver</sprite>
-    <sprite>sprites\spr_bounce_up</sprite>
-    <sprite>sprites\spr_bounce_down</sprite>
-    <sprite>sprites\spr_bounce_right</sprite>
-    <sprite>sprites\spr_bouce_left</sprite>
-    <sprite>sprites\spr_laser_gun</sprite>
-    <sprite>sprites\spr_laser_icon</sprite>
-    <sprite>sprites\spr_shot_laser</sprite>
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_moving_platform</sprite>
     <sprite>sprites\spr_player</sprite>
@@ -41,6 +21,7 @@
     <sprite>sprites\spr_player_turn</sprite>
     <sprite>sprites\spr_player_start_run</sprite>
     <sprite>sprites\spr_player_crouching</sprite>
+    <sprite>sprites\spr_player_dash</sprite>
     <sprite>sprites\spr_hud_base</sprite>
     <sprite>sprites\spr_hud_roa</sprite>
     <sprite>sprites\spr_hud_special</sprite>
@@ -69,6 +50,31 @@
     <sprite>sprites\spr_spider_aggro_thrust</sprite>
     <sprite>sprites\spr_spider_aggro_turn</sprite>
     <sprite>sprites\spr_spider_aggro_walk</sprite>
+    <sprite>sprites\spr_player_air_get_hit</sprite>
+    <sprite>sprites\spr_player_air_orbus</sprite>
+    <sprite>sprites\spr_player_air_union</sprite>
+    <sprite>sprites\spr_player_climb_up</sprite>
+    <sprite>sprites\spr_player_crouching_hit</sprite>
+    <sprite>sprites\spr_player_crouching_orbus</sprite>
+    <sprite>sprites\spr_player_crouching_union</sprite>
+    <sprite>sprites\spr_player_downshot</sprite>
+    <sprite>sprites\spr_player_drill</sprite>
+    <sprite>sprites\spr_player_falling</sprite>
+    <sprite>sprites\spr_player_edge_shot</sprite>
+    <sprite>sprites\spr_player_ees</sprite>
+    <sprite>sprites\spr_player_crouching_to_stand</sprite>
+    <sprite>sprites\spr_player_get_up</sprite>
+    <sprite>sprites\spr_player_grab_edge</sprite>
+    <sprite>sprites\spr_player_grab_wall</sprite>
+    <sprite>sprites\spr_player_jump_up</sprite>
+    <sprite>sprites\spr_player_jumo_wall</sprite>
+    <sprite>sprites\spr_player_knockdown</sprite>
+    <sprite>sprites\spr_player_standing_hit</sprite>
+    <sprite>sprites\spr_player_standing_low_hit</sprite>
+    <sprite>sprites\spr_player_standing_orbus</sprite>
+    <sprite>sprites\spr_player_standing_union</sprite>
+    <sprite>sprites\spr_player_stop_dash</sprite>
+    <sprite>sprites\spr_player_wall_shot</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

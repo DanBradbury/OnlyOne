@@ -58,6 +58,8 @@ global._run_start = false;
 crouch_completed = false;
 instance_create(0,0, obj_hud);
 attacking = false;
+can_dash = true;
+dashing = false;
 </string>
           </argument>
         </arguments>
@@ -187,6 +189,12 @@ if(moving==true){
     }else{
         hspeed -= accel;
     }
+}
+
+if(dashing==true){
+    if(image_index &gt; 5){
+        image_index = 0;
+    }    
 }
 
 if(global._slide == true){
@@ -555,13 +563,11 @@ if (global._can_jump == true &amp;&amp; global._slide == false) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(slow_meter&gt;=0){
-    slow_mo = true;
-    
-    with(all)
-    {
-      speed *= 10/30;
-    }
+            <string>if(can_dash == true){
+    dashing = true;
+    can_dash = false;
+    _draw_sprite = spr_player_dash;
+    //alarm[2] = 20;
 }
 </string>
           </argument>
