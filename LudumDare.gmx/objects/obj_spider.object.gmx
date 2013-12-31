@@ -30,9 +30,10 @@ _draw_sprite = spr_spider_idle;
 aggro = false;
 turning_aggro = false;
 moving = false;
-dir = "right";
-image_xscale = 2;
-image_yscale = 2;
+mov_dir = "right";
+image_xscale = 1;
+image_yscale = 1;
+turning = false;
 </string>
           </argument>
         </arguments>
@@ -55,31 +56,53 @@ image_yscale = 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = .1;
+            <string>image_speed = .5;
 image_index += 1;
 
 // check which way to face
-if(obj_player.x &gt; self.x ){
-    mov_dir = "right";
-    image_xscale = 2;
+
+if(obj_player.x &gt; self.x-80 ){
+    if(mov_dir == "left"){
+        mov_dir = "right";
+        image_xscale = 1;
+        turning = true;
+        hspeed = 13;
+    }
 }else{
-    image_xscale = -2;
+    if(mov_dir=="right"){
+        mov_dir = "left";
+         image_xscale = -1;
+         turning = true;
+         hspeed = -13;
+    }
 }
 
-if(distance_to_object(obj_player)&lt;200 &amp;&amp; aggro == false){
+
+if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
     aggro = true;
     _draw_sprite = spr_spider_to_aggro;
     turning_aggro = true;
     image_index = 0;
 }
 
+// handle animation specific stuff here
 if(turning_aggro == true){
     if(image_index &gt; 6){
         turning_aggro = false;
         _draw_sprite = spr_spider_aggro_walk;
-        hspeed = -(3);
-        mov_dir = "left";
+        // attack
         moving = true;
+    }
+}
+if(turning == true){
+    // only hit this upon entry
+    if(image_index &gt; 9){
+        image_index = 0;
+        _draw_sprite = spr_spider_turn; 
+    }
+    if(image_index &gt;8){
+        turning = false;
+        _draw_sprite = spr_spider_aggro_walk;
     }
 }
 
