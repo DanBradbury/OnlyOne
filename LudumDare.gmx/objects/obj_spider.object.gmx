@@ -32,8 +32,8 @@ aggro = false;
 turning_aggro = false;
 moving = false;
 mov_dir = "right";
-image_xscale = 1;
-image_yscale = 1;
+image_xscale = 2;
+image_yscale = 2;
 turning = false;
 attacking = false;
 </string>
@@ -66,14 +66,14 @@ image_index += 1;
 if(obj_player.x &gt; self.x-80 ){
     if(mov_dir == "left"){
         mov_dir = "right";
-        image_xscale = 1;
+        image_xscale = 2;
         turning = true;
         
     }
 }else{
     if(mov_dir=="right"){
         mov_dir = "left";
-         image_xscale = -1;
+         image_xscale = -2;
          turning = true;
          if(aggro == true){
             hspeed = -13;

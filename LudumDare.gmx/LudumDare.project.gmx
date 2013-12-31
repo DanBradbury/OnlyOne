@@ -34,6 +34,7 @@
       <sprite>sprites\spr_player_jumping</sprite>
       <sprite>sprites\spr_player_running</sprite>
       <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_standing_shot</sprite>
     </sprites>
     <sprites name="Spider">
       <sprite>sprites\spr_spider_idle</sprite>
@@ -42,6 +43,7 @@
       <sprite>sprites\spr_spider_turn</sprite>
     </sprites>
     <sprite>sprites\spr_spider_death</sprite>
+    <sprite>sprites\spr_</sprite>
     <sprite>sprites\spr_spider_flip</sprite>
     <sprite>sprites\spr_spider_jump_back</sprite>
     <sprite>sprites\spr_spider_leap_forward</sprite>
@@ -126,6 +128,7 @@
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_projectile</object>
     <object>objects\obj_spider</object>
+    <object>objects\obj_regular_shot</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>

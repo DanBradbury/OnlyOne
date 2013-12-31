@@ -193,6 +193,9 @@ if(starting_up == true){
     }
 }
 if(attacking == true){
+    if(image_index &gt; 6 &amp;&amp; image_index &lt; 7){
+        instance_create(self.x+30, self.y-190, obj_regular_shot);
+    }
     if(image_index &gt; 11){
         attacking = false;
         if(crouch_completed == true){        
