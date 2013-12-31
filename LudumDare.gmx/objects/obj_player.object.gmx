@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>gravity = 1;
 image_speed = 0;
-base_ms = 15;
+base_ms = 20;
 accel = 3.545
 moving = false;
 mov_dir = "right";
@@ -53,6 +53,32 @@ instance_create(0,0, obj_hud);
 attacking = false;
 can_dash = true;
 dashing = false;
+dash_completed = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dashing = false;
+dash_completed = false;
+_draw_sprite = spr_player_falling;
 </string>
           </argument>
         </arguments>
@@ -117,21 +143,24 @@ delay = false;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_player</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
+            <string>/// the meat
+gravity = 1;
 image_index += 1;
+// control jump and fall logic
 if(vspeed &gt; 15){
     global._jump = false;
+    _draw_sprite = spr_player_falling;
 }
 if(delay_jump == true){
     global._can_jump = false;
 }
-
+// toy with image speeds for whatever situation
 if(moving == true){
     image_speed = 0.6; //.6
 }else if(global._jump == true &amp;&amp; attacking == false){
@@ -140,8 +169,8 @@ if(moving == true){
 else{
     image_speed = 0.6; //.6
 }
-
-if((global._jump == true &amp;&amp; attacking == false) || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true){
+// sliding logic
+if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == false) || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true){
     if(image_index &gt; 3){
         image_index = 3;
         if(global._slide == true &amp;&amp; delay = false){
@@ -154,6 +183,8 @@ if((global._jump == true &amp;&amp; attacking == false) || ( global._crouch == t
         }
     }
 }
+// LOGIC FOR ANIMATION
+// running startup
 if(starting_up == true){
     if(image_index &gt; 3){
         run_rev = true;
@@ -184,10 +215,25 @@ if(moving==true){
     }
 }
 
-if(dashing==true){
-    if(image_index &gt; 5){
-        image_index = 0;
-    }    
+if(dashing==true &amp;&amp; dash_completed == false){
+    vspeed = 0;
+    if(image_index &gt;  5){
+        image_index = 3;
+        dash_completed = true;
+        alarm[2] = 24;
+        //dashing = false;
+        //_draw_sprite = spr_player_falling;
+    }
+}
+if(dash_completed == true){
+    image_index = 5;
+}
+if(dashing == true){
+     if(mov_dir=="right"){
+        hspeed = 30;
+    }else{
+        hspeed = -30;
+    }
 }
 
 if(global._slide == true){
@@ -405,6 +451,8 @@ if(gravity==1){
 }
 global._can_jump = true; 
 global._jump = false;
+dashing = false;
+can_dash = true;
 if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch == false &amp;&amp; global._slide == false &amp;&amp; turning == false &amp;&amp; crouch_completed == false &amp;&amp; attacking == false){
     _draw_sprite = spr_player;
 }
@@ -432,7 +480,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false){
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false){
     if(mov_dir=="left" || turning == true){
         _draw_sprite = spr_player_turn;
         turning = true;
@@ -475,7 +523,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false){
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false){
     if(mov_dir=="right" || turning == true){
         _draw_sprite = spr_player_turn;
         turning = true;
@@ -560,7 +608,9 @@ if (global._can_jump == true &amp;&amp; global._slide == false) {
     dashing = true;
     can_dash = false;
     _draw_sprite = spr_player_dash;
-    //alarm[2] = 20;
+    image_index = 0;
+    moving = false;
+    global._jump = false;
 }
 </string>
           </argument>
@@ -615,7 +665,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(attacking == false){
+            <string>if(attacking == false &amp;&amp; dashing == false){
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_right;
@@ -649,7 +699,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._can_slide == true){
+            <string>if(global._can_slide == true &amp;&amp; global._jump == false){
     image_index = 0;
     _draw_sprite = spr_player_slide;        
     global._slide = true;
@@ -678,7 +728,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(attacking == false ){
+            <string>if(attacking == false &amp;&amp; dashing == false ){
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_left
@@ -821,11 +871,13 @@ if(attacking == false){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false){
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false){
     moving = false;
     hspeed = 0;
     image_index = 0;
-    _draw_sprite = spr_player;
+    if(global._can_jump == true){
+        _draw_sprite = spr_player;
+    }
      run_rev = false;
     starting_up = false;
     global._run_start = false;
@@ -853,11 +905,13 @@ if(attacking == false){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false){
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false ){
     moving = false;
     hspeed = 0;
     image_index = 0;
-    _draw_sprite = spr_player;
+    if(global._can_jump == true){
+        _draw_sprite = spr_player;
+    }
     //motion_set(0,0);
     run_rev = false;
     starting_up = false;

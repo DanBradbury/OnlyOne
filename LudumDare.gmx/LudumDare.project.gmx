@@ -12,33 +12,40 @@
   <sprites name="sprites">
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_moving_platform</sprite>
-    <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_player_running</sprite>
-    <sprite>sprites\spr_player_jumping</sprite>
-    <sprite>sprites\spr_player_to_crouch</sprite>
-    <sprite>sprites\spr_player_jump_forward</sprite>
-    <sprite>sprites\spr_player_slide</sprite>
-    <sprite>sprites\spr_player_turn</sprite>
-    <sprite>sprites\spr_player_start_run</sprite>
-    <sprite>sprites\spr_player_crouching</sprite>
-    <sprite>sprites\spr_player_dash</sprite>
     <sprite>sprites\spr_hud_base</sprite>
     <sprite>sprites\spr_hud_roa</sprite>
     <sprite>sprites\spr_hud_special</sprite>
-    <sprite>sprites\spr_player_standing_left</sprite>
-    <sprite>sprites\spr_player_standing_right</sprite>
     <sprite>sprites\spr_energy_ball</sprite>
-    <sprite>sprites\spr_player_crouching_left</sprite>
-    <sprite>sprites\spr_player_crouching_right</sprite>
-    <sprite>sprites\spr_player_jumping_left</sprite>
-    <sprite>sprites\spr_player_jumping_right</sprite>
-    <sprite>sprites\spr_spider_idle</sprite>
+    <sprites name="Roa">
+      <sprite>sprites\spr_player_jumping_right</sprite>
+      <sprite>sprites\spr_player_jumping_left</sprite>
+      <sprite>sprites\spr_player_crouching_right</sprite>
+      <sprite>sprites\spr_player_crouching_left</sprite>
+      <sprite>sprites\spr_player_standing_right</sprite>
+      <sprite>sprites\spr_player_standing_left</sprite>
+      <sprite>sprites\spr_player_dash</sprite>
+      <sprite>sprites\spr_player_crouching</sprite>
+      <sprite>sprites\spr_player_start_run</sprite>
+      <sprite>sprites\spr_player_turn</sprite>
+      <sprite>sprites\spr_player_slide</sprite>
+      <sprite>sprites\spr_player_falling</sprite>
+      <sprite>sprites\spr_player_jump_forward</sprite>
+      <sprite>sprites\spr_player_to_crouch</sprite>
+      <sprite>sprites\spr_player_jumping</sprite>
+      <sprite>sprites\spr_player_running</sprite>
+      <sprite>sprites\spr_player</sprite>
+    </sprites>
+    <sprites name="Spider">
+      <sprite>sprites\spr_spider_idle</sprite>
+      <sprite>sprites\spr_spider_to_aggro</sprite>
+      <sprite>sprites\spr_spider_aggro_walk</sprite>
+      <sprite>sprites\spr_spider_turn</sprite>
+    </sprites>
     <sprite>sprites\spr_spider_death</sprite>
     <sprite>sprites\spr_spider_flip</sprite>
     <sprite>sprites\spr_spider_jump_back</sprite>
     <sprite>sprites\spr_spider_leap_forward</sprite>
-    <sprite>sprites\spr_spider_to_aggro</sprite>
-    <sprite>sprites\spr_spider_turn</sprite>
+    <sprite>sprites\spr_spider_aggro_turn</sprite>
     <sprite>sprites\spr_spider_walk</sprite>
     <sprite>sprites\spr_spider_aggro_idle</sprite>
     <sprite>sprites\spr_spider_aggro_death</sprite>
@@ -48,8 +55,6 @@
     <sprite>sprites\spr_spider_aggro_left_slash</sprite>
     <sprite>sprites\spr_spider_aggro_right_slash</sprite>
     <sprite>sprites\spr_spider_aggro_thrust</sprite>
-    <sprite>sprites\spr_spider_aggro_turn</sprite>
-    <sprite>sprites\spr_spider_aggro_walk</sprite>
     <sprite>sprites\spr_player_air_get_hit</sprite>
     <sprite>sprites\spr_player_air_orbus</sprite>
     <sprite>sprites\spr_player_air_union</sprite>
@@ -59,7 +64,6 @@
     <sprite>sprites\spr_player_crouching_union</sprite>
     <sprite>sprites\spr_player_downshot</sprite>
     <sprite>sprites\spr_player_drill</sprite>
-    <sprite>sprites\spr_player_falling</sprite>
     <sprite>sprites\spr_player_edge_shot</sprite>
     <sprite>sprites\spr_player_ees</sprite>
     <sprite>sprites\spr_player_crouching_to_stand</sprite>
