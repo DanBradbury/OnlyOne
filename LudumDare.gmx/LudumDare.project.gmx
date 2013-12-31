@@ -49,6 +49,8 @@
     <sprite>sprites\spr_energy_ball</sprite>
     <sprite>sprites\spr_player_crouching_left</sprite>
     <sprite>sprites\spr_player_crouching_right</sprite>
+    <sprite>sprites\spr_player_jumping_left</sprite>
+    <sprite>sprites\spr_player_jumping_right</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
