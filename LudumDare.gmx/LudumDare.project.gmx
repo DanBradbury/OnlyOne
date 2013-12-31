@@ -75,6 +75,9 @@
     <sprite>sprites\spr_player_standing_union</sprite>
     <sprite>sprites\spr_player_stop_dash</sprite>
     <sprite>sprites\spr_player_wall_shot</sprite>
+    <sprite>sprites\spr_block</sprite>
+    <sprite>sprites\spr_block_vert_left</sprite>
+    <sprite>sprites\spr_block_vert_right</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
