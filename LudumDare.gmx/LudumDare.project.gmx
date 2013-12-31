@@ -112,6 +112,7 @@
     <object>objects\obj_ramp</object>
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_projectile</object>
+    <object>objects\obj_spider</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
