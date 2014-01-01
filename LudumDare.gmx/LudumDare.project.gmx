@@ -89,6 +89,7 @@
     <background>background\background0</background>
     <background>background\background1</background>
     <background>background\cityscape</background>
+    <background>background\hallway</background>
   </backgrounds>
   <paths name="paths"/>
   <shaders name="shaders">
@@ -132,6 +133,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

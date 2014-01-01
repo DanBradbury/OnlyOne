@@ -155,7 +155,9 @@ image_index += 1;
 // control jump and fall logic
 if(vspeed &gt; 15){
     global._jump = false;
-    _draw_sprite = spr_player_falling;
+    if(attacking == false){
+        _draw_sprite = spr_player_falling;
+    }
 }
 if(delay_jump == true){
     global._can_jump = false;
@@ -582,8 +584,8 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
           <argument>
             <kind>1</kind>
             <string>
-if (global._can_jump == true &amp;&amp; global._slide == false) {
-    vspeed = -30;
+if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch_completed == false) {
+    vspeed = -25;
     global._can_jump = false;
     global._jump = true; 
     //image_index = 0;
@@ -684,7 +686,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_right;
-    }else if(global._jump == true){
+    }else if(global._can_jump == false){
         _draw_sprite = spr_player_jumping_right;
     }else{
         _draw_sprite = spr_player_standing_right;
@@ -747,7 +749,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_left
-    }else if(global._jump == true){
+    }else if(global._can_jump == false ){
         _draw_sprite = spr_player_jumping_left;
     }else{
         _draw_sprite = spr_player_standing_left;
@@ -777,7 +779,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false ){
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false &amp;&amp; global._can_jump == true ){
     image_index = 0;
     _draw_sprite = spr_player_to_crouch;  
     global._crouch = true;
