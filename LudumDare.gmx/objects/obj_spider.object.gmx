@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-image_speed = .1;
+image_speed = .01;
 _draw_sprite = spr_spider_idle;
 aggro = false;
 turning_aggro = false;
@@ -36,6 +36,7 @@ image_xscale = 2;
 image_yscale = 2;
 turning = false;
 attacking = false;
+
 </string>
           </argument>
         </arguments>
@@ -58,7 +59,7 @@ attacking = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = .5;
+            <string>//image_speed = .5;
 image_index += 1;
 
 // check which way to face
@@ -125,7 +126,7 @@ if(turning == true){
         _draw_sprite = spr_spider_aggro_walk;
     }
 }
-
+sprite_index = _draw_sprite;
 </string>
           </argument>
         </arguments>
@@ -151,7 +152,7 @@ if(turning == true){
             <string>// if we are on top of the floor    
 if(gravity==1){
         gravity = 0;
-        self.y = other.y;   
+        self.y = other.y-30;   
         motion_set(0,0);
 }
 
@@ -180,9 +181,9 @@ if(gravity==1){
           <argument>
             <kind>1</kind>
             <string>if(mov_dir == "left"){ 
-    self.x = other.x+100;
+    self.x = other.x+200;
 }else{
-    self.x = other.x-100;
+    self.x = other.x-300;
 }
   
 

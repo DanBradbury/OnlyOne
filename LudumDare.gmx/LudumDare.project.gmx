@@ -34,6 +34,7 @@
       <sprite>sprites\spr_player_jumping</sprite>
       <sprite>sprites\spr_player_running</sprite>
       <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_shot_hit</sprite>
       <sprite>sprites\spr_standing_shot</sprite>
     </sprites>
     <sprites name="Spider">
