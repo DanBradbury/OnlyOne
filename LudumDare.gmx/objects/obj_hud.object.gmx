@@ -55,6 +55,8 @@ draw_set_color(c_red);
 draw_set_font(tutorial_font);
 draw_text(view_xview[0]+25, view_yview[0]+200, "Left Attack: Q");
 draw_text(view_xview[0]+25, view_yview[0]+250, "Right Attack: W");
+draw_text(view_xview[0]+25, view_yview[0]+300, "Slide: S");
+draw_text(view_xview[0]+25, view_yview[0]+350, "Dash: Shift");
 </string>
           </argument>
         </arguments>

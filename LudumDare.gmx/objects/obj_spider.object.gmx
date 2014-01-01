@@ -76,16 +76,16 @@ if(obj_player.x &gt; self.x-80 ){
          image_xscale = -2;
          turning = true;
          if(aggro == true){
-            hspeed = -13;
+            //hspeed = -13;
          }
     }
 }
 // make the bastard move
 if(aggro == true){
     if(mov_dir=="left"){
-            hspeed = -13;
+            //hspeed = -13;
     }else{
-            hspeed = 13;
+           // hspeed = 13;
     }
 }
 

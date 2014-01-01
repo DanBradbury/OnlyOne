@@ -193,6 +193,9 @@ if(starting_up == true){
     }
 }
 if(attacking == true){
+    gravity = 0;
+    vspeed = 0;
+    hspeed = 0;
     if(image_index &gt; 6 &amp;&amp; image_index &lt; 7){
     if(crouch_completed == true){
         instance_create(self.x+30, self.y-120, obj_regular_shot);        
@@ -202,8 +205,13 @@ if(attacking == true){
     }
     if(image_index &gt; 11){
         attacking = false;
-        if(crouch_completed == true){        
-            _draw_sprite = spr_player_crouching;
+        if(crouch_completed == true){
+            if(global._crouch == true){        
+                _draw_sprite = spr_player_crouching;
+            }else{
+                _draw_sprite = spr_player;
+                crouch_completed = false;
+            }
         }
     }
 }
@@ -488,7 +496,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
           <argument>
             <kind>1</kind>
             <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false){
-    if(mov_dir=="left" || turning == true){
+    if( (mov_dir=="left" || turning == true) &amp;&amp; global._can_jump == true){
         _draw_sprite = spr_player_turn;
         turning = true;
         //image_index = 0;
@@ -531,7 +539,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
           <argument>
             <kind>1</kind>
             <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false){
-    if(mov_dir=="right" || turning == true){
+    if( (mov_dir=="right" || turning == true) &amp;&amp; global._can_jump == true){
         _draw_sprite = spr_player_turn;
         turning = true;
     }else{
@@ -852,10 +860,11 @@ instance_create(0,0,obj_pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>crouch_completed = false;
+            <string>
 global._crouch = false;
 if(attacking == false){
     _draw_sprite = spr_player;
+    crouch_completed = false;
 }
 
 </string>
@@ -918,9 +927,11 @@ if(attacking == false){
     moving = false;
     hspeed = 0;
     image_index = 0;
+    /*
     if(global._can_jump == true){
         _draw_sprite = spr_player;
     }
+    */
     //motion_set(0,0);
     run_rev = false;
     starting_up = false;
