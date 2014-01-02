@@ -24,6 +24,7 @@
       <sprite>sprites\spr_player_standing_right</sprite>
       <sprite>sprites\spr_player_standing_left</sprite>
       <sprite>sprites\spr_player_dash</sprite>
+      <sprite>sprites\spr_player_stop_dash</sprite>
       <sprite>sprites\spr_player_crouching</sprite>
       <sprite>sprites\spr_player_start_run</sprite>
       <sprite>sprites\spr_player_turn</sprite>
@@ -80,7 +81,6 @@
     <sprite>sprites\spr_player_standing_low_hit</sprite>
     <sprite>sprites\spr_player_standing_orbus</sprite>
     <sprite>sprites\spr_player_standing_union</sprite>
-    <sprite>sprites\spr_player_stop_dash</sprite>
     <sprite>sprites\spr_player_wall_shot</sprite>
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_block_vert_left</sprite>

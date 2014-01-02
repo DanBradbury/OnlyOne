@@ -54,6 +54,7 @@ attacking = false;
 can_dash = true;
 dashing = false;
 dash_completed = false;
+dash_stop_started = false;
 </string>
           </argument>
         </arguments>
@@ -78,7 +79,9 @@ dash_completed = false;
             <kind>1</kind>
             <string>dashing = false;
 dash_completed = false;
-_draw_sprite = spr_player_falling;
+dash_stop_started = true;
+_draw_sprite = spr_player_stop_dash;
+image_index = 0;
 </string>
           </argument>
         </arguments>
@@ -168,8 +171,11 @@ if(moving == true){
 }else if(global._jump == true &amp;&amp; attacking == false){
     image_speed = 0.3; //.3
 }
+else if(_draw_sprite == spr_player_falling){
+    image_speed = 0.1;
+}
 else{
-    image_speed = 0.6; //.6
+    image_speed = 0.5; //.6
 }
 // sliding logic
 if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == false) || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true){
@@ -186,6 +192,12 @@ if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == fal
     }
 }
 // LOGIC FOR ANIMATION
+if(dash_stop_started == true){
+    if(image_index &gt; 4){
+        dash_stop_started = false;
+        _draw_sprite = spr_player_falling;           
+    }
+}
 // running startup
 if(starting_up == true){
     if(image_index &gt; 3){
@@ -246,6 +258,7 @@ if(dash_completed == true){
     image_index = 5;
 }
 if(dashing == true){
+    gravity = 0;
      if(mov_dir=="right"){
         hspeed = 30;
     }else{
