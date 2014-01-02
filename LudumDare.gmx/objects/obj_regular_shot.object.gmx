@@ -85,7 +85,7 @@ if(collision == true &amp;&amp; image_index &gt; 4){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(collision == false){
+            <string>if(collision == false &amp;&amp; other.dead == false){
     collision = true;
     _draw_sprite = spr_shot_hit;
     image_index = 0 ;

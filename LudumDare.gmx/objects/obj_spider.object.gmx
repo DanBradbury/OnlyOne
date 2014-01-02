@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-image_speed = .01;
+image_speed = .1;
 _draw_sprite = spr_spider_idle;
 aggro = false;
 turning_aggro = false;
@@ -36,7 +36,10 @@ image_xscale = 2;
 image_yscale = 2;
 turning = false;
 attacking = false;
-
+inactive = false;
+cur_health = 10;
+dead = false;
+dead_animation_finished = false;
 </string>
           </argument>
         </arguments>
@@ -60,53 +63,76 @@ attacking = false;
           <argument>
             <kind>1</kind>
             <string>//image_speed = .5;
-image_index += 1;
+if(dead==false){
+    image_index += 1;
 
-// check which way to face
 
-if(obj_player.x &gt; self.x-80 ){
-    if(mov_dir == "left"){
-        mov_dir = "right";
-        image_xscale = 2;
-        turning = true;
-        
-    }
-}else{
-    if(mov_dir=="right"){
-        mov_dir = "left";
-         image_xscale = -2;
-         turning = true;
-         if(aggro == true){
-            //hspeed = -13;
-         }
-    }
-}
-// make the bastard move
-if(aggro == true){
-    if(mov_dir=="left"){
-            //hspeed = -13;
+    // check which way to face
+    
+    if(obj_player.x &gt; self.x-80 ){
+        if(mov_dir == "left"){
+            mov_dir = "right";
+            image_xscale = 2;
+            turning = true;       
+        }
     }else{
-           // hspeed = 13;
+        if(mov_dir=="right"){
+            mov_dir = "left";
+             image_xscale = -2;
+             turning = true;
+             if(aggro == true){
+                //hspeed = -13;
+             }
+        }
     }
+    // make the bastard move
+    if(aggro == true){
+        if(mov_dir=="left"){
+                //hspeed = -13;
+        }else{
+               // hspeed = 13;
+        }
+    }
+
+    if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
+        aggro = true;
+        _draw_sprite = spr_spider_to_aggro;
+        turning_aggro = true;
+        image_index = 0;
+    }else if(distance_to_object(obj_player)&gt;300 &amp;&amp; aggro == false) {
+        _draw_sprite = spr_spider_idle;
+    }
+    // temp idea
+    
+    if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false){
+        attacking = true;
+        _draw_sprite = spr_spider_aggro_left_slash;
+        image_index = 0;
+    }
+
 }
 
-if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
-    aggro = true;
-    _draw_sprite = spr_spider_to_aggro;
-    turning_aggro = true;
-    image_index = 0;
-}else if(distance_to_object(obj_player)&gt;300 &amp;&amp; aggro == false) {
-    _draw_sprite = spr_spider_idle;
-}
-// temp idea
-/*
-if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false){
-    attacking = true;
-    _draw_sprite = spr_spider_aggro_left_slash;
-    image_index = 0;
-}
-*/
+
 // handle animation specific stuff here
+if(dead == true){
+    if(image_index &gt; 10){
+        image_speed = 0;
+        image_index = 10
+        dead_animation_finished = true;
+    }
+}
+if(attacking==true){
+    if(image_index &gt; 13){
+        _draw_sprite = spr_spider_aggro_idle;
+        attacking = false;
+        inactive = true;
+    }
+}
+if(inactive==true){
+    if(image_index &gt; 4){
+        image_index = 4;
+    }
+}
 if(turning_aggro == true){
     if(image_index &gt; 6){
         turning_aggro = false;
@@ -127,6 +153,35 @@ if(turning == true){
     }
 }
 sprite_index = _draw_sprite;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_regular_shot">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// calculate health and die if necessary
+cur_health -= 1;
+if(cur_health == 0){
+    _draw_sprite = spr_spider_death;
+    image_index = 0;
+    dead = true;
+}
 </string>
           </argument>
         </arguments>
@@ -180,13 +235,13 @@ if(gravity==1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mov_dir == "left"){ 
-    self.x = other.x+200;
-}else{
-    self.x = other.x-300;
+            <string>if(dead==false){
+    if(mov_dir == "left"){ 
+        self.x = other.x+200;
+    }else{
+        self.x = other.x-300;
+    }
 }
-  
-
 </string>
           </argument>
         </arguments>
@@ -209,8 +264,11 @@ if(gravity==1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(_draw_sprite,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
-
+            <string>if(dead_animation_finished==true){
+    draw_sprite_ext(_draw_sprite,10,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
+}else{
+    draw_sprite_ext(_draw_sprite,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
+}
 </string>
           </argument>
         </arguments>
