@@ -249,7 +249,7 @@ if(dashing==true &amp;&amp; dash_completed == false){
     if(image_index &gt;  5){
         image_index = 3;
         dash_completed = true;
-        alarm[2] = 24;
+        alarm[2] = 18;
         //dashing = false;
         //_draw_sprite = spr_player_falling;
     }
@@ -260,9 +260,9 @@ if(dash_completed == true){
 if(dashing == true){
     gravity = 0;
      if(mov_dir=="right"){
-        hspeed = 30;
+        hspeed = 25;
     }else{
-        hspeed = -30;
+        hspeed = -25;
     }
 }
 
@@ -634,7 +634,7 @@ if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(can_dash == true){
+            <string>if(can_dash == true &amp;&amp; global._can_jump  = false){
     dashing = true;
     can_dash = false;
     _draw_sprite = spr_player_dash;
@@ -695,7 +695,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(attacking == false &amp;&amp; dashing == false){
+            <string>if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true){
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_right;
@@ -758,7 +758,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(attacking == false &amp;&amp; dashing == false ){
+            <string>if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true ){
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_left

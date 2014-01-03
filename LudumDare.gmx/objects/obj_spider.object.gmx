@@ -40,6 +40,58 @@ inactive = false;
 cur_health = 10;
 dead = false;
 dead_animation_finished = false;
+jump_back = false;
+reset = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>_draw_sprite = spr_spider_aggro_walk;
+reset = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>inactive = false;
+jump_back = true;
+_draw_sprite = spr_spider_jump_back;
+image_index = 0;
 </string>
           </argument>
         </arguments>
@@ -63,8 +115,10 @@ dead_animation_finished = false;
           <argument>
             <kind>1</kind>
             <string>//image_speed = .5;
+gravity = 1;
+image_speed = .1;
 if(dead==false){
-    image_index += 1;
+    image_index += .5;
 
 
     // check which way to face
@@ -104,16 +158,31 @@ if(dead==false){
     }
     // temp idea
     
-    if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false){
+    if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false &amp;&amp; jump_back = false){
         attacking = true;
         _draw_sprite = spr_spider_aggro_left_slash;
         image_index = 0;
     }
-
 }
 
 
 // handle animation specific stuff here
+if(jump_back == true){
+    if(0 &lt;= image_index &lt;= 2){
+        if(mov_dir == "left"){
+            move_towards_point(self.x+200, self.y-100, 12);
+        }else{
+            move_towards_point(self.x-200, self.y-100, 12);
+        }
+        if(reset == false){
+            alarm[1] = 24;    
+        }
+        reset = true;   
+    } 
+    if(image_index &gt; 9){
+        jump_back = false;
+    } 
+}
 if(dead == true){
     if(image_index &gt; 10){
         image_speed = 0;
@@ -122,15 +191,17 @@ if(dead == true){
     }
 }
 if(attacking==true){
+    
     if(image_index &gt; 13){
         _draw_sprite = spr_spider_aggro_idle;
         attacking = false;
         inactive = true;
+        alarm[0] = 6;
     }
 }
 if(inactive==true){
     if(image_index &gt; 4){
-        image_index = 4;
+        image_index = 3;
     }
 }
 if(turning_aggro == true){
