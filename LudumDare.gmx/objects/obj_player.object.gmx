@@ -598,7 +598,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
             <kind>1</kind>
             <string>
 if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch_completed == false) {
-    vspeed = -25;
+    vspeed = -30;
     global._can_jump = false;
     global._jump = true; 
     //image_index = 0;

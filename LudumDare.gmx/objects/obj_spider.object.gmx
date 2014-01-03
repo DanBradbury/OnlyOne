@@ -163,10 +163,10 @@ if(dead==false){
     
     if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false &amp;&amp; jump_back = false){
         attacking = true;
-        attack_phase = "one";
         if(slash_used == false){
             _draw_sprite = spr_spider_aggro_left_slash;
             slash_used = true;
+            attack_phase = "one";
         }else{
             _draw_sprite = spr_spider_aggro_thrust;
             thrusting = true;
@@ -209,7 +209,8 @@ if(attacking==true){
             attacking = false;
             inactive = true;
             alarm[0] = 6;
-        }else{
+            attack_phase = "thrust";
+        }else if(attack_phase == "one"){
             _draw_sprite = spr_spider_aggro_right_slash;
             attack_phase = "two";
             image_index = 0;
@@ -295,7 +296,7 @@ if(cur_health == 0){
             <string>// if we are on top of the floor    
 if(gravity==1){
         gravity = 0;
-        self.y = other.y-30;   
+        self.y = other.y-20;   
         motion_set(0,0);
 }
 
