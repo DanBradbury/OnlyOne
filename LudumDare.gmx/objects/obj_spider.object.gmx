@@ -42,6 +42,9 @@ dead = false;
 dead_animation_finished = false;
 jump_back = false;
 reset = false;
+attack_phase = "none";
+slash_used = false;
+thrusting = false;
 </string>
           </argument>
         </arguments>
@@ -135,16 +138,16 @@ if(dead==false){
              image_xscale = -2;
              turning = true;
              if(aggro == true){
-                //hspeed = -13;
+                hspeed = -10;
              }
         }
     }
     // make the bastard move
     if(aggro == true){
         if(mov_dir=="left"){
-                //hspeed = -13;
+                hspeed = -10;
         }else{
-               // hspeed = 13;
+                hspeed = 10;
         }
     }
 
@@ -160,7 +163,14 @@ if(dead==false){
     
     if(distance_to_object(obj_player)&lt;50 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false &amp;&amp; jump_back = false){
         attacking = true;
-        _draw_sprite = spr_spider_aggro_left_slash;
+        attack_phase = "one";
+        if(slash_used == false){
+            _draw_sprite = spr_spider_aggro_left_slash;
+            slash_used = true;
+        }else{
+            _draw_sprite = spr_spider_aggro_thrust;
+            thrusting = true;
+        }
         image_index = 0;
     }
 }
@@ -169,10 +179,12 @@ if(dead==false){
 // handle animation specific stuff here
 if(jump_back == true){
     if(0 &lt;= image_index &lt;= 2){
-        if(mov_dir == "left"){
+        if(mov_dir == "left" &amp;&amp; thrusting == false){
             move_towards_point(self.x+200, self.y-100, 12);
         }else{
-            move_towards_point(self.x-200, self.y-100, 12);
+            if(thrusting == false){
+                move_towards_point(self.x-200, self.y-100, 12);
+            }
         }
         if(reset == false){
             alarm[1] = 24;    
@@ -190,13 +202,18 @@ if(dead == true){
         dead_animation_finished = true;
     }
 }
-if(attacking==true){
-    
-    if(image_index &gt; 13){
-        _draw_sprite = spr_spider_aggro_idle;
-        attacking = false;
-        inactive = true;
-        alarm[0] = 6;
+if(attacking==true){    
+    if(image_index &gt; 11){
+        if(attack_phase == "two"){
+            _draw_sprite = spr_spider_aggro_walk;
+            attacking = false;
+            inactive = true;
+            alarm[0] = 6;
+        }else{
+            _draw_sprite = spr_spider_aggro_right_slash;
+            attack_phase = "two";
+            image_index = 0;
+        }
     }
 }
 if(inactive==true){
@@ -306,11 +323,11 @@ if(gravity==1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(dead==false){
+            <string>if(dead==false &amp;&amp; global._jump ==false){
     if(mov_dir == "left"){ 
         self.x = other.x+200;
     }else{
-        self.x = other.x-300;
+        self.x = other.x-200;
     }
 }
 </string>
