@@ -54,11 +54,11 @@
       <sprite>sprites\spr_spider_aggro_jump_back</sprite>
       <sprite>sprites\spr_spider_aggro_left_slash</sprite>
       <sprite>sprites\spr_spider_aggro_right_slash</sprite>
+      <sprite>sprites\spr_spider_aggro_turn</sprite>
     </sprites>
     <sprite>sprites\spr_</sprite>
     <sprite>sprites\spr_spider_flip</sprite>
     <sprite>sprites\spr_spider_leap_forward</sprite>
-    <sprite>sprites\spr_spider_aggro_turn</sprite>
     <sprite>sprites\spr_spider_walk</sprite>
     <sprite>sprites\spr_spider_aggro_death</sprite>
     <sprite>sprites\spr_spider_aggro_laser</sprite>

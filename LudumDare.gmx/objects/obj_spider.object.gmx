@@ -119,7 +119,7 @@ image_index = 0;
             <kind>1</kind>
             <string>//image_speed = .5;
 gravity = 1;
-image_speed = .1;
+//image_speed = .1;
 if(dead==false){
     image_index += .5;
 
@@ -129,17 +129,19 @@ if(dead==false){
     if(obj_player.x &gt; self.x-80 ){
         if(mov_dir == "left"){
             mov_dir = "right";
+            _draw_sprite = spr_spider_aggro_turn;
+            turning = true;
+            image_index = 0;
             image_xscale = 2;
-            turning = true;       
         }
     }else{
         if(mov_dir=="right"){
             mov_dir = "left";
-             image_xscale = -2;
-             turning = true;
-             if(aggro == true){
-                hspeed = -10;
-             }
+            _draw_sprite = spr_spider_aggro_turn;
+            turning = true;
+            image_index = 0;
+            image_xscale = -2;
+             
         }
     }
     // define better movement
@@ -233,12 +235,7 @@ if(turning_aggro == true){
     }
 }
 if(turning == true){
-    // only hit this upon entry
-    if(image_index &gt; 9){
-        image_index = 0;
-        _draw_sprite = spr_spider_turn; 
-    }
-    if(image_index &gt;8){
+    if(image_index &gt;7){
         turning = false;
         _draw_sprite = spr_spider_aggro_walk;
     }
