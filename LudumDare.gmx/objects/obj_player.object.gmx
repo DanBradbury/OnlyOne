@@ -652,7 +652,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// HANDLE JUMP
 if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch_completed == false) {
     vspeed = -30;
     global._can_jump = false;
@@ -690,7 +690,8 @@ if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(can_dash == true &amp;&amp; global._can_jump  = false &amp;&amp; hit == false){
+            <string>/// HANDLE DASH
+if(can_dash == true &amp;&amp; global._can_jump  = false &amp;&amp; hit == false &amp;&amp; attacking == false){
     dashing = true;
     can_dash = false;
     _draw_sprite = spr_player_dash;
