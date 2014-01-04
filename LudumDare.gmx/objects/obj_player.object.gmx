@@ -310,11 +310,14 @@ if(global._slide == true){
             <string>if(hit==false){
     global._health -= 10;
 }
-if(other.mov_dir == "left" &amp;&amp; hit == false){
-    move_towards_point(self.x-100, self.y-50, 20);
+
+if(other.mov_dir == "left" &amp;&amp; hit == false &amp;&amp; attacking == false){
+   hspeed = -10;
+   vspeed = -20;
 }else if(hit==false){
     move_towards_point(self.x+100, self.y-50, 20);
 }
+
 if(crouch_completed == true){
     _draw_sprite = spr_player_crouching_hit;
 }else if(global._jump == true){

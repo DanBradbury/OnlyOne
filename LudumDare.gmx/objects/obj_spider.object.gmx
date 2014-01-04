@@ -142,15 +142,17 @@ if(dead==false){
              }
         }
     }
-    // make the bastard move
-    if(aggro == true){
+    // define better movement
+    /*
+    if(aggro == true &amp;&amp; attacking == false){
         if(mov_dir=="left"){
                 hspeed = -10;
         }else{
                 hspeed = 10;
         }
     }
-
+    */
+    
     if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
         aggro = true;
         _draw_sprite = spr_spider_to_aggro;
