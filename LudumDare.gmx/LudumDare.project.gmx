@@ -47,6 +47,8 @@
       <sprite>sprites\spr_player_crouching_union</sprite>
       <sprite>sprites\spr_player_standing_orbus</sprite>
       <sprite>sprites\spr_player_standing_union</sprite>
+      <sprite>sprites\spr_player_crouching_to_stand</sprite>
+      <sprite>sprites\spr_player_jump_up</sprite>
     </sprites>
     <sprites name="Spider">
       <sprite>sprites\spr_spider_idle</sprite>
@@ -74,11 +76,9 @@
     <sprite>sprites\spr_player_drill</sprite>
     <sprite>sprites\spr_player_edge_shot</sprite>
     <sprite>sprites\spr_player_ees</sprite>
-    <sprite>sprites\spr_player_crouching_to_stand</sprite>
     <sprite>sprites\spr_player_get_up</sprite>
     <sprite>sprites\spr_player_grab_edge</sprite>
     <sprite>sprites\spr_player_grab_wall</sprite>
-    <sprite>sprites\spr_player_jump_up</sprite>
     <sprite>sprites\spr_player_jumo_wall</sprite>
     <sprite>sprites\spr_player_knockdown</sprite>
     <sprite>sprites\spr_player_wall_shot</sprite>

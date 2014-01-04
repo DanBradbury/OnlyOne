@@ -61,6 +61,8 @@ energy = 3;
 regen_time = 96;
 alarm[3] = regen_time;
 start_stand = false;
+start_jump = false;
+jump_completed = false;
 </string>
           </argument>
         </arguments>
@@ -229,6 +231,13 @@ if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == fal
     }
 }
 // LOGIC FOR ANIMATION
+if( start_jump == true){
+    if( image_index &gt; 3){
+        start_jump = false;
+        _draw_sprite = spr_player_jumping;
+        global._jump = true; 
+    }
+}
 if( start_stand == true){
     if( image_index &gt; 3){
         _draw_sprite = spr_player;
@@ -693,12 +702,16 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
             <kind>1</kind>
             <string>/// HANDLE JUMP
 if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch_completed == false) {
+    if( start_jump == false &amp;&amp; global._jump = false ){
+        start_jump = true;
+        _draw_sprite = spr_player_jump_up;
+        image_index = 0;    
+    }
     vspeed = -30;
     global._can_jump = false;
-    global._jump = true; 
     //image_index = 0;
     // only do this if we are not in the attack phase
-    if(attacking == false){
+    if(attacking == false &amp;&amp; start_jump == false){
         if(moving==true){
             _draw_sprite = spr_player_jump_forward;
         }else{
