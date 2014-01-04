@@ -60,6 +60,7 @@ global._health = 100;
 energy = 3;
 regen_time = 96;
 alarm[3] = regen_time;
+start_stand = false;
 </string>
           </argument>
         </arguments>
@@ -228,6 +229,13 @@ if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == fal
     }
 }
 // LOGIC FOR ANIMATION
+if( start_stand == true){
+    if( image_index &gt; 3){
+        _draw_sprite = spr_player;
+        crouch_completed = false;
+        start_stand = false;
+    }
+}
 if(hit == true){
     if(image_index &gt; 3){
         image_index = 3;
@@ -959,7 +967,8 @@ if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &a
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false &amp;&amp; global._can_jump == true ){
+            <string>// HANDLE CROUCH
+if( start_stand == false &amp;&amp; global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false &amp;&amp; global._can_jump == true ){
     image_index = 0;
     _draw_sprite = spr_player_to_crouch;  
     global._crouch = true;
@@ -1045,8 +1054,9 @@ instance_create(0,0,obj_pause);
             <string>
 global._crouch = false;
 if(attacking == false){
-    _draw_sprite = spr_player;
-    crouch_completed = false;
+    start_stand = true;
+    _draw_sprite = spr_player_crouching_to_stand;
+    image_index = 0;
 }
 
 </string>
