@@ -57,6 +57,37 @@ dash_completed = false;
 dash_stop_started = false;
 hit = false;
 global._health = 100;
+energy = 3;
+regen_time = 96;
+alarm[3] = regen_time;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// ENERGY REGENERATION ALARM
+if( energy &lt; 3 ){
+    energy += 1;    
+}
+//no matter what recreate the alarm
+alarm[3] = regen_time;
 </string>
           </argument>
         </arguments>
@@ -182,12 +213,12 @@ else if(hit==true){
 else{
     image_speed = 0.6; //.6
 }
-// sliding logic
+// logic
 if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == false) || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true){
     if(image_index &gt; 3){
         image_index = 3;
         if(global._slide == true &amp;&amp; delay = false){
-            alarm[1] = 12;
+            alarm[1] = 10;
             delay = true;
         }
         if(global._crouch == true){
@@ -725,10 +756,12 @@ if(can_dash == true &amp;&amp; global._can_jump  = false &amp;&amp; hit == false
 //draw_sprite(spr_player,image_index,self.x,self.y);
 draw_sprite_ext(spr_hud_base, 0, view_xview[0], view_yview[0], 1.5, 1.5, 0, c_white, 1);
 draw_sprite_ext(spr_hud_roa, 0, view_xview[0]+25, view_yview[0]+6, 1.5, 1.5, 0, c_white, 1);
-draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100, view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);
-draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+53, view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);
-draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);
 
+//draw our special
+spacing = 53;
+for(i=0;i&lt;energy;i++){
+    draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+(i*spacing), view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);   
+}
 
 </string>
           </argument>
@@ -763,6 +796,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
     }
     image_index = 0;
     moving = false;
+    energy -= 1;
 }
 </string>
           </argument>
@@ -786,7 +820,8 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._can_slide == true &amp;&amp; global._jump == false){
+            <string>/// Turning off slide for the moment
+if(true == false &amp;&amp; global._can_slide == true &amp;&amp; global._jump == false){
     image_index = 0;
     _draw_sprite = spr_player_slide;        
     global._slide = true;
@@ -826,6 +861,7 @@ draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+106, view_yview[0]+29, 1.5
     }
     image_index = 0;
     moving = false;
+    energy -= 1;
 }
 </string>
           </argument>
@@ -961,7 +997,7 @@ if(attacking == false){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false){
+            <string>if(global._can_slide == true &amp;&amp; attacking == false &amp;&amp; dashing == false){
     moving = false;
     hspeed = 0;
     image_index = 0;
