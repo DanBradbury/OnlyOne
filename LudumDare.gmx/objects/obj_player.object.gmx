@@ -785,7 +785,8 @@ for(i=0;i&lt;energy;i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false){
+            <string>/// RIGHT BASIC ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy &gt; 0){
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_right;
@@ -833,6 +834,42 @@ if(true == false &amp;&amp; global._can_slide == true &amp;&amp; global._jump ==
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// UNION SPECIAL ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy == 3){
+    attacking = true;
+    if(crouch_completed == true){
+        _draw_sprite = spr_player_crouching_union;
+    }else if(global._can_jump == false){
+        _draw_sprite = spr_player_air_union;
+    }else{
+        _draw_sprite = spr_player_standing_union;
+    }
+    image_index = 0;
+    moving = false;
+    energy -= 3;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="81">
       <action>
         <libid>1</libid>
@@ -850,7 +887,8 @@ if(true == false &amp;&amp; global._can_slide == true &amp;&amp; global._jump ==
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false ){
+            <string>/// LEFT BASIC ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy &gt; 0){
     attacking = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_left
@@ -862,6 +900,42 @@ if(true == false &amp;&amp; global._can_slide == true &amp;&amp; global._jump ==
     image_index = 0;
     moving = false;
     energy -= 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// ORBUS SPECIAL ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy == 3){
+    attacking = true;
+    if(crouch_completed == true){
+        _draw_sprite = spr_player_crouching_orbus;
+    }else if(global._can_jump == false){
+        _draw_sprite = spr_player_air_orbus;
+    }else{
+        _draw_sprite = spr_player_standing_orbus;
+    }
+    image_index = 0;
+    moving = false;
+    energy -= 3;
 }
 </string>
           </argument>

@@ -41,6 +41,12 @@
       <sprite>sprites\spr_player_crouching_hit</sprite>
       <sprite>sprites\spr_player_air_get_hit</sprite>
       <sprite>sprites\spr_player_standing_low_hit</sprite>
+      <sprite>sprites\spr_player_air_union</sprite>
+      <sprite>sprites\spr_player_air_orbus</sprite>
+      <sprite>sprites\spr_player_crouching_orbus</sprite>
+      <sprite>sprites\spr_player_crouching_union</sprite>
+      <sprite>sprites\spr_player_standing_orbus</sprite>
+      <sprite>sprites\spr_player_standing_union</sprite>
     </sprites>
     <sprites name="Spider">
       <sprite>sprites\spr_spider_idle</sprite>
@@ -63,11 +69,7 @@
     <sprite>sprites\spr_spider_aggro_death</sprite>
     <sprite>sprites\spr_spider_aggro_laser</sprite>
     <sprite>sprites\spr_spider_aggro_leap_forward</sprite>
-    <sprite>sprites\spr_player_air_orbus</sprite>
-    <sprite>sprites\spr_player_air_union</sprite>
     <sprite>sprites\spr_player_climb_up</sprite>
-    <sprite>sprites\spr_player_crouching_orbus</sprite>
-    <sprite>sprites\spr_player_crouching_union</sprite>
     <sprite>sprites\spr_player_downshot</sprite>
     <sprite>sprites\spr_player_drill</sprite>
     <sprite>sprites\spr_player_edge_shot</sprite>
@@ -79,8 +81,6 @@
     <sprite>sprites\spr_player_jump_up</sprite>
     <sprite>sprites\spr_player_jumo_wall</sprite>
     <sprite>sprites\spr_player_knockdown</sprite>
-    <sprite>sprites\spr_player_standing_orbus</sprite>
-    <sprite>sprites\spr_player_standing_union</sprite>
     <sprite>sprites\spr_player_wall_shot</sprite>
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_block_vert_left</sprite>

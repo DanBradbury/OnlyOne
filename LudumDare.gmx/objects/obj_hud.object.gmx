@@ -59,6 +59,9 @@ draw_text(view_xview[0]+25, view_yview[0]+200, "Left Attack: Q");
 draw_text(view_xview[0]+25, view_yview[0]+250, "Right Attack: W");
 //draw_text(view_xview[0]+25, view_yview[0]+300, "Slide: S");
 draw_text(view_xview[0]+25, view_yview[0]+300, "Dash: Shift");
+draw_text(view_xview[0]+25, view_yview[0]+350, "Orbus: E");
+draw_text(view_xview[0]+25, view_yview[0]+400, "Union: R");
+
 </string>
           </argument>
         </arguments>
