@@ -337,6 +337,37 @@ if(global._slide == true){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// "SOFT WALLS"
+// left wall
+if( self.x &lt; 0 ){
+    self.x = 0;
+    hspeed = 0;
+}
+//right wall
+if( self.x &gt; room_width){
+    self.x = room_width;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_spider">
       <action>
@@ -657,7 +688,7 @@ if(moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch ==
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false &amp;&amp; hit == false){
+            <string>if( global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false &amp;&amp; hit == false &amp;&amp; self.x &gt; 10 ){
     if( (mov_dir=="right" || turning == true) &amp;&amp; global._can_jump == true){
         _draw_sprite = spr_player_turn;
         turning = true;
