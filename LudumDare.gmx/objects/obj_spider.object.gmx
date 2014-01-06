@@ -145,7 +145,7 @@ if(dead==false){
         }
     }
     
-    if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
+    if(distance_to_object(obj_player)&lt;700 &amp;&amp; aggro == false &amp;&amp; turning == false){
         aggro = true;
         _draw_sprite = spr_spider_to_aggro;
         turning_aggro = true;
