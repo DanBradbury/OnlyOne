@@ -43,6 +43,7 @@ shot_used = false;
 global._super_slow = false;
 global._can_jump = false;
 delay_jump = false;
+global.pause = false;
 
 </string>
           </argument>
@@ -519,6 +520,9 @@ if(jump==true){
             <kind>1</kind>
             <string>/// Create the pause object, thus pausing the game
 instance_create(0,0,obj_pause);
+global.pause = true;
+pauseTime = current_time;
+
 </string>
           </argument>
         </arguments>

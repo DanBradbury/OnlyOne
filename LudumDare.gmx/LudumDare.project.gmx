@@ -39,7 +39,6 @@
     <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
-  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>
@@ -71,6 +70,7 @@
     <object>objects\obj_next_level</object>
     <object>objects\obj_ramp</object>
     <object>objects\obj_moving_platform</object>
+    <object>objects\obj_timer</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>
