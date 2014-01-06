@@ -39,9 +39,7 @@
     <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
-  <shaders name="shaders">
-    <shader type="GLSLES">shaders\shade_blur.shader</shader>
-  </shaders>
+  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>
