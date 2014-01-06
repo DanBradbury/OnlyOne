@@ -25,9 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_deactivate_all(true);
+            <string>
+
+instance_deactivate_all(true);
 visible = true;
-selected = "RETRY";
+
+
+selected = "RESUME";
 </string>
           </argument>
         </arguments>
@@ -53,7 +57,10 @@ selected = "RETRY";
             <string>// This alarm should ONLY be used when the surface is lost.
 // The following is the same that happens in the create event. It is just redrawing all the instances to the surface.
 
+surface_set_target(surf);
 draw_clear_alpha(c_black, 0);  
+with(all) { if (visible == true) { event_perform(ev_draw,0); } } 
+surface_reset_target();
 instance_deactivate_all(true);
 </string>
           </argument>
@@ -81,26 +88,23 @@ instance_deactivate_all(true);
 draw_set_font(menu_title);
 /// Draw instructions to the screen
 draw_set_color(c_white);
-draw_text( view_wport[0]/2, 50, "YOU DIED");
-
+draw_text( view_wport[0]/2, 50, "GAME PAUSED");
 draw_set_font(menu_items);
-if( selected == "RETRY" ){
+if(selected=="RESUME"){
     draw_set_color(c_red);
-    draw_text( view_wport[0]/2, 150, "RETRY");    
-}else{
-      draw_set_color(c_white);
-      draw_text( view_wport[0]/2, 150, "RETRY"); 
 }
+draw_text(view_wport[0]/2,80, "RESUME");
 
-if( selected == "QUIT" ){
+draw_set_color(c_white);
+if(selected=="RESTART"){
     draw_set_color(c_red);
-    draw_text( view_wport[0]/2, 200, "QUIT");    
-}else{
-      draw_set_color(c_white);
-      draw_text( view_wport[0]/2, 200, "QUIT"); 
 }
-
-
+draw_text(view_wport[0]/2,110, "RESTART LEVEL");
+draw_set_color(c_white);
+if(selected=="QUIT"){
+    draw_set_color(c_red);
+}
+draw_text(view_wport[0]/2,140, "QUIT");
 </string>
           </argument>
         </arguments>
@@ -154,10 +158,12 @@ draw_set_alpha(1);
           <argument>
             <kind>1</kind>
             <string>
-if(selected=="RETRY"){
+if(selected=="RESUME"){
+    selected="RESTART";
+}else if(selected=="RESTART"){
     selected="QUIT";
 }else if(selected=="QUIT"){
-    selected="RETRY";
+    selected="RESUME";
 }
 </string>
           </argument>
@@ -182,11 +188,38 @@ if(selected=="RETRY"){
           <argument>
             <kind>1</kind>
             <string>
-if(selected=="RETRY"){
+if(selected=="RESUME"){
     selected="QUIT";
+}else if(selected=="RESTART"){
+    selected="RESUME";
 }else if(selected=="QUIT"){
-    selected="RETRY";
+    selected="RESTART";
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Unpause,  re-activate all objects.
+instance_activate_all(); // Activate all the objects again
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -211,7 +244,10 @@ if(selected=="RETRY"){
             <kind>1</kind>
             <string>if(selected=="QUIT"){
     game_end();    
-}else if(selected=="RETRY"){
+}else if(selected=="RESUME"){
+    instance_activate_all(); // Activate all the objects again
+    instance_destroy();
+}else if(selected=="RESTART"){
     room_restart();
 }
 </string>
