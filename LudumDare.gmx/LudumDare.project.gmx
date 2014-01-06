@@ -39,7 +39,6 @@
     <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
-  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>

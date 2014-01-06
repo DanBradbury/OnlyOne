@@ -38,7 +38,7 @@ last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
 active_item = spr_revolver_icon;
-global._active_item = "REVOLVER";
+global._active_item = "NONE";
 shot_used = false;
 global._super_slow = false;
 global._can_jump = false;
@@ -369,7 +369,7 @@ global._can_jump = true;
             <string>hspeed = (base_ms+accel);
 moving = true;
 mov_dir = "right";
-image_index = 0;
+image_xscale = 1;
 
 </string>
           </argument>
@@ -396,8 +396,7 @@ image_index = 0;
             <string>hspeed = -(base_ms+accel);
 mov_dir = "left";
 moving = true;
-image_index = 1;
-
+image_xscale = -1;
 </string>
           </argument>
         </arguments>
@@ -448,7 +447,7 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>
-draw_sprite(spr_player,image_index,self.x,self.y);
+draw_sprite_ext( spr_player,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white, 1 );
 
 if(global._active_item=="REVOLVER"){
     if(image_index==0){
