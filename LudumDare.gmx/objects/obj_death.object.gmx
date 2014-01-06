@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,10 +25,195 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>r = room_add();
-room_set_background_color(r, c_black,true);
-room_instance_add(r,0,0,obj_death_menu);
-room_goto(r);
+            <string>instance_deactivate_all(true);
+visible = true;
+selected = "RETRY";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// This alarm should ONLY be used when the surface is lost.
+// The following is the same that happens in the create event. It is just redrawing all the instances to the surface.
+
+draw_clear_alpha(c_black, 0);  
+instance_deactivate_all(true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_halign(fa_center);
+draw_set_font(menu_title);
+/// Draw instructions to the screen
+draw_set_color(c_white);
+draw_text( view_wport[0]/2, 50, "YOU DIED");
+
+draw_set_font(menu_items);
+if( selected == "RETRY" ){
+    draw_set_color(c_red);
+    draw_text( view_wport[0]/2, 150, "RETRY");    
+}else{
+      draw_set_color(c_white);
+      draw_text( view_wport[0]/2, 150, "RETRY"); 
+}
+
+if( selected == "QUIT" ){
+    draw_set_color(c_red);
+    draw_text( view_wport[0]/2, 200, "QUIT");    
+}else{
+      draw_set_color(c_white);
+      draw_text( view_wport[0]/2, 200, "QUIT"); 
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the surface to the screen
+
+
+/// [OPTIONAL] Draws a partially transparent rectangle over everything.
+draw_set_color(c_black);
+draw_set_alpha(0.5);
+draw_rectangle(0,0,room_width,room_height,0);
+draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if(selected=="RETRY"){
+    selected="QUIT";
+}else if(selected=="QUIT"){
+    selected="RETRY";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if(selected=="RETRY"){
+    selected="QUIT";
+}else if(selected=="QUIT"){
+    selected="RETRY";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(selected=="QUIT"){
+    game_end();    
+}else if(selected=="RETRY"){
+    room_restart();
+}
 </string>
           </argument>
         </arguments>

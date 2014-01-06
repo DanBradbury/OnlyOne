@@ -27,22 +27,151 @@
             <kind>1</kind>
             <string>gravity = 1;
 image_speed = 0;
-base_ms = 7.75;
-accel = 0.545
+base_ms = 20;
+accel = 3.545
 moving = false;
 mov_dir = "right";
 falling = false;
 jump = false;
 global._jump = false;
-last_touched_pad = self;
-slow_mo = false;
-slow_meter = 10;
-active_item = spr_revolver_icon;
-global._active_item = "REVOLVER";
-shot_used = false;
-global._super_slow = false;
+global._crouch = false;
+global._slide = false;
 global._can_jump = false;
+global._can_crouch = true;
+global._can_slide = true;
 delay_jump = false;
+image_xscale = 2;
+image_yscale = 2;
+_draw_sprite = spr_player_jumping;
+delay = false;
+turning = false;
+run_rev = false;
+starting_up = false;
+global._run_start = false;
+crouch_completed = false;
+instance_create(0,0, obj_hud);
+attacking = false;
+can_dash = true;
+dashing = false;
+dash_completed = false;
+dash_stop_started = false;
+hit = false;
+global._health = 100;
+energy = 3;
+regen_time = 96;
+alarm[3] = regen_time;
+start_stand = false;
+start_jump = false;
+jump_completed = false;
+start_death = false;
+start_death_fall = false;
+dead = false;
+global.kill_count = 0;
+victory = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(0,0,obj_death);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// ENERGY REGENERATION ALARM
+if( energy &lt; 3 ){
+    energy += 1;    
+}
+//no matter what recreate the alarm
+alarm[3] = regen_time;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dashing = false;
+dash_completed = false;
+dash_stop_started = true;
+_draw_sprite = spr_player_stop_dash;
+image_index = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global._slide = false;
+global._can_slide = true;
+delay = false;
+_draw_sprite = spr_player_crouching;
 
 </string>
           </argument>
@@ -89,14 +218,162 @@ delay_jump = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
-if(vspeed &gt; 0){
+            <string>/// HEALTH CHECK + LEVEL VICTORY
+if( global._health &lt;= 0 &amp;&amp; start_death == false &amp;&amp; dead == false){
+    dead = true;
+    start_death = true;
+    _draw_sprite = spr_player_knockdown; 
+    image_index = 0;
+    vspeed = -25;
+    alarm[4] = 48;
+} 
+if( global.kill_count == 5 ){
+    victory = true;
+    instance_create(0,0,obj_victory);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>obj_player</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// the meat
+gravity = 1;
+image_index += 1;
+// control jump and fall logic
+if(vspeed &gt; 15 &amp;&amp; dashing == false &amp;&amp; dead == false &amp;&amp; start_death == false){
     global._jump = false;
+    if( attacking == false ){
+        _draw_sprite = spr_player_falling;
+    }
 }
 if(delay_jump == true){
     global._can_jump = false;
 }
-/*
+// toy with image speeds for whatever situation
+if(moving == true){
+    image_speed = 0.6; //.6
+}else if(global._jump == true &amp;&amp; attacking == false){
+    image_speed = 0.3; //.3
+}
+else if(_draw_sprite == spr_player_falling){
+    image_speed = 0.1;
+}
+else if(hit==true){
+    image_speed = 0.1;
+}
+else{
+    image_speed = 0.6; //.6
+}
+// logic
+if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == false) || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true ){
+    if(image_index &gt; 3){
+        image_index = 3;
+        if(global._slide == true &amp;&amp; delay = false){
+            alarm[1] = 12;
+            delay = true;
+        }
+        if(global._crouch == true &amp;&amp;  global._slide == false ){
+            crouch_completed = true;
+            _draw_sprite = spr_player_crouching;
+        }
+    }
+}
+if( global._slide == true)
+{
+    if( image_index &gt; 3){
+        image_index = 3;    
+    }
+}
+// LOGIC FOR ANIMATION
+if ( dead == true &amp;&amp; start_death == false ){
+   image_index = 11;
+   _draw_sprite = spr_player_knockdown;
+}
+if( start_death == true){
+    if( image_index &gt; 10){
+        dead = true;
+        start_death = false;
+    }
+}
+if( start_jump == true){
+    if( image_index &gt; 3){
+        start_jump = false;
+        _draw_sprite = spr_player_jumping;
+        global._jump = true; 
+    }
+}
+if( start_stand == true){
+    if( image_index &gt; 3){
+        _draw_sprite = spr_player;
+        crouch_completed = false;
+        start_stand = false;
+    }
+}
+if(hit == true){
+    if(image_index &gt; 3){
+        image_index = 3;
+        //_draw_sprite = spr_player_falling;
+    }
+}
+if(dash_stop_started == true){
+    if(image_index &gt; 4){
+        dash_stop_started = false;
+        _draw_sprite = spr_player_falling;           
+    }
+}
+// running startup
+if(starting_up == true){
+    if(image_index &gt; 3){
+        run_rev = true;
+        starting_up = false;
+        _draw_sprite = spr_player_running;
+    }
+}
+if(attacking == true){
+    gravity = 0;
+    vspeed = 0;
+    hspeed = 0;
+    if(image_index &gt; 6 &amp;&amp; image_index &lt; 7){
+    if(crouch_completed == true){
+        instance_create(self.x+30, self.y-120, obj_regular_shot);        
+    }else{
+        instance_create(self.x+30, self.y-190, obj_regular_shot);
+    }
+    }
+    if(image_index &gt; 11){
+        attacking = false;
+        if(crouch_completed == true){
+            if(global._crouch == true){        
+                _draw_sprite = spr_player_crouching;
+            }else{
+                _draw_sprite = spr_player;
+                crouch_completed = false;
+            }
+        }
+    }
+}
+if(turning == true){
+    if(image_index &gt; 5){
+        turning = false;
+        _draw_sprite = spr_player;
+    }
+}
+
 if(moving==true){
     if(mov_dir=="right"){
         hspeed += accel;
@@ -104,7 +381,114 @@ if(moving==true){
         hspeed -= accel;
     }
 }
-*/
+
+if(dashing==true &amp;&amp; dash_completed == false){
+    vspeed = 0;
+    if(image_index &gt;  5){
+        image_index = 3;
+        dash_completed = true;
+        alarm[2] = 18;
+        //dashing = false;
+        //_draw_sprite = spr_player_falling;
+    }
+}
+if(dash_completed == true){
+    image_index = 5;
+}
+if(dashing == true){
+    gravity = 0;
+     if(mov_dir=="right"){
+        hspeed = 25;
+    }else{
+        hspeed = -25;
+    }
+}
+
+if(global._slide == true){
+    if(mov_dir=="right"){
+        hspeed += 3;
+    }else{
+        hspeed -= 3;
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// "SOFT WALLS"
+// left wall
+if( self.x &lt; 0 ){
+    self.x = 0;
+    hspeed = 0;
+}
+//right wall
+if( self.x &gt; room_width){
+    self.x = room_width;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_spider">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( dead == false &amp;&amp; other.dead == false){
+  if(hit==false){
+      global._health -= 10;
+  }
+  
+  if(other.mov_dir == "left" &amp;&amp; hit == false &amp;&amp; attacking == false ){
+     hspeed = -10;
+     vspeed = -20;
+  }else if(hit==false){
+      move_towards_point(self.x+100, self.y-50, 20);
+  }
+  
+  if(crouch_completed == true){
+      _draw_sprite = spr_player_crouching_hit;
+  }else if(global._jump == true){
+      _draw_sprite = spr_player_air_get_hit;
+  }else{
+      //draw_sprite = spr_player_standing_hit;
+      _draw_sprite = spr_player_standing_low_hit;
+  }
+  hit = true;
+  image_index = 0;
+}
+
 </string>
           </argument>
         </arguments>
@@ -311,6 +695,13 @@ if(gravity==1){
         motion_set(0,0);
 }
 global._can_jump = true; 
+global._jump = false;
+dashing = false;
+can_dash = true;
+hit = false;
+if(dead == false &amp;&amp; moving == false &amp;&amp; global._jump == false &amp;&amp; global._crouch == false &amp;&amp; global._slide == false &amp;&amp; turning == false &amp;&amp; crouch_completed == false &amp;&amp; attacking == false){
+    _draw_sprite = spr_player;
+}
 
 
 </string>
@@ -335,11 +726,27 @@ global._can_jump = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = (base_ms+accel);
-moving = true;
-mov_dir = "right";
-image_index = 0;
-
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false &amp;&amp; hit == false){
+    if( (mov_dir=="left" || turning == true) &amp;&amp; global._can_jump == true){
+        _draw_sprite = spr_player_turn;
+        turning = true;
+        //image_index = 0;
+    }else{
+        if(global._jump==false){
+            if(run_rev == true){
+                _draw_sprite = spr_player_running;
+            }else{
+                global._run_start = true;
+                starting_up = true;
+                _draw_sprite = spr_player_start_run;
+            }
+        }
+    }
+    hspeed = (base_ms+accel);
+    moving = true;
+    mov_dir = "right";
+    image_xscale = 2;
+}
 </string>
           </argument>
         </arguments>
@@ -362,10 +769,26 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -(base_ms+accel);
-mov_dir = "left";
-moving = true;
-image_index = 1;
+            <string>if( global._slide == false &amp;&amp; attacking == false &amp;&amp; global._crouch == false &amp;&amp; dashing == false &amp;&amp; hit == false &amp;&amp; self.x &gt; 10 ){
+    if( (mov_dir=="right" || turning == true) &amp;&amp; global._can_jump == true){
+        _draw_sprite = spr_player_turn;
+        turning = true;
+    }else{
+        if(global._jump==false){
+            if(run_rev == true){
+                _draw_sprite = spr_player_running;
+            }else{
+                global._run_start = true;
+                starting_up = true;
+                _draw_sprite = spr_player_start_run;
+            }
+        }
+    }
+    hspeed = -(base_ms+accel);
+    mov_dir = "left";
+    moving = true;
+    image_xscale = -2;
+}
 
 </string>
           </argument>
@@ -389,11 +812,33 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global._can_jump == true ) {
-    vspeed = -20;
+            <string>/// HANDLE JUMP &amp;&amp; SLIDE
+if (global._can_jump == true &amp;&amp; global._slide == false &amp;&amp; crouch_completed == false) {
+    if( start_jump == false &amp;&amp; global._jump = false ){
+        start_jump = true;
+        _draw_sprite = spr_player_jump_up;
+        image_index = 0;    
+    }
+    vspeed = -30;
     global._can_jump = false;
-    global._jump = true;    
+    //image_index = 0;
+    // only do this if we are not in the attack phase
+    if(attacking == false &amp;&amp; start_jump == false){
+        if(moving==true){
+            _draw_sprite = spr_player_jump_forward;
+        }else{
+            _draw_sprite = spr_player_jumping;
+        }
+    }
+   
 }
+if(global._can_slide == true &amp;&amp; global._jump == false &amp;&amp; crouch_completed == true){
+    image_index = 0;
+    _draw_sprite = spr_player_slide;        
+    global._slide = true;
+    global._can_slide = false;
+}
+
 </string>
           </argument>
         </arguments>
@@ -416,13 +861,14 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(slow_meter&gt;=0){
-    slow_mo = true;
-    
-    with(all)
-    {
-      speed *= 10/30;
-    }
+            <string>/// HANDLE DASH
+if(can_dash == true &amp;&amp; global._can_jump  = false &amp;&amp; hit == false &amp;&amp; attacking == false){
+    dashing = true;
+    can_dash = false;
+    _draw_sprite = spr_player_dash;
+    image_index = 0;
+    moving = false;
+    global._jump = false;
 }
 </string>
           </argument>
@@ -446,25 +892,216 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_sprite(spr_player,image_index,self.x,self.y);
+            <string>draw_sprite_ext(_draw_sprite,image_index,self.x,self.y, image_xscale, image_yscale, 0, c_white,1);
+//draw_sprite(spr_player,image_index,self.x,self.y);
+draw_sprite_ext(spr_hud_base, 0, view_xview[0], view_yview[0], 1.5, 1.5, 0, c_white, 1);
+draw_sprite_ext(spr_hud_roa, 0, view_xview[0]+25, view_yview[0]+6, 1.5, 1.5, 0, c_white, 1);
 
-if(global._active_item=="REVOLVER"){
-    if(image_index==0){
-        draw_sprite(spr_revolver,image_index,self.x+8,self.y);
-    }else{
-        draw_sprite(spr_revolver,image_index,self.x,self.y);
-    }
-}else if(global._active_item=="LASER"){
-    if(image_index==0){
-        draw_sprite(spr_laser_gun,image_index,self.x+8,self.y);
-    }else{
-        draw_sprite(spr_laser_gun,image_index,self.x,self.y);
-    }
+//draw our special
+spacing = 53;
+for(i=0;i&lt;energy;i++){
+    draw_sprite_ext(spr_hud_special, 0, view_xview[9]+100+(i*spacing), view_yview[0]+29, 1.5, 1.5, 0, c_white, 1);   
 }
-if(jump==true){
-    draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// RIGHT BASIC ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy &gt; 0){
+    attacking = true;
+    if(crouch_completed == true){
+        _draw_sprite = spr_player_crouching_right;
+    }else if(global._can_jump == false){
+        _draw_sprite = spr_player_jumping_right;
+    }else{
+        _draw_sprite = spr_player_standing_right;
+    }
+    image_index = 0;
+    moving = false;
+    energy -= 1;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Turning off slide for the moment
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// UNION SPECIAL ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy == 3){
+    attacking = true;
+    if(crouch_completed == true){
+        _draw_sprite = spr_player_crouching_union;
+    }else if(global._can_jump == false){
+        _draw_sprite = spr_player_air_union;
+    }else{
+        _draw_sprite = spr_player_standing_union;
+    }
+    image_index = 0;
+    moving = false;
+    energy -= 3;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// LEFT BASIC ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy &gt; 0){
+    attacking = true;
+    if(crouch_completed == true){
+        _draw_sprite = spr_player_crouching_left
+    }else if(global._can_jump == false ){
+        _draw_sprite = spr_player_jumping_left;
+    }else{
+        _draw_sprite = spr_player_standing_left;
+    }
+    image_index = 0;
+    moving = false;
+    energy -= 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// ORBUS SPECIAL ATTACK
+if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy == 3){
+    attacking = true;
+    if(crouch_completed == true){
+        _draw_sprite = spr_player_crouching_orbus;
+    }else if(global._can_jump == false){
+        _draw_sprite = spr_player_air_orbus;
+    }else{
+        _draw_sprite = spr_player_standing_orbus;
+    }
+    image_index = 0;
+    moving = false;
+    energy -= 3;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// HANDLE CROUCH
+if( start_stand == false &amp;&amp; global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false &amp;&amp; global._can_jump == true ){
+    image_index = 0;
+    _draw_sprite = spr_player_to_crouch;  
+    global._crouch = true;
+    moving = false;
+}
+    
+
 </string>
           </argument>
         </arguments>
@@ -523,6 +1160,36 @@ instance_create(0,0,obj_pause);
         </arguments>
       </action>
     </event>
+    <event eventtype="10" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+global._crouch = false;
+if(attacking == false){
+    start_stand = true;
+    _draw_sprite = spr_player_crouching_to_stand;
+    image_index = 0;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="10" enumb="39">
       <action>
         <libid>1</libid>
@@ -540,9 +1207,18 @@ instance_create(0,0,obj_pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moving = false;
-hspeed = 0;
-//motion_set(0,0);
+            <string>if(global._can_slide == true &amp;&amp; attacking == false &amp;&amp; dashing == false){
+    moving = false;
+    hspeed = 0;
+    image_index = 0;
+    if(global._can_jump == true){
+        _draw_sprite = spr_player;
+    }
+     run_rev = false;
+    starting_up = false;
+    global._run_start = false;
+    //motion_set(0,0);
+}
 </string>
           </argument>
         </arguments>
@@ -565,9 +1241,20 @@ hspeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moving = false;
-hspeed = 0;
-//motion_set(0,0);
+            <string>if(global._slide == false &amp;&amp; attacking == false &amp;&amp; dashing == false ){
+    moving = false;
+    hspeed = 0;
+    image_index = 0;
+    /*
+    if(global._can_jump == true){
+        _draw_sprite = spr_player;
+    }
+    */
+    //motion_set(0,0);
+    run_rev = false;
+    starting_up = false;
+    global._run_start = false;
+}
 </string>
           </argument>
         </arguments>
@@ -593,8 +1280,7 @@ hspeed = 0;
             <string>if( vspeed &lt; 0 ) {
     vspeed = 0;
 }
-global._jump = false;
-     
+
 </string>
           </argument>
         </arguments>
