@@ -144,16 +144,6 @@ if(dead==false){
              
         }
     }
-    // define better movement
-    /*
-    if(aggro == true &amp;&amp; attacking == false){
-        if(mov_dir=="left"){
-                hspeed = -10;
-        }else{
-                hspeed = 10;
-        }
-    }
-    */
     
     if(distance_to_object(obj_player)&lt;300 &amp;&amp; aggro == false &amp;&amp; turning == false){
         aggro = true;
@@ -218,6 +208,9 @@ if(attacking==true){
             _draw_sprite = spr_spider_aggro_right_slash;
             attack_phase = "two";
             image_index = 0;
+        }else if(attack_phase == "thrust"){
+            attacking = false;
+            _draw_sprite = spr_spider_aggro_walk;
         }
     }
 }
@@ -270,6 +263,35 @@ if( self.x &lt; 0 ){
 //right wall
 if( self.x &gt; room_width){
     self.x = room_width;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DEFINE BETTER MOVEMENT
+if( aggro == true &amp;&amp; attacking == false &amp;&amp; dead== false ){
+    if(mov_dir=="left"){
+            hspeed = -7;
+    }else{
+            hspeed = 7;
+    }
 }
 
 </string>
