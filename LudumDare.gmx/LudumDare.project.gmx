@@ -103,6 +103,7 @@
     <object>objects\obj_hud</object>
     <object>objects\obj_pause</object>
     <object>objects\obj_death</object>
+    <object>objects\obj_victory</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_bounce_wall</object>
@@ -127,6 +128,7 @@
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_projectile</object>
     <object>objects\obj_spider</object>
+    <object>objects\obj_spider_death_shell</object>
     <object>objects\obj_regular_shot</object>
   </objects>
   <rooms name="rooms">

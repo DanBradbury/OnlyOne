@@ -66,6 +66,8 @@ jump_completed = false;
 start_death = false;
 start_death_fall = false;
 dead = false;
+global.kill_count = 0;
+victory = false;
 </string>
           </argument>
         </arguments>
@@ -216,7 +218,7 @@ _draw_sprite = spr_player_crouching;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// HEALTH CHECK
+            <string>/// HEALTH CHECK + LEVEL VICTORY
 if( global._health &lt;= 0 &amp;&amp; start_death == false &amp;&amp; dead == false){
     dead = true;
     start_death = true;
@@ -225,6 +227,10 @@ if( global._health &lt;= 0 &amp;&amp; start_death == false &amp;&amp; dead == fa
     vspeed = -25;
     alarm[4] = 48;
 } 
+if( global.kill_count == 5 ){
+    victory = true;
+    instance_create(0,0,obj_victory);
+}
 </string>
           </argument>
         </arguments>
@@ -459,7 +465,7 @@ if( self.x &gt; room_width){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( dead == false ){
+            <string>if( dead == false &amp;&amp; other.dead == false){
   if(hit==false){
       global._health -= 10;
   }
