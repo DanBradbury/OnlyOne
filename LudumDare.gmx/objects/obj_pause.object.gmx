@@ -47,8 +47,7 @@ pauseTime = current_time;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
+            <string>/// SETUP THE PAUSE EFFECT
 //instance_deactivate_all(obj_timer);
 instance_deactivate_object(obj_player);
 visible = true;
@@ -78,9 +77,9 @@ selected = "RESUME";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// This alarm should ONLY be used when the surface is lost.
+            <string>/// JUST IN CASE THINGS FALL THROUGH
+// This alarm should ONLY be used when the surface is lost.
 // The following is the same that happens in the create event. It is just redrawing all the instances to the surface.
-
 
 //draw_clear_alpha(c_black, 0);  
 
@@ -107,7 +106,8 @@ instance_deactivate_all(true);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);
+            <string>/// DRAW MENU
+draw_set_halign(fa_center);
 draw_set_font(menu_title);
 /// Draw instructions to the screen
 draw_set_color(c_white);
@@ -150,13 +150,7 @@ draw_text(view_wport[0]/2,140, "QUIT");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw the surface to the screen
-
-
-
-
-
-/// [OPTIONAL] Draws a partially transparent rectangle over everything.
+            <string>/// Draws a partially transparent rectangle over everything.
 draw_set_color(c_black);
 draw_set_alpha(0.5);
 draw_rectangle(0,0,room_width,room_height,0);
@@ -183,7 +177,7 @@ draw_set_alpha(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// MOVE MENU
 if(selected=="RESUME"){
     selected="RESTART";
 }else if(selected=="RESTART"){
@@ -213,7 +207,7 @@ if(selected=="RESUME"){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// MOVE MENU
 if(selected=="RESUME"){
     selected="QUIT";
 }else if(selected=="RESTART"){
@@ -271,7 +265,8 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(selected=="QUIT"){
+            <string>/// SELECT CURRENT MENU SELECTION
+if(selected=="QUIT"){
     game_end();    
 }else if(selected=="RESUME"){
     instance_activate_all(); // Activate all the objects again

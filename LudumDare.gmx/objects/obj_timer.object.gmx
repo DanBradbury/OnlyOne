@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pauseTime = 0;
+            <string>/// BASIC SONIC TIMER
+//http://69.195.124.146/~danbrad1/2014/01/06/sonic-esque-timer-in-gml/
+pauseTime = 0;
 offset = current_time; 
 minutes = 0;
 seconds = 0;
