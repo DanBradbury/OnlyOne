@@ -25,8 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
+            <string>/// CHANGE PREDEFINED PROPERTIES
+gravity = 1;
 image_speed = 0;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// CUSTOM VARIABLES
 base_ms = 7.75;
 accel = 0.545
 moving = false;
@@ -44,7 +68,6 @@ global._super_slow = false;
 global._can_jump = false;
 delay_jump = false;
 global.pause = false;
-
 </string>
           </argument>
         </arguments>
@@ -67,7 +90,8 @@ global.pause = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>delay_jump = false;
+            <string>/// TURN THE JUMP DELAY OFF
+delay_jump = false;
 </string>
           </argument>
         </arguments>
@@ -90,7 +114,8 @@ global.pause = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
+            <string>/// MAKE THINGS HAPPEN
+gravity = 1;
 if(vspeed &gt; 0){
     global._jump = false;
 }
@@ -159,7 +184,8 @@ if( self.x &gt; room_width){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// if we are on top of the floor    
+            <string>/// HANDLE MOVING PLATFORM
+// if we are on top of the floor    
 if(gravity==1){
     if(global._jump == true){
         //vspeed = 0;
@@ -197,7 +223,8 @@ global._can_jump = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(moving == true){ 
+            <string>/// HANDLE RAMP EFFECT
+if(moving == true){ 
  self.x += 1;
  self.y = other.y+3
 }else{
@@ -236,7 +263,8 @@ global._can_jump = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>motion_set(90,10);
+            <string>/// HANDLE DEATH
+motion_set(90,10);
 gravity = 0;
 
 instance_create(0,0,obj_death);
@@ -263,7 +291,8 @@ instance_create(0,0,obj_death);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// if we are on top of the floor    
+            <string>/// HANDLE COLLISION
+// if we are on top of the floor    
 if(gravity==1){
        if(global._jump == true &amp;&amp; self.y &gt; other.y){
          motion_set(0,0);
@@ -303,7 +332,8 @@ if(gravity==1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(other.side=="right"){   
+            <string>/// HANDLE COLLISION
+if(other.side=="right"){   
     self.x = other.x+32+3;
     gravity=1;
 }else if(other.side=="left"){
@@ -336,7 +366,8 @@ if(gravity==1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// if we are on top of the floor    
+            <string>/// HANDLE COLLISION
+// if we are on top of the floor    
 if(gravity==1){
         gravity = 0;
         self.y = other.y;   
@@ -367,7 +398,8 @@ global._can_jump = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = (base_ms+accel);
+            <string>/// MOVE RIGHT
+hspeed = (base_ms+accel);
 moving = true;
 mov_dir = "right";
 image_index = 0;
@@ -394,7 +426,8 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -(base_ms+accel);
+            <string>/// MOVE LEFT
+hspeed = -(base_ms+accel);
 mov_dir = "left";
 moving = true;
 image_index = 1;
@@ -421,7 +454,8 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global._can_jump == true ) {
+            <string>/// HANDLE JUMP
+if (global._can_jump == true ) {
     vspeed = -20;
     global._can_jump = false;
     global._jump = true;    
@@ -448,7 +482,7 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// DRAW PLAYER
 draw_sprite(spr_player,image_index,self.x,self.y);
 
 if(global._active_item=="REVOLVER"){
@@ -489,7 +523,8 @@ if(jump==true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(jump == true){
+            <string>/// USE JUMP PAD
+if(jump == true){
     vspeed = -28;
     jump = false;
     ob = collision_rectangle(self.x-sprite_xoffset,self.y,self.x+32-sprite_xoffset, self.y+10, obj_jump_pad, true, true);
@@ -545,7 +580,8 @@ pauseTime = current_time;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moving = false;
+            <string>/// STOP MOVEMENT
+moving = false;
 hspeed = 0;
 //motion_set(0,0);
 </string>
@@ -570,7 +606,8 @@ hspeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moving = false;
+            <string>/// STOP MOVEMENT
+moving = false;
 hspeed = 0;
 //motion_set(0,0);
 </string>
@@ -595,7 +632,8 @@ hspeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( vspeed &lt; 0 ) {
+            <string>/// END JUMPING
+if( vspeed &lt; 0 ) {
     vspeed = 0;
 }
 global._jump = false;
