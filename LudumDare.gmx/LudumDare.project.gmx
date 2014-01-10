@@ -33,6 +33,7 @@
     <sprite>sprites\spr_shot_laser</sprite>
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_moving_platform</sprite>
+    <sprite>sprites\spr_passable_platform</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -71,6 +72,7 @@
     <object>objects\obj_ramp</object>
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_timer</object>
+    <object>objects\obj_passable_platform</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>

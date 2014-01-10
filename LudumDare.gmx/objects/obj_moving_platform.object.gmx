@@ -101,9 +101,13 @@ alarm[1] = 60;
           <argument>
             <kind>1</kind>
             <string>/// HANDLE THE JUMP THROUGH FOR THE PLAYER
-if( global.landed == true ){
+if( global.landed == true &amp;&amp; global._dropping == false){
     other.jump = false;
     other.hspeed += self.hspeed;
+}
+
+if( self.y +32 &lt; other.y ){
+    global._dropping = false;
 }
 </string>
           </argument>
