@@ -73,6 +73,7 @@
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_timer</object>
     <object>objects\obj_passable_platform</object>
+    <object>objects\obj_start</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>

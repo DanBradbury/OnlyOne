@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>/// CHANGE PREDEFINED PROPERTIES
-gravity = 1;
 image_speed = 0;
 
 
@@ -117,13 +116,20 @@ delay_jump = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// MAKE THINGS HAPPEN
+            <string>if( global._level_started == false ){
+  motion_set(0,0);  
+}else{
+/// MAKE THINGS HAPPEN
 gravity = 1;
 if(vspeed &gt; 0){
     global._jump = false;
+    if(vspeed &gt; 15){
+      vspeed = 15;
+    }
 }
 if(delay_jump == true){
     global._can_jump = false;
+}
 }
 /*
 if(moving==true){
