@@ -69,6 +69,8 @@ global._can_jump = false;
 delay_jump = false;
 global.pause = false;
 global.landed = false;
+can_drop = false;
+global._dropping = false;
 </string>
           </argument>
         </arguments>
@@ -162,6 +164,50 @@ if( self.x &lt; 0 ){
 if( self.x &gt; room_width){
     self.x = room_width;
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_passable_platform">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// HANDLE MOVING PLATFORM
+// if we are on top of the floor    
+if(gravity==1){
+    if(global._jump == true){
+        //vspeed = 0;
+        delay_jump = true;
+        alarm[0] = 5;
+    }else{
+        // we provide a 16 height tollerance because of the height of the platform
+        if( self.y &lt; other.y+16 &amp;&amp; global._dropping == false){
+          gravity = 0;
+          self.y = other.y;   
+          motion_set(0,0);
+          global.landed = true;
+          can_drop = true;
+        }
+    }
+        
+}
+global._can_jump = true; 
+
 
 </string>
           </argument>
@@ -507,6 +553,32 @@ if(global._active_item=="REVOLVER"){
 }
 if(jump==true){
     draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( can_drop == true ){
+    global._can_jump = false;
+    global._dropping = true;
 }
 </string>
           </argument>
