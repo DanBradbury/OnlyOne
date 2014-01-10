@@ -240,11 +240,12 @@ if(gravity==1){
         alarm[0] = 5;
     }else{
         // we provide a 16 height tollerance because of the height of the platform
-        if( self.y &lt; other.y+16 ){
+        if( self.y &lt; other.y+16 &amp;&amp; global._dropping == false ){
           gravity = 0;
           self.y = other.y;   
           motion_set(0,0);
           global.landed = true;
+          can_drop = true;
         }   
     }
         
