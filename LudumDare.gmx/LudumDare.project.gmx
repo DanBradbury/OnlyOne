@@ -10,7 +10,7 @@
     <sound>sound\snd_shot</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_player_standing</sprite>
+    <sprite>sprites\spr_player_idle</sprite>
     <sprite>sprites\spr_player_running</sprite>
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_block2</sprite>
