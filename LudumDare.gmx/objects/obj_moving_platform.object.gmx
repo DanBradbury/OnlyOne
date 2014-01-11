@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 2;
+            <string>/// SET BASE MOVEMENT SPEED AND TIME TO MOVE
+hspeed = 2;
 alarm[0] = 60;
 </string>
           </argument>
@@ -49,7 +50,8 @@ alarm[0] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 5;
+            <string>/// SWITCH MOVE DIRECTION
+hspeed = 5;
 alarm[0] = 60;
 </string>
           </argument>
@@ -73,7 +75,8 @@ alarm[0] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -5;
+            <string>/// SWITCH MOVE DIRECTION
+hspeed = -5;
 alarm[1] = 60;
 </string>
           </argument>
@@ -97,8 +100,15 @@ alarm[1] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>  other.jump = false;
-  other.hspeed += self.hspeed;
+            <string>/// HANDLE THE JUMP THROUGH FOR THE PLAYER
+if( global.landed == true &amp;&amp; global._dropping == false){
+    other.jump = false;
+    other.hspeed += self.hspeed;
+}
+
+if( self.y +32 &lt; other.y ){
+    global._dropping = false;
+}
 </string>
           </argument>
         </arguments>

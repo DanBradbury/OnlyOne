@@ -19,15 +19,37 @@
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
+        <whoName>obj_timer</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SET PAUSETIME
+pauseTime = current_time;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-instance_deactivate_all(true);
+            <string>/// SETUP THE PAUSE EFFECT
+//instance_deactivate_all(obj_timer);
+instance_deactivate_object(obj_player);
 visible = true;
 
 size = 1.5; // Change this amount to change the amount of blur
@@ -55,9 +77,9 @@ selected = "RESUME";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// This alarm should ONLY be used when the surface is lost.
+            <string>/// JUST IN CASE THINGS FALL THROUGH
+// This alarm should ONLY be used when the surface is lost.
 // The following is the same that happens in the create event. It is just redrawing all the instances to the surface.
-
 
 //draw_clear_alpha(c_black, 0);  
 
@@ -84,11 +106,12 @@ instance_deactivate_all(true);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);
+            <string>/// DRAW MENU
+draw_set_halign(fa_center);
 draw_set_font(menu_title);
 /// Draw instructions to the screen
 draw_set_color(c_white);
-draw_text( view_wview[0]/2, 50, "GAME PAUSED");
+draw_text( view_wport[0]/2, 50, "GAME PAUSED");
 draw_set_font(menu_items);
 if(selected=="RESUME"){
     draw_set_color(c_red);
@@ -127,13 +150,7 @@ draw_text(view_wport[0]/2,140, "QUIT");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw the surface to the screen
-
-
-
-
-
-/// [OPTIONAL] Draws a partially transparent rectangle over everything.
+            <string>/// Draws a partially transparent rectangle over everything.
 draw_set_color(c_black);
 draw_set_alpha(0.5);
 draw_rectangle(0,0,room_width,room_height,0);
@@ -160,7 +177,7 @@ draw_set_alpha(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// MOVE MENU
 if(selected=="RESUME"){
     selected="RESTART";
 }else if(selected=="RESTART"){
@@ -190,7 +207,7 @@ if(selected=="RESUME"){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// MOVE MENU
 if(selected=="RESUME"){
     selected="QUIT";
 }else if(selected=="RESTART"){
@@ -222,6 +239,9 @@ if(selected=="RESUME"){
             <kind>1</kind>
             <string>/// Unpause, clear surface, re-activate all objects.
 instance_activate_all(); // Activate all the objects again
+//instance_activate( obj_player );
+global.pause = false;
+obj_timer.offset = (current_time - obj_timer.pauseTime) + obj_timer.offset;
 instance_destroy();
 </string>
           </argument>
@@ -245,11 +265,13 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(selected=="QUIT"){
+            <string>/// SELECT CURRENT MENU SELECTION
+if(selected=="QUIT"){
     game_end();    
 }else if(selected=="RESUME"){
-    surface_free(surf);
     instance_activate_all(); // Activate all the objects again
+    global.pause = false;
+    obj_timer.offset = (current_time - obj_timer.pauseTime) + obj_timer.offset;
     instance_destroy();
 }else if(selected=="RESTART"){
     room_restart();
