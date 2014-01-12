@@ -68,6 +68,7 @@ start_death_fall = false;
 dead = false;
 global.kill_count = 0;
 victory = false;
+special = false;
 </string>
           </argument>
         </arguments>
@@ -349,14 +350,26 @@ if(attacking == true){
     vspeed = 0;
     hspeed = 0;
     if(image_index &gt; 6 &amp;&amp; image_index &lt; 7){
-    if(crouch_completed == true){
-        instance_create(self.x+30, self.y-120, obj_regular_shot);        
-    }else{
-        instance_create(self.x+30, self.y-190, obj_regular_shot);
+    if(special == true )
+    {
+        if(crouch_completed == true){
+            instance_create(self.x+30, self.y-120, obj_projectile);        
+        }else{
+            instance_create(self.x+30, self.y-190, obj_projectile);
+        }
+    }else
+    {
+        if(crouch_completed == true){
+            instance_create(self.x+30, self.y-120, obj_regular_shot);        
+        }else{
+            instance_create(self.x+30, self.y-190, obj_regular_shot);
+        }
     }
+    
     }
     if(image_index &gt; 11){
         attacking = false;
+        special = false;
         if(crouch_completed == true){
             if(global._crouch == true){        
                 _draw_sprite = spr_player_crouching;
@@ -988,6 +1001,7 @@ if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &a
             <string>/// UNION SPECIAL ATTACK
 if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy == 3){
     attacking = true;
+    special = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_union;
     }else if(global._can_jump == false){
@@ -1060,6 +1074,7 @@ if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &a
             <string>/// ORBUS SPECIAL ATTACK
 if(attacking == false &amp;&amp; dashing == false &amp;&amp; can_dash == true &amp;&amp; hit == false &amp;&amp; energy == 3){
     attacking = true;
+    special = true;
     if(crouch_completed == true){
         _draw_sprite = spr_player_crouching_orbus;
     }else if(global._can_jump == false){

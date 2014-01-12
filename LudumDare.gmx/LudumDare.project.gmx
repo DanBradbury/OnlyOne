@@ -15,7 +15,6 @@
     <sprite>sprites\spr_hud_base</sprite>
     <sprite>sprites\spr_hud_roa</sprite>
     <sprite>sprites\spr_hud_special</sprite>
-    <sprite>sprites\spr_energy_ball</sprite>
     <sprites name="Roa">
       <sprite>sprites\spr_player_jumping_right</sprite>
       <sprite>sprites\spr_player_jumping_left</sprite>
@@ -36,6 +35,7 @@
       <sprite>sprites\spr_player_running</sprite>
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_shot_hit</sprite>
+      <sprite>sprites\spr_energy_ball</sprite>
       <sprite>sprites\spr_standing_shot</sprite>
       <sprite>sprites\spr_player_standing_hit</sprite>
       <sprite>sprites\spr_player_crouching_hit</sprite>
@@ -133,6 +133,7 @@
     <object>objects\obj_regular_shot</object>
     <object>objects\obj_projectile</object>
     <object>objects\obj_explosion</object>
+    <object>objects\obj_explosion2</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
