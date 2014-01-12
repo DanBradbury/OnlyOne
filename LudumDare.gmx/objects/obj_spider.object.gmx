@@ -45,6 +45,8 @@ reset = false;
 attack_phase = "none";
 slash_used = false;
 thrusting = false;
+// force them to move
+aggro = true
 </string>
           </argument>
         </arguments>
@@ -195,7 +197,7 @@ if(dead == true){
         image_index = 10
         dead_animation_finished = true;
         instance_create(self.x, self.y, obj_spider_death_shell);
-        instance_create( view_xview[0]+25, view_yview[0], obj_spider);
+        instance_create( room_width-100, 10, obj_spider);
         global.kill_count += 1;
         instance_destroy();
     }
