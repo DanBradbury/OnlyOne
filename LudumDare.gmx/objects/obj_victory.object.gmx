@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>instance_deactivate_all(true);
 visible = true;
-selected = "RETRY";
+selected = "CONTINUE";
 </string>
           </argument>
         </arguments>
@@ -81,18 +81,18 @@ instance_deactivate_all(true);
 draw_set_font(menu_title);
 /// Draw instructions to the screen
 draw_set_color(c_green);
-draw_text( view_wport[0]/2, 50, "VICTORY");
+draw_text( view_wport[0]/2, 50, "SUCCESS");
 draw_set_font(menu_items);
 draw_set_color(c_white);
 draw_text( view_wport[0]/2, 110, string(global.kill_count) +" Spiders Killed" );
 
 
-if( selected == "RETRY" ){
+if( selected == "CONTINUE" ){
     draw_set_color(c_red);
-    draw_text( view_wport[0]/2, 150, "RETRY");    
+    draw_text( view_wport[0]/2, 150, "CONTINUE");    
 }else{
       draw_set_color(c_white);
-      draw_text( view_wport[0]/2, 150, "RETRY"); 
+      draw_text( view_wport[0]/2, 150, "CONTINUE"); 
 }
 
 if( selected == "QUIT" ){
@@ -157,10 +157,10 @@ draw_set_alpha(1);
           <argument>
             <kind>1</kind>
             <string>
-if(selected=="RETRY"){
+if(selected=="CONTINUE"){
     selected="QUIT";
 }else if(selected=="QUIT"){
-    selected="RETRY";
+    selected="CONTINUE";
 }
 </string>
           </argument>
@@ -185,10 +185,10 @@ if(selected=="RETRY"){
           <argument>
             <kind>1</kind>
             <string>
-if(selected=="RETRY"){
+if(selected=="CONTINUE"){
     selected="QUIT";
 }else if(selected=="QUIT"){
-    selected="RETRY";
+    selected="CONTINUE";
 }
 </string>
           </argument>
@@ -214,8 +214,8 @@ if(selected=="RETRY"){
             <kind>1</kind>
             <string>if(selected=="QUIT"){
     game_end();    
-}else if(selected=="RETRY"){
-    room_restart();
+}else if(selected=="CONTINUE"){
+    room_goto_next();
 }
 </string>
           </argument>
