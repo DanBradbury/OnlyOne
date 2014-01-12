@@ -53,7 +53,8 @@ image_speed = 0.5;
 base_ms = 15.00;
 accel = 0.2545
 move_accel = 0;
-move_accel_max = 0;
+move_accel_max = 5;
+accelerating = false;
 moving = false;
 mov_dir = "right";
 falling = false;
@@ -187,7 +188,7 @@ if( self.x &gt; room_width){
           <argument>
             <kind>1</kind>
             <string>/// CONSIDER ACCELLERATION
-if(moving==true){
+if(moving==true &amp;&amp; accelerating == true){
     if(mov_dir=="right"){
             hspeed += move_accel;
     }else{
@@ -553,6 +554,29 @@ if (global._can_jump == true ) {
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>accelerating = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -756,6 +780,30 @@ if( vspeed &lt; 0 ) {
 }
 global._jump = false;
      
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>accelerating = false;
+move_accel = 0;
 </string>
           </argument>
         </arguments>
