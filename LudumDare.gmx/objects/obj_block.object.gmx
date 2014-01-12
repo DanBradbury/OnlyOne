@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// CREATE SIDE WALLS
-instance_create(self.x,self.y,obj_block_rl);
-instance_create(self.x,self.y,obj_block_rv);
+//instance_create(self.x,self.y,obj_block_rl);
+//instance_create(self.x,self.y,obj_block_rv);
 </string>
           </argument>
         </arguments>

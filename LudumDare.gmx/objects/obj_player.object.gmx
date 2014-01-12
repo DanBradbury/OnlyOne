@@ -50,8 +50,10 @@ image_speed = 0.5;
           <argument>
             <kind>1</kind>
             <string>/// CUSTOM VARIABLES
-base_ms = 7.75;
-accel = 0.545
+base_ms = 15.00;
+accel = 0.2545
+move_accel = 0;
+move_accel_max = 0;
 moving = false;
 mov_dir = "right";
 falling = false;
@@ -133,15 +135,6 @@ if(delay_jump == true){
     global._can_jump = false;
 }
 }
-/*
-if(moving==true){
-    if(mov_dir=="right"){
-        hspeed += accel;
-    }else{
-        hspeed -= accel;
-    }
-}
-*/
 
 </string>
           </argument>
@@ -173,6 +166,38 @@ if( self.x &gt; room_width){
     self.x = room_width;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// CONSIDER ACCELLERATION
+if(moving==true){
+    if(mov_dir=="right"){
+            hspeed += move_accel;
+    }else{
+        hspeed -= move_accel;
+    }
+    // check to see if we should accelerate more
+    if( move_accel &lt; move_accel_max ){
+        move_accel += accel;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -210,11 +235,11 @@ if(gravity==1){
           motion_set(0,0);
           global.landed = true;
           can_drop = true;
+          global._can_jump = true; 
         }
     }
         
 }
-global._can_jump = true; 
 
 
 </string>
@@ -460,7 +485,7 @@ global.landed = true;
           <argument>
             <kind>1</kind>
             <string>/// MOVE RIGHT
-hspeed = (base_ms+accel);
+hspeed = (base_ms+move_accel);
 moving = true;
 mov_dir = "right";
 image_xscale = 1;
@@ -489,7 +514,7 @@ _draw_sprite = spr_player_running;
           <argument>
             <kind>1</kind>
             <string>/// MOVE LEFT
-hspeed = -(base_ms+accel);
+hspeed = -(base_ms+move_accel);
 mov_dir = "left";
 moving = true;
 image_xscale = -1;
@@ -674,6 +699,7 @@ pauseTime = current_time;
 moving = false;
 hspeed = 0;
 _draw_sprite = spr_player_idle;
+move_accel = 0;
 </string>
           </argument>
         </arguments>
@@ -701,6 +727,7 @@ moving = false;
 hspeed = 0;
 //motion_set(0,0);
 _draw_sprite = spr_player_idle;
+move_accel = 0;
 </string>
           </argument>
         </arguments>

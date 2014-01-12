@@ -77,6 +77,7 @@
     <object>objects\obj_start</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\RUN</room>
     <room>rooms\room3</room>
   </rooms>
   <help>
