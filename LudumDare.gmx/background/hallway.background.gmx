@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>2304</width>
-  <height>416</height>
+  <width>4608</width>
+  <height>832</height>
   <data>images\hallway.png</data>
 </background>

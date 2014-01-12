@@ -133,6 +133,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
+    <room>rooms\room3</room>
     <room>rooms\room2</room>
   </rooms>
   <help>
