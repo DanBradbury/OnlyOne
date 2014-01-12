@@ -63,6 +63,11 @@ image_speed = .01;
 if(collision == true &amp;&amp; image_index &gt; 4){
     instance_destroy();  
 }
+// clean up if we get removed from the room
+if( self.x &gt; room_width || self.x &lt; 0 )
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -89,6 +94,7 @@ if(collision == true &amp;&amp; image_index &gt; 4){
     collision = true;
     _draw_sprite = spr_shot_hit;
     image_index = 0 ;
+    instance_create(self.x, self.y, obj_explosion);
     hspeed = 0;
 }
 </string>

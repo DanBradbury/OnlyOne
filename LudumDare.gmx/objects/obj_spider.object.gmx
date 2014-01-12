@@ -37,7 +37,7 @@ image_yscale = 2;
 turning = false;
 attacking = false;
 inactive = false;
-cur_health = 10;
+cur_health = 5;
 dead = false;
 dead_animation_finished = false;
 jump_back = false;
@@ -198,7 +198,6 @@ if(dead == true){
         dead_animation_finished = true;
         instance_create(self.x, self.y, obj_spider_death_shell);
         instance_create( room_width-100, 10, obj_spider);
-        global.kill_count += 1;
         instance_destroy();
     }
 }
@@ -323,11 +322,14 @@ if( aggro == true &amp;&amp; attacking == false &amp;&amp; dead== false ){
           <argument>
             <kind>1</kind>
             <string>/// calculate health and die if necessary
-cur_health -= 1;
+if(other.collision == false){
+    cur_health -= 1;
+}
 if(cur_health == 0){
     _draw_sprite = spr_spider_death;
     image_index = 0;
     dead = true;
+    global.kill_count += 1;
 }
 </string>
           </argument>

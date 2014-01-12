@@ -85,6 +85,8 @@
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_block_vert_left</sprite>
     <sprite>sprites\spr_block_vert_right</sprite>
+    <sprite>sprites\spr_explosion1</sprite>
+    <sprite>sprites\spr_explosion2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -126,10 +128,11 @@
     <object>objects\obj_next_level</object>
     <object>objects\obj_ramp</object>
     <object>objects\obj_moving_platform</object>
-    <object>objects\obj_projectile</object>
     <object>objects\obj_spider</object>
     <object>objects\obj_spider_death_shell</object>
     <object>objects\obj_regular_shot</object>
+    <object>objects\obj_projectile</object>
+    <object>objects\obj_explosion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
