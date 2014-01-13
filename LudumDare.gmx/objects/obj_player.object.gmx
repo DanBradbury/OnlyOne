@@ -499,6 +499,7 @@ if( self.x &gt; room_width){
       _draw_sprite = spr_player_standing_low_hit;
   }
   hit = true;
+  dashing = false;
   image_index = 0;
 }
 
