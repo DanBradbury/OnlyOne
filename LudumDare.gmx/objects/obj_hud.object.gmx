@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// draw menu bars
-draw_healthbar(view_xview[0]+120,  view_yview[0], view_xview[0]+360,  view_yview[0]+24, global._health, c_black, c_red, c_green, 0, true, true);
+draw_healthbar(view_xview[0]+120,  view_yview[0], view_xview[0]+360,  view_yview[0]+24, global._health, c_black, c_red, c_green, 0, false, false);
 draw_set_color(c_green);
 //fill that little corner
 if(global._health == 100){
