@@ -157,7 +157,7 @@ if(dead==false){
     }
     // temp idea
     
-    if(distance_to_object(obj_player)&lt;20 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false &amp;&amp; jump_back = false){
+    if(distance_to_object(obj_player)&lt;35 &amp;&amp; aggro == true &amp;&amp; attacking == false &amp;&amp; inactive = false &amp;&amp; jump_back = false){
         attacking = true;
         if(slash_used == false){
             _draw_sprite = spr_spider_aggro_left_slash;

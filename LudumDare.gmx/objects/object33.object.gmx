@@ -25,14 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == 1 ){
-    instance_create(0,0,obj_game_victory);
-    instance_destroy();    
-}else{
+            <string>
       instance_deactivate_all(true);
       visible = true;
       selected = "CONTINUE";
-}
+
 </string>
           </argument>
         </arguments>
@@ -94,10 +91,10 @@ draw_text( view_wport[0]/2, 110, string(global.kill_count) +" Spiders Killed" );
 
 if( selected == "CONTINUE" ){
     draw_set_color(c_red);
-    draw_text( view_wport[0]/2, 150, "CONTINUE");    
+    draw_text( view_wport[0]/2, 150, "hi there bri");    
 }else{
       draw_set_color(c_white);
-      draw_text( view_wport[0]/2, 150, "CONTINUE"); 
+      draw_text( view_wport[0]/2, 150, "hi there bri"); 
 }
 
 if( selected == "QUIT" ){

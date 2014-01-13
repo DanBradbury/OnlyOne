@@ -25,14 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == 1 ){
-    instance_create(0,0,obj_game_victory);
-    instance_destroy();    
-}else{
+            <string>
       instance_deactivate_all(true);
       visible = true;
-      selected = "CONTINUE";
-}
+      selected = "RETRY";
+
 </string>
           </argument>
         </arguments>
@@ -86,18 +83,18 @@ instance_deactivate_all(true);
 draw_set_font(menu_title);
 /// Draw instructions to the screen
 draw_set_color(c_green);
-draw_text( view_wport[0]/2, 50, "SUCCESS");
+draw_text( view_wport[0]/2, 50, "VICTORY");
 draw_set_font(menu_items);
 draw_set_color(c_white);
-draw_text( view_wport[0]/2, 110, string(global.kill_count) +" Spiders Killed" );
+//draw_text( view_wport[0]/2, 110, string(global.kill_count) +" Spiders Killed" );
 
 
-if( selected == "CONTINUE" ){
+if( selected == "RETRY" ){
     draw_set_color(c_red);
-    draw_text( view_wport[0]/2, 150, "CONTINUE");    
+    draw_text( view_wport[0]/2, 150, "RETRY");    
 }else{
       draw_set_color(c_white);
-      draw_text( view_wport[0]/2, 150, "CONTINUE"); 
+      draw_text( view_wport[0]/2, 150, "RETRY"); 
 }
 
 if( selected == "QUIT" ){
@@ -162,10 +159,10 @@ draw_set_alpha(1);
           <argument>
             <kind>1</kind>
             <string>
-if(selected=="CONTINUE"){
+if(selected=="RETRY"){
     selected="QUIT";
 }else if(selected=="QUIT"){
-    selected="CONTINUE";
+    selected="RETRY";
 }
 </string>
           </argument>
@@ -190,10 +187,10 @@ if(selected=="CONTINUE"){
           <argument>
             <kind>1</kind>
             <string>
-if(selected=="CONTINUE"){
+if(selected=="RETRY"){
     selected="QUIT";
 }else if(selected=="QUIT"){
-    selected="CONTINUE";
+    selected="RETRY";
 }
 </string>
           </argument>
@@ -219,8 +216,8 @@ if(selected=="CONTINUE"){
             <kind>1</kind>
             <string>if(selected=="QUIT"){
     game_end();    
-}else if(selected=="CONTINUE"){
-    room_goto_next();
+}else if(selected=="RETRY"){
+    room_goto_previous();
 }
 </string>
           </argument>
