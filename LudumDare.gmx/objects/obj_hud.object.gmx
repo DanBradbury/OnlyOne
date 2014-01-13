@@ -53,6 +53,7 @@ if(global._health == 100){
           <argument>
             <kind>1</kind>
             <string>/// for demo only
+/*
 draw_set_color(c_red);
 draw_set_font(tutorial_font);
 draw_text(view_xview[0]+25, view_yview[0]+200, "Left Attack: Q");
@@ -61,6 +62,7 @@ draw_text(view_xview[0]+25, view_yview[0]+250, "Right Attack: W");
 draw_text(view_xview[0]+25, view_yview[0]+300, "Dash: Shift");
 draw_text(view_xview[0]+25, view_yview[0]+350, "Orbus: E");
 draw_text(view_xview[0]+25, view_yview[0]+400, "Union: R");
+*/
 
 </string>
           </argument>
