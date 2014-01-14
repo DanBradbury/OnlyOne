@@ -28,9 +28,9 @@
             <string>image_yscale = 1.5;
 image_xscale = 1.5;
 if(obj_player.mov_dir=="right"){
-    hspeed = 25;
+    hspeed = 30;
 }else{
-    hspeed = -25;
+    hspeed = -30;
     image_xscale = -1.5;
 }
 

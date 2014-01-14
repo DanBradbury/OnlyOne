@@ -95,8 +95,8 @@ reset = false;
             <kind>1</kind>
             <string>inactive = false;
 jump_back = true;
-_draw_sprite = spr_spider_jump_back;
-image_index = 0;
+//_draw_sprite = spr_spider_jump_back;
+//image_index = 0;
 </string>
           </argument>
         </arguments>
@@ -175,13 +175,7 @@ if(dead==false){
 // handle animation specific stuff here
 if(jump_back == true){
     if(0 &lt;= image_index &lt;= 2){
-        if(mov_dir == "left" &amp;&amp; thrusting == false){
-            move_towards_point(self.x+200, self.y-100, 12);
-        }else{
-            if(thrusting == false){
-                move_towards_point(self.x-200, self.y-100, 12);
-            }
-        }
+        
         if(reset == false){
             alarm[1] = 24;    
         }
