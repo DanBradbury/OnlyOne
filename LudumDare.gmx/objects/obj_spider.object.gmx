@@ -345,7 +345,6 @@ if(cur_health &lt;= 0){
           <argument>
             <kind>1</kind>
             <string>/// calculate health and die if necessary
-
 if(cur_health &lt;= 0){
     _draw_sprite = spr_spider_death;
     image_index = 0;

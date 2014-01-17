@@ -5,9 +5,9 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sound1</sound>
     <sound>sound\snd_jump</sound>
     <sound>sound\snd_shot</sound>
+    <sound>sound\kickass</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_ramp</sprite>
@@ -93,6 +93,7 @@
     <background>background\background1</background>
     <background>background\cityscape</background>
     <background>background\hallway</background>
+    <background>background\magma</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -138,6 +139,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
+    <room>rooms\room2</room>
     <room>rooms\room3</room>
   </rooms>
   <help>

@@ -91,6 +91,7 @@ if( self.x &gt; room_width || self.x &lt; 0 )
           <argument>
             <kind>1</kind>
             <string>if(collision == false &amp;&amp; other.dead == false){
+    audio_play_sound(snd_shot,10,false);
     other.cur_health -= 1; 
     collision = true;
     _draw_sprite = spr_shot_hit;

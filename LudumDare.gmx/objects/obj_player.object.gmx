@@ -269,16 +269,16 @@ if(delay_jump == true){
 if(moving == true){
     image_speed = 0.6; //.6
 }else if(global._jump == true &amp;&amp; attacking == false){
-    image_speed = 0.3; //.3
+    image_speed = 0.6; //.3
 }
 else if(_draw_sprite == spr_player_falling){
-    image_speed = 0.1;
+    image_speed = 0.3; //.1
 }
 else if(hit==true){
-    image_speed = 0.1;
+    image_speed = 0.3; //.1
 }
 else{
-    image_speed = 0.6; //.6
+    image_speed = 1; //.6
 }
 // logic
 if((global._jump == true &amp;&amp; attacking == false &amp;&amp; dashing == false) || ( global._crouch == true &amp;&amp; crouch_completed == false ) || global._slide == true ){
@@ -349,7 +349,8 @@ if(attacking == true){
     gravity = 0;
     vspeed = 0;
     hspeed = 0;
-    if(image_index &gt; 6 &amp;&amp; image_index &lt; 7){
+    // attack window
+    if(image_index &gt; 5 &amp;&amp; image_index &lt; 7){
     if(special == true )
     {
         if(crouch_completed == true){
