@@ -61,9 +61,9 @@ minutes = seconds div 60;
 seconds = seconds mod 60;
 ms = ms mod 1000;
 
-if (minutes&lt;10) { minutes="0"+string(minutes); }
-if (seconds&lt;10) { seconds="0"+string(seconds); }
-if (ms&lt;10) { ms="00"+string(ms); }
+if (minutes&lt;10) { minutes=string(minutes); }
+if (seconds&lt;10) { seconds=string(seconds); }
+if (ms&lt;10) { ms=string(ms); }
 else if (ms&lt;100) { ms="0"+string(ms); }
 </string>
           </argument>
@@ -87,13 +87,14 @@ else if (ms&lt;100) { ms="0"+string(ms); }
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(  global.pause == false ){
+            <string>//if(  global.pause == false ){
   draw_set_halign(fa_center);
-  draw_set_font(menu_title);
+  font = font_add_sprite(spr_numbers,48,false,1);
+  draw_set_font(font);
   /// Draw instructions to the screen
   draw_set_color(c_white);
-  draw_text( view_wport[0]/2, 50, string(minutes)+":"+string(seconds)+":"+string(ms) );
-}
+  draw_text( view_wport[0]/2, 50, string(minutes)+" "+string(seconds)+" "+string(ms) );
+//}
 
 </string>
           </argument>

@@ -10,9 +10,53 @@
     <sound>sound\snd_shot</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_player_idle</sprite>
-    <sprite>sprites\spr_player_running</sprite>
-    <sprite>sprites\spr_block</sprite>
+    <sprites name="Player">
+      <sprite>sprites\spr_player_idle</sprite>
+      <sprite>sprites\spr_player_running</sprite>
+    </sprites>
+    <sprites name="Grass Tiles">
+      <sprites name="Decorators">
+        <sprite>sprites\spr_fence</sprite>
+        <sprite>sprites\spr_fence2</sprite>
+        <sprite>sprites\spr_cactus</sprite>
+        <sprite>sprites\spr_plant</sprite>
+        <sprite>sprites\spr_shroom1</sprite>
+        <sprite>sprites\spr_shroom2</sprite>
+        <sprite>sprites\spr_bush</sprite>
+      </sprites>
+      <sprite>sprites\spr_grass</sprite>
+      <sprite>sprites\spr_grass_cliff_left</sprite>
+      <sprite>sprites\spr_grass_cliff_right</sprite>
+      <sprite>sprites\spr_grass_middle</sprite>
+      <sprite>sprites\spr_grass_right_round</sprite>
+      <sprite>sprites\spr_grass_left_round</sprite>
+      <sprite>sprites\spr_grass_center_rounded</sprite>
+      <sprite>sprites\spr_grass_left1</sprite>
+      <sprite>sprites\spr_grass_left2</sprite>
+      <sprite>sprites\spr_grass_half_left</sprite>
+      <sprite>sprites\spr_grass_half_middle</sprite>
+      <sprite>sprites\spr_grass_half_right</sprite>
+      <sprite>sprites\spr_grass_right</sprite>
+      <sprite>sprites\spr_water</sprite>
+      <sprite>sprites\spr_water2</sprite>
+      <sprite>sprites\spr_rock</sprite>
+      <sprite>sprites\spr_water_solid</sprite>
+      <sprite>sprites\spr_lava_top</sprite>
+      <sprite>sprites\spr_lava_solid</sprite>
+      <sprite>sprites\spr_bridge_logs</sprite>
+    </sprites>
+    <sprites name="Interactable">
+      <sprite>sprites\spr_button</sprite>
+      <sprite>sprites\spr_yellow_box</sprite>
+      <sprite>sprites\spr_key</sprite>
+      <sprite>sprites\spr_door_bot</sprite>
+      <sprite>sprites\spr_door_top</sprite>
+      <sprite>sprites\spr_flag_red</sprite>
+      <sprite>sprites\spr_spring</sprite>
+    </sprites>
+    <sprite>sprites\spr_ladder_mid</sprite>
+    <sprite>sprites\spr_ladder_top</sprite>
+    <sprite>sprites\spr_brick_wall</sprite>
     <sprite>sprites\spr_block2</sprite>
     <sprite>sprites\spr_verticals</sprite>
     <sprite>sprites\spr_verticals2</sprite>
@@ -20,6 +64,8 @@
     <sprite>sprites\spr_inactive_jump</sprite>
     <sprite>sprites\spr_cmd_jump</sprite>
     <sprite>sprites\spr_spike</sprite>
+    <sprite>sprites\spr_spike_wall_left</sprite>
+    <sprite>sprites\spr_spike_wall_right</sprite>
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_lives</sprite>
     <sprite>sprites\spr_revolver</sprite>
@@ -35,49 +81,105 @@
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_moving_platform</sprite>
     <sprite>sprites\spr_passable_platform</sprite>
+    <sprite>sprites\sprite39</sprite>
+    <sprite>sprites\spr_disabled_key</sprite>
+    <sprite>sprites\spr_star</sprite>
+    <sprite>sprites\spr_enabled_key</sprite>
+    <sprite>sprites\spr_pirana</sprite>
+    <sprite>sprites\spr_numbers</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\background1</background>
+    <background>background\background2</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>
     <font>fonts\tutorial_font</font>
+    <font>fonts\font3</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <object>objects\obj_floor</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_bounce_wall</object>
-    <object>objects\obj_block</object>
-    <object>objects\obj_block2</object>
-    <object>objects\obj_block_rv</object>
-    <object>objects\obj_block_rl</object>
-    <object>objects\obj_jump_pad</object>
+    <objects name="Grass World">
+      <object>objects\obj_grass</object>
+      <object>objects\obj_bridge_logs</object>
+      <object>objects\obj_grass_cliff_left</object>
+      <object>objects\obj_grass_cliff_right</object>
+      <object>objects\obj_grass_left_round</object>
+      <object>objects\obj_grass_right_round</object>
+      <object>objects\obj_grass_right</object>
+      <object>objects\obj_grass_left_ramp2</object>
+      <object>objects\obj_grass_left_ramp1</object>
+      <object>objects\obj_grass_rounded</object>
+      <object>objects\obj_fence2</object>
+      <object>objects\obj_fence</object>
+      <object>objects\obj_grass_middle</object>
+      <object>objects\obj_grass_half_middle</object>
+      <object>objects\obj_grass_half_right</object>
+      <object>objects\obj_water_crest1</object>
+      <object>objects\obj_grass_half_left</object>
+      <object>objects\obj_water_solid</object>
+      <object>objects\obj_lava_crest1</object>
+      <object>objects\obj_water_crest2</object>
+      <object>objects\obj_shroom</object>
+      <object>objects\obj_lava_solid</object>
+      <object>objects\obj_bush</object>
+      <object>objects\obj_pirana</object>
+      <object>objects\obj_rock</object>
+      <object>objects\obj_shroom2</object>
+      <object>objects\obj_cactus</object>
+      <object>objects\obj_plant</object>
+    </objects>
+    <objects name="Interactables">
+      <object>objects\obj_spring</object>
+      <object>objects\obj_button</object>
+      <object>objects\obj_key</object>
+      <object>objects\obj_yellow_box</object>
+      <object>objects\obj_flag_red</object>
+      <object>objects\obj_jump_pad</object>
+      <object>objects\obj_ladder_mid</object>
+      <object>objects\obj_ladder_top</object>
+    </objects>
+    <objects name="Building Blocks">
+      <object>objects\obj_start</object>
+      <object>objects\obj_ramp</object>
+      <object>objects\obj_death_device</object>
+      <object>objects\obj_hud</object>
+      <object>objects\obj_floor</object>
+      <object>objects\obj_wall</object>
+      <object>objects\obj_bounce_wall</object>
+      <object>objects\obj_block</object>
+      <object>objects\obj_block2</object>
+      <object>objects\obj_timer</object>
+      <object>objects\obj_next_level</object>
+      <object>objects\obj_transition1</object>
+      <object>objects\obj_death</object>
+      <object>objects\obj_death_menu</object>
+      <object>objects\obj_shot_select</object>
+      <object>objects\obj_pause</object>
+    </objects>
+    <object>objects\obj_brick_wall</object>
     <object>objects\obj_spike</object>
+    <object>objects\obj_spike_wall_left</object>
+    <object>objects\obj_spike_wall_right</object>
     <object>objects\obj_target</object>
-    <object>objects\obj_death</object>
-    <object>objects\obj_death_menu</object>
-    <object>objects\obj_shot_select</object>
-    <object>objects\obj_pause</object>
     <object>objects\obj_shot_revolver</object>
     <object>objects\obj_shot_laser</object>
-    <object>objects\obj_transition1</object>
     <object>objects\obj_bouce_wall_up</object>
     <object>objects\obj_bw_down</object>
     <object>objects\obj_bw_left</object>
     <object>objects\obj_bw_right</object>
-    <object>objects\obj_next_level</object>
-    <object>objects\obj_ramp</object>
     <object>objects\obj_moving_platform</object>
-    <object>objects\obj_timer</object>
     <object>objects\obj_passable_platform</object>
-    <object>objects\obj_start</object>
+    <object>objects\obj_door</object>
+    <object>objects\obj_star</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RUN</room>
+    <room>rooms\room5</room>
+    <room>rooms\room4</room>
     <room>rooms\room3</room>
   </rooms>
   <help>
