@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -50,7 +50,9 @@ alarm[0]= 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = true;
+            <string>
+visible = true;
+
 </string>
           </argument>
         </arguments>
@@ -73,9 +75,11 @@ alarm[0]= 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -30;
+            <string>
+vspeed = -30;
 alarm[0] = 59;
 image_index = 0;
+
 </string>
           </argument>
         </arguments>

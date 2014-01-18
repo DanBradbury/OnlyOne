@@ -104,9 +104,12 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <object>objects\obj_frog</object>
-    <object>objects\obj_worm</object>
-    <object>objects\obj_pirana</object>
+    <objects name="Enemies">
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_pirana</object>
+      <object>objects\obj_worm</object>
+      <object>objects\obj_frog</object>
+    </objects>
     <objects name="Grass World">
       <object>objects\obj_grass</object>
       <object>objects\obj_bridge_logs</object>
@@ -181,8 +184,8 @@
     <object>objects\obj_star</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room5</room>
     <room>rooms\RUN</room>
+    <room>rooms\room5</room>
     <room>rooms\room4</room>
     <room>rooms\room3</room>
   </rooms>
