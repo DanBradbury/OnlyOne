@@ -75,6 +75,7 @@ can_drop = false;
 global._dropping = false;
 _draw_sprite = spr_player_idle;
 death_start = false;
+release = false;
 </string>
           </argument>
         </arguments>
@@ -189,6 +190,9 @@ if(vspeed &gt; 0){
 if(delay_jump == true){
     global._can_jump = false;
 }
+}
+if(release==true ){
+    hspeed = hspeed - min(abs(hspeed), 1.5545) * sign(hspeed);
 }
 
 </string>
@@ -346,46 +350,6 @@ global._can_jump = true;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_ramp">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// HANDLE RAMP EFFECT
-if(moving == true){ 
- self.x += 1;
- self.y = other.y+3
-}else{
-    if(gravity==1){
-        gravity = 0;
-        self.y = other.y;   
-        motion_set(0,0);
-    }
-    global._can_jump = true; 
-}
-
-
-//motion_set(0,0);
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_spike">
       <action>
         <libid>1</libid>
@@ -455,30 +419,6 @@ if(gravity==1){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_flag_red">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>global.pause = true;
-pauseTime = current_time;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_wall">
       <action>
         <libid>1</libid>
@@ -538,9 +478,9 @@ if ( (self.x-37) &lt; other.x){
             <string>/// HANDLE COLLISION
 // if we are on top of the floor    
 if(gravity==1){
-        gravity = 0;
+        //gravity = 0;
         self.y = other.y;   
-        motion_set(0,0);
+        //motion_set(0,0);
 }
 global._can_jump = true; 
 global.landed = true;
@@ -575,6 +515,70 @@ death_start = true;
 global.death_message = other.message
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_ramp">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// HANDLE RAMP EFFECT
+if(moving == true){ 
+ self.x += 1;
+ self.y = other.y+3
+}else{
+    if(gravity==1){
+        gravity = 0;
+        self.y = other.y;   
+        motion_set(0,0);
+    }
+    global._can_jump = true; 
+}
+
+
+//motion_set(0,0);
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_flag_red">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.pause = true;
+pauseTime = current_time;
 </string>
           </argument>
         </arguments>
@@ -866,9 +870,13 @@ pauseTime = current_time;
             <kind>1</kind>
             <string>/// STOP MOVEMENT
 moving = false;
-hspeed = 0;
 _draw_sprite = spr_player_idle;
 move_accel = 0;
+/*
+hspeed = 0;
+*/
+hspeed = hspeed - min(abs(hspeed), 0.2545) * sign(hspeed)
+release = true;
 </string>
           </argument>
         </arguments>
@@ -893,10 +901,17 @@ move_accel = 0;
             <kind>1</kind>
             <string>/// STOP MOVEMENT
 moving = false;
+_draw_sprite = spr_player_idle;
+move_accel = 0;
+release = true;
+/*
+moving = false;
 hspeed = 0;
 //motion_set(0,0);
 _draw_sprite = spr_player_idle;
 move_accel = 0;
+*/
+hspeed = hspeed - min(abs(hspeed), 0.2545) * sign(hspeed)
 </string>
           </argument>
         </arguments>

@@ -84,6 +84,8 @@
     <sprite>sprites\sprite39</sprite>
     <sprite>sprites\spr_disabled_key</sprite>
     <sprite>sprites\spr_star</sprite>
+    <sprite>sprites\spr_worm</sprite>
+    <sprite>sprites\spr_frog</sprite>
     <sprite>sprites\spr_enabled_key</sprite>
     <sprite>sprites\spr_pirana</sprite>
     <sprite>sprites\spr_numbers</sprite>
@@ -102,6 +104,9 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <object>objects\obj_frog</object>
+    <object>objects\obj_worm</object>
+    <object>objects\obj_pirana</object>
     <objects name="Grass World">
       <object>objects\obj_grass</object>
       <object>objects\obj_bridge_logs</object>
@@ -126,7 +131,6 @@
       <object>objects\obj_shroom</object>
       <object>objects\obj_lava_solid</object>
       <object>objects\obj_bush</object>
-      <object>objects\obj_pirana</object>
       <object>objects\obj_rock</object>
       <object>objects\obj_shroom2</object>
       <object>objects\obj_cactus</object>
@@ -177,8 +181,8 @@
     <object>objects\obj_star</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\RUN</room>
     <room>rooms\room5</room>
+    <room>rooms\RUN</room>
     <room>rooms\room4</room>
     <room>rooms\room3</room>
   </rooms>
