@@ -102,6 +102,7 @@
     <font>fonts\tutorial_font</font>
   </fonts>
   <objects name="objects">
+    <object>objects\obj_cheatchecker</object>
     <object>objects\obj_player</object>
     <object>objects\obj_hud</object>
     <object>objects\obj_pause</object>

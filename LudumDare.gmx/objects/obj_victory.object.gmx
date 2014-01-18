@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == 1 ){
+            <string>if( room == 2 ){
     instance_create(0,0,obj_game_victory);
     instance_destroy();    
 }else{

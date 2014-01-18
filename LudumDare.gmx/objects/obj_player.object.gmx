@@ -58,7 +58,7 @@ dash_stop_started = false;
 hit = false;
 global._health = 100;
 energy = 3;
-regen_time = 96;
+regen_time = 60; //96
 alarm[3] = regen_time;
 start_stand = false;
 start_jump = false;
@@ -69,6 +69,8 @@ dead = false;
 global.kill_count = 0;
 victory = false;
 special = false;
+god_mode = false;
+instance_create( 0,0,obj_cheatchecker );
 </string>
           </argument>
         </arguments>
@@ -480,8 +482,8 @@ if( self.x &gt; room_width){
           <argument>
             <kind>1</kind>
             <string>if( dead == false &amp;&amp; other.dead == false){
-  if(hit==false){
-      global._health -= 10;
+  if(hit==false &amp;&amp; god_mode == false){
+      global._health -= 5; //10
   }
   
   if(other.mov_dir == "left" &amp;&amp; hit == false &amp;&amp; attacking == false ){
@@ -500,6 +502,7 @@ if( self.x &gt; room_width){
       _draw_sprite = spr_player_standing_low_hit;
   }
   hit = true;
+  moving = false;
   dashing = false;
   image_index = 0;
 }

@@ -37,7 +37,7 @@ image_yscale = 2;
 turning = false;
 attacking = false;
 inactive = false;
-cur_health = 5;
+cur_health = 3;
 dead = false;
 dead_animation_finished = false;
 jump_back = false;
@@ -406,9 +406,9 @@ if(gravity==1){
             <kind>1</kind>
             <string>if(dead==false &amp;&amp; global._jump ==false){
     if(mov_dir == "left"){ 
-        self.x = other.x+200;
+        //self.x = other.x+200;
     }else{
-        self.x = other.x-200;
+        //self.x = other.x-200;
     }
 }
 </string>
