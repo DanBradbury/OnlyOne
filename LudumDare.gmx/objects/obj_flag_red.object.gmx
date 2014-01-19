@@ -49,7 +49,8 @@ activated = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto_next();
+            <string>//room_goto_next();
+instance_create(0,0, obj_level_end);
 </string>
           </argument>
         </arguments>
@@ -74,7 +75,8 @@ activated = false;
             <kind>1</kind>
             <string>if(activated == false){
   activated = true;
-  alarm[0] = 30;
+  //alarm[0] = 30;
+  instance_create(0,0, obj_level_end);
 }
 repeat(10)
     {

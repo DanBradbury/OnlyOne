@@ -33,6 +33,8 @@
       <sprite>sprites\spr_grass_center_rounded</sprite>
       <sprite>sprites\spr_grass_left1</sprite>
       <sprite>sprites\spr_grass_left2</sprite>
+      <sprite>sprites\spr_grass_right_1</sprite>
+      <sprite>sprites\spr_grass_right2</sprite>
       <sprite>sprites\spr_grass_half_left</sprite>
       <sprite>sprites\spr_grass_half_middle</sprite>
       <sprite>sprites\spr_grass_half_right</sprite>
@@ -44,6 +46,7 @@
       <sprite>sprites\spr_lava_top</sprite>
       <sprite>sprites\spr_lava_solid</sprite>
       <sprite>sprites\spr_bridge_logs</sprite>
+      <sprite>sprites\spr_grass_left</sprite>
     </sprites>
     <sprites name="Interactable">
       <sprite>sprites\spr_button</sprite>
@@ -88,6 +91,7 @@
     <sprite>sprites\spr_frog</sprite>
     <sprite>sprites\spr_enabled_key</sprite>
     <sprite>sprites\spr_pirana</sprite>
+    <sprite>sprites\spr_colon</sprite>
     <sprite>sprites\spr_numbers</sprite>
   </sprites>
   <backgrounds name="background">
@@ -109,9 +113,11 @@
       <object>objects\obj_pirana</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_frog</object>
+      <object>objects\obj_blockers</object>
     </objects>
     <objects name="Grass World">
       <object>objects\obj_grass</object>
+      <object>objects\obj_grass_left</object>
       <object>objects\obj_bridge_logs</object>
       <object>objects\obj_grass_cliff_left</object>
       <object>objects\obj_grass_cliff_right</object>
@@ -119,11 +125,14 @@
       <object>objects\obj_grass_right_round</object>
       <object>objects\obj_grass_right</object>
       <object>objects\obj_grass_left_ramp2</object>
+      <object>objects\obj_grass_right_ramp1</object>
+      <object>objects\obj_grass_right_ramp2</object>
       <object>objects\obj_grass_left_ramp1</object>
       <object>objects\obj_grass_rounded</object>
       <object>objects\obj_fence2</object>
       <object>objects\obj_fence</object>
       <object>objects\obj_grass_middle</object>
+      <object>objects\obj_cliff_middle</object>
       <object>objects\obj_grass_half_middle</object>
       <object>objects\obj_grass_half_right</object>
       <object>objects\obj_water_crest1</object>
@@ -150,6 +159,7 @@
       <object>objects\obj_ladder_top</object>
     </objects>
     <objects name="Building Blocks">
+      <object>objects\obj_timer</object>
       <object>objects\obj_start</object>
       <object>objects\obj_ramp</object>
       <object>objects\obj_death_device</object>
@@ -159,13 +169,13 @@
       <object>objects\obj_bounce_wall</object>
       <object>objects\obj_block</object>
       <object>objects\obj_block2</object>
-      <object>objects\obj_timer</object>
       <object>objects\obj_next_level</object>
       <object>objects\obj_transition1</object>
       <object>objects\obj_death</object>
       <object>objects\obj_death_menu</object>
       <object>objects\obj_shot_select</object>
       <object>objects\obj_pause</object>
+      <object>objects\obj_level_end</object>
     </objects>
     <object>objects\obj_brick_wall</object>
     <object>objects\obj_spike</object>
@@ -185,8 +195,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\RUN</room>
-    <room>rooms\room5</room>
     <room>rooms\room4</room>
+    <room>rooms\room5</room>
     <room>rooms\room3</room>
   </rooms>
   <help>

@@ -447,7 +447,7 @@ if(other.side=="right"){
 }   
 */
 if ( (self.x-37) &lt; other.x){
-   self.x = other.x;
+   self.x = other.x-10;
 }
 //motion_set(0,0);
 

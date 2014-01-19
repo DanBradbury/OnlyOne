@@ -53,7 +53,7 @@ ms = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_xview[0]+= 3;
+            <string>view_xview[0]+= 4;
 </string>
           </argument>
         </arguments>
