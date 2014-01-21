@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>activated = false;
 image_speed = 0;
 
 </string>
@@ -50,10 +50,11 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// TURN JUMPING OFF
-if( global._can_jump == false &amp;&amp; global._jump == false ){
+            <string>/// activate the button
+if( global._can_jump == false &amp;&amp; global._jump == false &amp;&amp; activated == false){
     image_index = 1;
     global.start_move = true;
+    activated = true;
 }
 </string>
           </argument>

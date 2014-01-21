@@ -75,6 +75,7 @@ instance_create(0,0, obj_level_end);
             <kind>1</kind>
             <string>if(activated == false){
   activated = true;
+  sprite_index = spr_flag_hanging;
   //alarm[0] = 30;
   instance_create(0,0, obj_level_end);
 }

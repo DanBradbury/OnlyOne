@@ -3,7 +3,7 @@
   <spriteName>spr_player_idle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-999</depth>
+  <depth>1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -50,7 +50,7 @@ image_speed = 0.5;
           <argument>
             <kind>1</kind>
             <string>/// CUSTOM VARIABLES
-base_ms = 15.00;
+base_ms = 14.00;
 accel = 0.2545
 move_accel = 0;
 move_accel_max = 5;
@@ -74,8 +74,13 @@ global.landed = false;
 can_drop = false;
 global._dropping = false;
 _draw_sprite = spr_player_idle;
-death_start = false;
+global.death_start = false;
 release = false;
+hit = false;
+global.health = 2;
+hit_active = false;
+global.coins = 0;
+freeze = false;
 </string>
           </argument>
         </arguments>
@@ -97,6 +102,52 @@ release = false;
           <argument>
             <kind>1</kind>
             <string>instance_create(0,0,obj_hud);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// create game font
+global.font = font_add_sprite(spr_numbers,46,false,0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.death_message = "cant take that much dmg";
+  instance_create(0,0,obj_death);  
 </string>
           </argument>
         </arguments>
@@ -169,19 +220,22 @@ delay_jump = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index += 1;
+            <string>
+image_index += 1;
 if( global._level_started == false ){
   motion_set(0,0);  
 }else{
 /// MAKE THINGS HAPPEN
+if(global.death_start == true){
+       gravity = 0;
+      vspeed = -3;
+}
 gravity = 1;
 if(vspeed &gt; 0){
     global._jump = false;
-    if(death_start == true){
-      vspeed = 3;
-    }
-    if(vspeed &gt; 15){
-      vspeed = 15;
+    hit_active = false;
+    if(vspeed &gt; 16){
+      vspeed = 16;
     }
     if(vspeed &lt; 0){
       global._jump = true;
@@ -193,6 +247,13 @@ if(delay_jump == true){
 }
 if(release==true ){
     hspeed = hspeed - min(abs(hspeed), 1.5545) * sign(hspeed);
+}
+if( global._can_jump == false ){
+    _draw_sprite = spr_player_jumping;
+}
+
+if( hit == true ){
+    _draw_sprite = spr_player_hurt;
 }
 
 </string>
@@ -261,6 +322,33 @@ if(moving==true &amp;&amp; accelerating == true){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// check health
+if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
+{
+  alarm[2] = 30;
+  global.death_start = true;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_passable_platform">
       <action>
@@ -288,18 +376,21 @@ if(gravity==1){
         alarm[0] = 5;
     }else{
         // we provide a 16 height tollerance because of the height of the platform
-        if( self.y &lt; other.y+16 &amp;&amp; global._dropping == false){
+        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
           gravity = 0;
           self.y = other.y;   
           motion_set(0,0);
           global.landed = true;
           can_drop = true;
           global._can_jump = true; 
+          if( moving == false ){
+             _draw_sprite = spr_player_idle;
+          }
+
         }
     }
         
 }
-
 
 </string>
           </argument>
@@ -343,6 +434,9 @@ if(gravity==1){
         
 }
 global._can_jump = true; 
+if( moving == false ){
+  _draw_sprite = spr_player_idle;
+}
 
 
 </string>
@@ -477,13 +571,19 @@ if ( (self.x-37) &lt; other.x){
             <kind>1</kind>
             <string>/// HANDLE COLLISION
 // if we are on top of the floor    
-if(gravity==1){
+if(gravity==1 &amp;&amp; global._jump == false){
         //gravity = 0;
         self.y = other.y;   
         //motion_set(0,0);
-}
-global._can_jump = true; 
+        global._can_jump = true; 
 global.landed = true;
+}else if(global._jump == true ){
+  vspeed = 8;
+}
+
+if( moving == false ){
+  _draw_sprite = spr_player_idle;
+}
 
 
 </string>
@@ -509,9 +609,9 @@ global.landed = true;
           <argument>
             <kind>1</kind>
             <string>/// HANDLE DEATH
-if(death_start == false){
+if(global.death_start == false){
 alarm[1] = 20;
-death_start = true;
+global.death_start = true;
 global.death_message = other.message
 }
 
@@ -579,6 +679,8 @@ if(moving == true){
             <kind>1</kind>
             <string>global.pause = true;
 pauseTime = current_time;
+freeze = true;
+motion_set(0,0);
 </string>
           </argument>
         </arguments>
@@ -602,7 +704,7 @@ pauseTime = current_time;
           <argument>
             <kind>1</kind>
             <string>/// MOVE RIGHT
-if(global._level_started == true){
+if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false){
 hspeed = (base_ms+move_accel);
 moving = true;
 mov_dir = "right";
@@ -633,7 +735,7 @@ _draw_sprite = spr_player_running;
           <argument>
             <kind>1</kind>
             <string>/// MOVE LEFT
-if(global._level_started == true){
+if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false){
 hspeed = -(base_ms+move_accel);
 mov_dir = "left";
 moving = true;
@@ -663,7 +765,7 @@ _draw_sprite = spr_player_running;
           <argument>
             <kind>1</kind>
             <string>/// HANDLE JUMP
-if (global._can_jump == true ) {
+if (global._can_jump == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false) {
     vspeed = -21;
     global._can_jump = false;
     global._jump = true;
@@ -739,7 +841,7 @@ message = "YOU CAN'T SWIM"
           <argument>
             <kind>1</kind>
             <string>/// DRAW PLAYER
-if(death_start == true){
+if(global.death_start == true){
 draw_set_blend_mode( bm_add );
  draw_circle_color(100, 100, 50, c_blue, c_black, 0);
 }
@@ -842,9 +944,11 @@ if(jump == true){
           <argument>
             <kind>1</kind>
             <string>/// Create the pause object, thus pausing the game
+if(global._level_started == true){
 instance_create(0,0,obj_pause);
 global.pause = true;
 pauseTime = current_time;
+}
 
 </string>
           </argument>

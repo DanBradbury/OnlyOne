@@ -26,6 +26,58 @@
           <argument>
             <kind>1</kind>
             <string>selected = "NEXT";
+end_level_points = 0;
+alarm[0] = 60;
+delay = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>delay = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>while(global.coins != 0 &amp;&amp; delay == false){
+  end_level_points += 1;
+  global.coins -= 1;
+}
 </string>
           </argument>
         </arguments>
@@ -54,12 +106,13 @@ draw_set_font(global.font);
 if(selected=="NEXT"){
     draw_set_color(c_red);
 }
-draw_text( view_wport[0]/2,view_hport[0]-32, "NEXT LEVEL");
+draw_text( view_wport[0]/2,view_hport[0]-100, "Press ENTER to CONTINUE");
 
 draw_set_color(c_white);
 draw_text( view_wport[0]/2, view_hport[0]/2, "TIME: "+ string(global.end_timer) );
-draw_text( view_wport[0]/2, view_hport[0]/2-50, "STARS: " );
-draw_sprite(spr_star,0, view_wport[0]/2+100, view_hport[0]/2-60); 
+//draw_text( view_wport[0]/2, view_hport[0]/2-50, "STARS: " );
+draw_text( view_wport[0]/2, view_hport[0]/2-100, "POINTS: "+ string(end_level_points) +" / "+string(global.total_points));
+//draw_sprite(spr_star,0, view_wport[0]/2+100, view_hport[0]/2-60); 
 </string>
           </argument>
         </arguments>

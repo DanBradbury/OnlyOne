@@ -11,7 +11,8 @@
   <colour>12632256</colour>
   <showcolour>0</showcolour>
   <code>view_visible[1] = false;
-global.keys = 0;</code>
+global.keys = 0;
+global.total_points = 65;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>
@@ -41,7 +42,7 @@ global.keys = 0;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1960" hview="1280" xport="0" yport="0" wport="960" hport="640" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1680" hview="1120" xport="0" yport="0" wport="960" hport="640" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="-1" objName="obj_player" xview="0" yview="0" wview="960" hview="640" xport="0" yport="0" wport="960" hport="640" hborder="400" vborder="400" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -52,9 +53,9 @@ global.keys = 0;</code>
   </views>
   <instances>
     <instance objName="obj_start" x="0" y="0" name="inst_93D6BD4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="160" y="224" name="inst_500A1279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="140" y="700" name="inst_500A1279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp" x="1330" y="630" name="inst_C261300C" locked="0" code="" scaleX="2" scaleY="0" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ramp" x="1360" y="656" name="inst_CC40FAA9" locked="0" code="" scaleX="0" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ramp" x="1330" y="630" name="inst_CC40FAA9" locked="0" code="" scaleX="0" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="70" y="700" name="inst_C05429E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="140" y="700" name="inst_CFB1BD32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="210" y="700" name="inst_D814564A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -413,6 +414,20 @@ global.keys = 0;</code>
     <instance objName="obj_pirana" x="2170" y="1050" name="inst_AC6E8A27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1540" y="420" name="inst_85116112" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_worm" x="1050" y="700" name="inst_56DF4A32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="770" y="630" name="inst_62F33680" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="700" y="630" name="inst_7D0DBD6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1260" y="560" name="inst_0B18AD8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1330" y="490" name="inst_D9E537F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1400" y="420" name="inst_20D43962" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1890" y="420" name="inst_6B399CA7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1750" y="280" name="inst_6AA11832" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="980" y="490" name="inst_5BFA98EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pirana" x="1890" y="980" name="inst_4B149066" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1050" y="490" name="inst_33E9C585" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1680" y="280" name="inst_2FDD4F68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1680" y="350" name="inst_5198A939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1820" y="350" name="inst_9AB111D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="1750" y="350" name="inst_F697E65A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

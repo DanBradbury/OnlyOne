@@ -25,10 +25,163 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>r = room_add();
+            <string>/*
+r = room_add();
 room_set_background_color(r, c_black,true);
 room_instance_add(r,0,0,obj_death_menu);
 room_goto(r);
+*/
+selected = "AGAIN";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DRAW MENU
+draw_set_halign(fa_center);
+draw_set_font(global.font);
+/// Draw instructions to the screen
+draw_set_color(c_red);
+draw_text( view_wport[0]/2, 50, "YOU DIED");
+
+draw_set_color(c_white);
+if(selected=="AGAIN"){
+    draw_set_color(c_red);
+}
+draw_text(view_wport[0]/2,150, "RETRY LEVEL");
+
+draw_set_color(c_white);
+if(selected=="QUIT"){
+    draw_set_color(c_red);
+}
+draw_text(view_wport[0]/2,200, "QUIT");
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_black);
+draw_set_alpha(0.3);
+draw_rectangle(0,0,room_width,room_height,0);
+draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// MOVE MENU
+if(selected=="QUIT"){
+    selected="AGAIN";
+}else if(selected=="AGAIN"){
+    selected="QUIT";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// MOVE MENU
+if(selected=="AGAIN"){
+    selected="QUIT";
+}else if(selected=="QUIT"){
+    selected="AGAIN";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( selected == "QUIT"){
+game_end();
+}else if( selected == "AGAIN" ){
+  room_restart();
+}
+
 </string>
           </argument>
         </arguments>

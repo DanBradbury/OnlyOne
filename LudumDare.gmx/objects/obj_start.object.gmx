@@ -53,7 +53,15 @@ ms = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_xview[0]+= 4;
+            <string>if(room == 2){
+  if( (view_yview[0] + view_hview[0]) &lt; room_height ){
+    view_yview[0] += 4;
+  }
+}else{
+if( (view_xview[0] + view_wview[0]) &lt; room_width ){
+  view_xview[0]+= 4;
+}
+}
 </string>
           </argument>
         </arguments>
@@ -78,10 +86,10 @@ ms = 0;
             <kind>1</kind>
             <string>if(  global.pause == false ){
   draw_set_halign(fa_center);
-  draw_set_font(menu_title);
+  draw_set_font(global.font);
   /// Draw instructions to the screen
   draw_set_color(c_white);
-  draw_text( view_wport[0]/2, view_hport[0]/2, "PRESS ENTER TO START");
+  draw_text( view_wport[0]/2, view_hport[0]/2, "Press ENTER to Start");
 }
 
 </string>

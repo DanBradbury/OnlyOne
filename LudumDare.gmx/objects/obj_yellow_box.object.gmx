@@ -50,8 +50,59 @@ activated = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(self.x+35, self.y, obj_star);
+            <string>instance_create(self.x+35, self.y, obj_spring);
 instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// move the player away from the spring
+obj_player.x = self.x-50;
+obj_player.freeze = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(activated == true ){
+repeat(1)
+    {
+    effect_create_above(ef_smoke, self.x+35,self.y+35, choose(0, 1, 2), c_white);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -76,11 +127,8 @@ instance_destroy();
             <kind>1</kind>
             <string>/// check if player has key
 if( obj_hud.num_keys &gt;= 1 &amp;&amp; activated == false){
-    repeat(10)
-    {
-    effect_create_above(ef_firework, random(room_width), random(room_height), choose(0, 1, 2), make_color_hsv(random(255), 255, 255));
-    }
     activated = true;
+    other.freeze = true;
     alarm[0] = 30;
     obj_hud.num_keys -= 1;
 }

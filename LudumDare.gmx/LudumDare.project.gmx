@@ -13,6 +13,11 @@
     <sprites name="Player">
       <sprite>sprites\spr_player_idle</sprite>
       <sprite>sprites\spr_player_running</sprite>
+      <sprite>sprites\spr_player_jumping</sprite>
+      <sprite>sprites\spr_player_hurt</sprite>
+      <sprite>sprites\spr_player_climb</sprite>
+      <sprite>sprites\spr_player_idle_old</sprite>
+      <sprite>sprites\spr_player_running_old</sprite>
     </sprites>
     <sprites name="Grass Tiles">
       <sprites name="Decorators">
@@ -55,7 +60,22 @@
       <sprite>sprites\spr_door_bot</sprite>
       <sprite>sprites\spr_door_top</sprite>
       <sprite>sprites\spr_flag_red</sprite>
+      <sprite>sprites\spr_flag_hanging</sprite>
       <sprite>sprites\spr_spring</sprite>
+      <sprite>sprites\spr_coin</sprite>
+    </sprites>
+    <sprites name="HUD">
+      <sprite>sprites\spr_star</sprite>
+      <sprite>sprites\spr_enabled_key</sprite>
+      <sprite>sprites\spr_heart</sprite>
+      <sprite>sprites\spr_coin_hud</sprite>
+      <sprite>sprites\spr_disabled_key</sprite>
+    </sprites>
+    <sprites name="Enemies">
+      <sprite>sprites\spr_worm</sprite>
+      <sprite>sprites\spr_frog</sprite>
+      <sprite>sprites\spr_pirana</sprite>
+      <sprite>sprites\spr_monster_pirana</sprite>
     </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
     <sprite>sprites\spr_ladder_top</sprite>
@@ -85,12 +105,6 @@
     <sprite>sprites\spr_moving_platform</sprite>
     <sprite>sprites\spr_passable_platform</sprite>
     <sprite>sprites\sprite39</sprite>
-    <sprite>sprites\spr_disabled_key</sprite>
-    <sprite>sprites\spr_star</sprite>
-    <sprite>sprites\spr_worm</sprite>
-    <sprite>sprites\spr_frog</sprite>
-    <sprite>sprites\spr_enabled_key</sprite>
-    <sprite>sprites\spr_pirana</sprite>
     <sprite>sprites\spr_colon</sprite>
     <sprite>sprites\spr_numbers</sprite>
   </sprites>
@@ -111,14 +125,37 @@
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
       <object>objects\obj_pirana</object>
+      <object>objects\obj_monster_pirana</object>
+      <object>objects\obj_rando_piranas</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_frog</object>
       <object>objects\obj_blockers</object>
     </objects>
     <objects name="Grass World">
+      <objects name="passable">
+        <object>objects\obj_bridge_logs</object>
+        <object>objects\obj_grass_half_middle</object>
+        <object>objects\obj_grass_half_right</object>
+        <object>objects\obj_grass_half_left</object>
+      </objects>
+      <objects name="liquids">
+        <object>objects\obj_water_crest1</object>
+        <object>objects\obj_water_solid</object>
+        <object>objects\obj_water_crest2</object>
+        <object>objects\obj_lava_crest1</object>
+        <object>objects\obj_lava_solid</object>
+      </objects>
+      <objects name="accessories">
+        <object>objects\obj_shroom</object>
+        <object>objects\obj_bush</object>
+        <object>objects\obj_rock</object>
+        <object>objects\obj_shroom2</object>
+        <object>objects\obj_cactus</object>
+        <object>objects\obj_plant</object>
+      </objects>
       <object>objects\obj_grass</object>
+      <object>objects\obj_invis_floor</object>
       <object>objects\obj_grass_left</object>
-      <object>objects\obj_bridge_logs</object>
       <object>objects\obj_grass_cliff_left</object>
       <object>objects\obj_grass_cliff_right</object>
       <object>objects\obj_grass_left_round</object>
@@ -133,20 +170,6 @@
       <object>objects\obj_fence</object>
       <object>objects\obj_grass_middle</object>
       <object>objects\obj_cliff_middle</object>
-      <object>objects\obj_grass_half_middle</object>
-      <object>objects\obj_grass_half_right</object>
-      <object>objects\obj_water_crest1</object>
-      <object>objects\obj_grass_half_left</object>
-      <object>objects\obj_water_solid</object>
-      <object>objects\obj_lava_crest1</object>
-      <object>objects\obj_water_crest2</object>
-      <object>objects\obj_shroom</object>
-      <object>objects\obj_lava_solid</object>
-      <object>objects\obj_bush</object>
-      <object>objects\obj_rock</object>
-      <object>objects\obj_shroom2</object>
-      <object>objects\obj_cactus</object>
-      <object>objects\obj_plant</object>
     </objects>
     <objects name="Interactables">
       <object>objects\obj_spring</object>
@@ -157,6 +180,7 @@
       <object>objects\obj_jump_pad</object>
       <object>objects\obj_ladder_mid</object>
       <object>objects\obj_ladder_top</object>
+      <object>objects\obj_coin</object>
     </objects>
     <objects name="Building Blocks">
       <object>objects\obj_timer</object>
@@ -191,13 +215,14 @@
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_passable_platform</object>
     <object>objects\obj_door</object>
+    <object>objects\obj_thanks</object>
     <object>objects\obj_star</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RUN</room>
     <room>rooms\room4</room>
     <room>rooms\room5</room>
-    <room>rooms\room3</room>
+    <room>rooms\room6</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

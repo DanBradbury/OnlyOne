@@ -29,6 +29,10 @@
 move = -2;
 image_speed = 0.1;
 killed = false;
+hit_active = false;
+type = "worm";
+damage = 1;
+
 </string>
           </argument>
         </arguments>
