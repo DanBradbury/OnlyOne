@@ -77,6 +77,12 @@
       <sprite>sprites\spr_pirana</sprite>
       <sprite>sprites\spr_monster_pirana</sprite>
     </sprites>
+    <sprites name="Controls">
+      <sprite>sprites\spr_right</sprite>
+      <sprite>sprites\spr_left</sprite>
+      <sprite>sprites\spr_a</sprite>
+      <sprite>sprites\spr_b</sprite>
+    </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
     <sprite>sprites\spr_ladder_top</sprite>
     <sprite>sprites\spr_brick_wall</sprite>
@@ -200,6 +206,11 @@
       <object>objects\obj_shot_select</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_level_end</object>
+    </objects>
+    <objects name="Controls">
+      <object>objects\obj_right_button</object>
+      <object>objects\obj_left_button</object>
+      <object>objects\obj_a_button</object>
     </objects>
     <object>objects\obj_brick_wall</object>
     <object>objects\obj_spike</object>

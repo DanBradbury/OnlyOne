@@ -153,8 +153,8 @@
     <option_ios_minor_version>0</option_ios_minor_version>
     <option_ios_orient_landscape>-1</option_ios_orient_landscape>
     <option_ios_orient_landscape_right>-1</option_ios_orient_landscape_right>
-    <option_ios_orient_portrait>-1</option_ios_orient_portrait>
-    <option_ios_orient_portrait_upside_down>-1</option_ios_orient_portrait_upside_down>
+    <option_ios_orient_portrait>0</option_ios_orient_portrait>
+    <option_ios_orient_portrait_upside_down>0</option_ios_orient_portrait_upside_down>
     <option_ios_provisioning>&lt; Press refresh to fetch provisioning list from Mac&gt;</option_ios_provisioning>
     <option_ios_push_enable>false</option_ios_push_enable>
     <option_ios_set_device_id></option_ios_set_device_id>
@@ -196,7 +196,7 @@
     <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>-1</option_mac_screenkey>
     <option_mac_showcursor>-1</option_mac_showcursor>
-    <option_mac_sizeable>0</option_mac_sizeable>
+    <option_mac_sizeable>-1</option_mac_sizeable>
     <option_mac_splash_png>Configs\Default\mac\splash.png</option_mac_splash_png>
     <option_mac_steam_app_id>0</option_mac_steam_app_id>
     <option_mac_sync>0</option_mac_sync>
@@ -213,6 +213,7 @@
     <option_scaleprogress>true</option_scaleprogress>
     <option_screenkey>True</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
+    <option_shortcircuit>True</option_shortcircuit>
     <option_showcursor>True</option_showcursor>
     <option_showprogress>1</option_showprogress>
     <option_sizeable>False</option_sizeable>

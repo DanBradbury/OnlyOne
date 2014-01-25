@@ -32,6 +32,7 @@ room_instance_add(r,0,0,obj_death_menu);
 room_goto(r);
 */
 selected = "AGAIN";
+next_level = YoYo_AddVirtualKey( view_xport[view_current], view_yport[view_current], view_wport[view_current], view_hport[view_current], vk_enter)
 </string>
           </argument>
         </arguments>

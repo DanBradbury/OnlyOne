@@ -542,6 +542,8 @@ if(other.side=="right"){
 */
 if ( (self.x-37) &lt; other.x){
    self.x = other.x-10;
+}else{
+  self.x = other.x+75
 }
 //motion_set(0,0);
 
@@ -704,7 +706,7 @@ motion_set(0,0);
           <argument>
             <kind>1</kind>
             <string>/// MOVE RIGHT
-if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false){
+if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze == false){
 hspeed = (base_ms+move_accel);
 moving = true;
 mov_dir = "right";

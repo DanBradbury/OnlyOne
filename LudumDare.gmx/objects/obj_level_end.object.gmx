@@ -29,6 +29,7 @@
 end_level_points = 0;
 alarm[0] = 60;
 delay = true;
+
 </string>
           </argument>
         </arguments>
@@ -52,6 +53,7 @@ delay = true;
           <argument>
             <kind>1</kind>
             <string>delay = false;
+next_level = YoYo_AddVirtualKey( view_xview[view_current], view_yview[view_current], 960, 640, vk_enter)
 </string>
           </argument>
         </arguments>
@@ -136,6 +138,7 @@ draw_text( view_wport[0]/2, view_hport[0]/2-100, "POINTS: "+ string(end_level_po
           <argument>
             <kind>1</kind>
             <string>room_goto_next();
+next_level = "";
 </string>
           </argument>
         </arguments>

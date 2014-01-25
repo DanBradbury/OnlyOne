@@ -31,6 +31,7 @@ offset = current_time;
 minutes = 0;
 seconds = 0;
 ms = 0;
+press = false;
 </string>
           </argument>
         </arguments>
@@ -61,6 +62,12 @@ ms = 0;
 if( (view_xview[0] + view_wview[0]) &lt; room_width ){
   view_xview[0]+= 4;
 }
+}
+if device_mouse_check_button_pressed(0, mb_left){
+   view_visible[1] = true;
+   instance_create(0,0, obj_timer);
+   global._level_started = true;
+   instance_destroy();
 }
 </string>
           </argument>
