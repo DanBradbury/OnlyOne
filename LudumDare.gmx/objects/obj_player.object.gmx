@@ -269,7 +269,7 @@ if(delay_jump == true){
 }
 // toy with image speeds for whatever situation
 if(moving == true){
-    image_speed = 0.6; //.6
+    image_speed = 0.4; //.6
 }else if(global._jump == true &amp;&amp; attacking == false){
     image_speed = 0.6; //.3
 }
