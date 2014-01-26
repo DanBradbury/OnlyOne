@@ -76,12 +76,23 @@
       <sprite>sprites\spr_frog</sprite>
       <sprite>sprites\spr_pirana</sprite>
       <sprite>sprites\spr_monster_pirana</sprite>
+      <sprite>sprites\spr_lava_snake</sprite>
     </sprites>
     <sprites name="Controls">
       <sprite>sprites\spr_right</sprite>
       <sprite>sprites\spr_left</sprite>
       <sprite>sprites\spr_a</sprite>
       <sprite>sprites\spr_b</sprite>
+    </sprites>
+    <sprites name="Catle Tiles">
+      <sprite>sprites\spr_castle</sprite>
+      <sprite>sprites\spr_castle_center</sprite>
+      <sprite>sprites\spr_castle_cliff_right</sprite>
+      <sprite>sprites\spr_castle_half_right</sprite>
+      <sprite>sprites\spr_castle_half_left</sprite>
+      <sprite>sprites\spr_castle_half_middle</sprite>
+      <sprite>sprites\spr_castle_half_solo</sprite>
+      <sprite>sprites\spr_castle_cliff_left</sprite>
     </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
     <sprite>sprites\spr_ladder_top</sprite>
