@@ -32,6 +32,9 @@ minutes = 0;
 seconds = 0;
 ms = 0;
 press = false;
+
+bars = 0;
+max_bar = 150;
 </string>
           </argument>
         </arguments>
@@ -69,6 +72,9 @@ if device_mouse_check_button_pressed(0, mb_left){
    global._level_started = true;
    instance_destroy();
 }
+if(bars &lt;= max_bar){
+    bars += 1;
+}
 </string>
           </argument>
         </arguments>
@@ -98,7 +104,9 @@ if device_mouse_check_button_pressed(0, mb_left){
   draw_set_color(c_white);
   draw_text( view_wport[0]/2, view_hport[0]/2, "Press ENTER to Start");
 }
-
+draw_set_color(c_black);
+draw_rectangle(0,0,room_width, bars, false);
+draw_rectangle(0,view_hview[1], room_width, view_hview[1]-bars,false);
 </string>
           </argument>
         </arguments>
