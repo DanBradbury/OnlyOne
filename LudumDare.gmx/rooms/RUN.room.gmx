@@ -413,7 +413,7 @@ global.total_points = 65;</code>
     <instance objName="obj_passable_platform" x="2870" y="630" name="inst_30743140" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pirana" x="2170" y="1050" name="inst_AC6E8A27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1540" y="420" name="inst_85116112" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_worm" x="1050" y="700" name="inst_56DF4A32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_snail" x="1050" y="700" name="inst_F60CAC52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="770" y="630" name="inst_62F33680" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="700" y="630" name="inst_7D0DBD6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1260" y="560" name="inst_0B18AD8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

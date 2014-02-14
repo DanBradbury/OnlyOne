@@ -84,6 +84,18 @@ hit = false;
       global.health -= damage;
       alarm[11] = 30;
       other.hit = true;
+}else if( type == "snail" &amp;&amp; self.killed == true){
+    if(global._can_jump == false &amp;&amp; global._jump == false){
+        deactivated = true;
+    }else{
+        moving = other.hspeed;
+        
+        if( moving &gt;0 ){
+            moving += 5;
+        }else{
+            moving -= 5;
+        } 
+    }
 }
 </string>
           </argument>

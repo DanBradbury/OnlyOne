@@ -867,6 +867,17 @@ if(global._active_item=="REVOLVER"){
 if(jump==true){
     draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
 }
+
+//draw raygun SOLID
+draw_sprite_ext(spr_raygun,0,self.x,self.y,image_xscale, image_yscale, 0, c_white, 1);
+//draw umbrella NEEDS WORK
+/*
+if(global._jump == true){
+    draw_sprite_ext(spr_umbrella,1,self.x-10,self.y-10,image_xscale, image_yscale, 0, c_white, 1);
+}else{
+    draw_sprite_ext(spr_umbrella,0,self.x-10,self.y-10,image_xscale, image_yscale, 0, c_white, 1);
+}
+*/
 </string>
           </argument>
         </arguments>

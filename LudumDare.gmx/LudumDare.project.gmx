@@ -10,14 +10,26 @@
     <sound>sound\snd_shot</sound>
   </sounds>
   <sprites name="sprites">
-    <sprites name="Player">
-      <sprite>sprites\spr_player_idle</sprite>
-      <sprite>sprites\spr_player_running</sprite>
-      <sprite>sprites\spr_player_jumping</sprite>
-      <sprite>sprites\spr_player_hurt</sprite>
-      <sprite>sprites\spr_player_climb</sprite>
-      <sprite>sprites\spr_player_idle_old</sprite>
-      <sprite>sprites\spr_player_running_old</sprite>
+    <sprites name="Characters">
+      <sprites name="Player">
+        <sprite>sprites\spr_player_idle</sprite>
+        <sprite>sprites\spr_player_running</sprite>
+        <sprite>sprites\spr_player_running_mad</sprite>
+        <sprite>sprites\spr_player_jumping</sprite>
+        <sprite>sprites\spr_player_hurt</sprite>
+        <sprite>sprites\spr_player_climb</sprite>
+        <sprite>sprites\spr_player_idle_old</sprite>
+        <sprite>sprites\spr_player_running_old</sprite>
+      </sprites>
+      <sprites name="Bad Guy">
+        <sprite>sprites\spr_badie_running</sprite>
+        <sprite>sprites\spr_badie_idle</sprite>
+        <sprite>sprites\spr_badie_climb</sprite>
+      </sprites>
+      <sprites name="Lover">
+        <sprite>sprites\spr_lover_hurt</sprite>
+        <sprite>sprites\spr_lover_idle</sprite>
+      </sprites>
     </sprites>
     <sprites name="Grass Tiles">
       <sprites name="Decorators">
@@ -63,6 +75,11 @@
       <sprite>sprites\spr_flag_hanging</sprite>
       <sprite>sprites\spr_spring</sprite>
       <sprite>sprites\spr_coin</sprite>
+      <sprite>sprites\spr_umbrella</sprite>
+      <sprite>sprites\spr_raygun</sprite>
+      <sprite>sprites\spr_laser_ball</sprite>
+      <sprite>sprites\spr_laser</sprite>
+      <sprite>sprites\spr_laser_burst</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_star</sprite>
@@ -77,6 +94,15 @@
       <sprite>sprites\spr_pirana</sprite>
       <sprite>sprites\spr_monster_pirana</sprite>
       <sprite>sprites\spr_lava_snake</sprite>
+      <sprite>sprites\spr_snail_walk</sprite>
+      <sprite>sprites\spr_snail_shell</sprite>
+      <sprite>sprites\spr_fly_move</sprite>
+      <sprite>sprites\spr_fly_dead</sprite>
+      <sprite>sprites\spr_spinner_right</sprite>
+      <sprite>sprites\spr_spinner_dead</sprite>
+      <sprite>sprites\spr_spinner_idle</sprite>
+      <sprite>sprites\spr_grass_block</sprite>
+      <sprite>sprites\spr_laser_right</sprite>
     </sprites>
     <sprites name="Controls">
       <sprite>sprites\spr_right</sprite>
@@ -93,6 +119,167 @@
       <sprite>sprites\spr_castle_half_middle</sprite>
       <sprite>sprites\spr_castle_half_solo</sprite>
       <sprite>sprites\spr_castle_cliff_left</sprite>
+    </sprites>
+    <sprites name="Main Menu">
+      <sprite>sprites\spr_mm_main</sprite>
+      <sprite>sprites\spr_mm_bad_guy</sprite>
+    </sprites>
+    <sprites name="Tundra">
+      <sprite>sprites\spr_tundra</sprite>
+      <sprite>sprites\spr_tundraCenter</sprite>
+      <sprite>sprites\spr_tundraCliffLeft</sprite>
+      <sprite>sprites\spr_tundraCliffLeftAlt</sprite>
+      <sprite>sprites\spr_tundraCliffRight</sprite>
+      <sprite>sprites\spr_tundraCliffRightAlt</sprite>
+      <sprite>sprites\spr_tundraHalf</sprite>
+      <sprite>sprites\spr_tundraHalfLeft</sprite>
+      <sprite>sprites\spr_tundraHalfMid</sprite>
+      <sprite>sprites\spr_tundraHalfRight</sprite>
+      <sprite>sprites\spr_tundraHillLeft</sprite>
+      <sprite>sprites\spr_tundraHillLeft2</sprite>
+      <sprite>sprites\spr_tundraHillRight</sprite>
+      <sprite>sprites\spr_tundraHillRight2</sprite>
+      <sprite>sprites\spr_tundraLedgeLeft</sprite>
+      <sprite>sprites\spr_tundraLedgeRight</sprite>
+      <sprite>sprites\spr_tundraLeft</sprite>
+      <sprite>sprites\spr_tundraMid</sprite>
+      <sprite>sprites\spr_tundraRight</sprite>
+      <sprite>sprites\spr_deadTree</sprite>
+    </sprites>
+    <sprites name="Dirt">
+      <sprite>sprites\spr_dirt</sprite>
+      <sprite>sprites\spr_dirtCenter</sprite>
+      <sprite>sprites\spr_dirtCenter_rounded</sprite>
+      <sprite>sprites\spr_dirtCliffLeft</sprite>
+      <sprite>sprites\spr_dirtCliffLeftAlt</sprite>
+      <sprite>sprites\spr_dirtCliffRight</sprite>
+      <sprite>sprites\spr_dirtCliffRightAlt</sprite>
+      <sprite>sprites\spr_dirtHalf</sprite>
+      <sprite>sprites\spr_dirtHalfMid</sprite>
+      <sprite>sprites\spr_dirtHalfLeft</sprite>
+      <sprite>sprites\spr_dirtHalfRight</sprite>
+      <sprite>sprites\spr_dirtHillLeft</sprite>
+      <sprite>sprites\spr_dirtHillLeft2</sprite>
+      <sprite>sprites\spr_dirtHillRight</sprite>
+      <sprite>sprites\spr_dirtHillRight2</sprite>
+      <sprite>sprites\spr_dirtLedgeLeft</sprite>
+      <sprite>sprites\spr_dirtLedgeRight</sprite>
+      <sprite>sprites\spr_dirtLeft</sprite>
+      <sprite>sprites\spr_dirtMid</sprite>
+      <sprite>sprites\spr_dirtRight</sprite>
+    </sprites>
+    <sprites name="Sand">
+      <sprite>sprites\spr_sand</sprite>
+      <sprite>sprites\spr_sandCenter</sprite>
+      <sprite>sprites\spr_sandCenter_rounded</sprite>
+      <sprite>sprites\spr_sandCliffLeft</sprite>
+      <sprite>sprites\spr_sandCliffLeftAlt</sprite>
+      <sprite>sprites\spr_sandCliffRight</sprite>
+      <sprite>sprites\spr_sandCliffRightAlt</sprite>
+      <sprite>sprites\spr_sandHalf</sprite>
+      <sprite>sprites\spr_sandHalfLeft</sprite>
+      <sprite>sprites\spr_sandHalfMid</sprite>
+      <sprite>sprites\spr_sandHalfRight</sprite>
+      <sprite>sprites\spr_sandHillLeft</sprite>
+      <sprite>sprites\spr_sandHillLeft2</sprite>
+      <sprite>sprites\spr_sandHillRight</sprite>
+      <sprite>sprites\spr_sandHillRight2</sprite>
+      <sprite>sprites\spr_sandLedgeLeft</sprite>
+      <sprite>sprites\spr_sandLedgeRight</sprite>
+      <sprite>sprites\spr_sandLeft</sprite>
+      <sprite>sprites\spr_sandMid</sprite>
+      <sprite>sprites\spr_sandRight</sprite>
+    </sprites>
+    <sprites name="Snow">
+      <sprite>sprites\spr_snow</sprite>
+      <sprite>sprites\spr_snowCenter</sprite>
+      <sprite>sprites\spr_snowCenter_rounded</sprite>
+      <sprite>sprites\spr_snowCliffLeft</sprite>
+      <sprite>sprites\spr_snowCliffLeftAlt</sprite>
+      <sprite>sprites\spr_snowCliffRight</sprite>
+      <sprite>sprites\spr_snowCliffRightAlt</sprite>
+      <sprite>sprites\spr_snowGroundLeft</sprite>
+      <sprite>sprites\spr_snowGroundRight</sprite>
+      <sprite>sprites\spr_snowHalf</sprite>
+      <sprite>sprites\spr_snowHalfLeft</sprite>
+      <sprite>sprites\spr_snowHalfMid</sprite>
+      <sprite>sprites\spr_snowHalfRight</sprite>
+      <sprite>sprites\spr_snowHill</sprite>
+      <sprite>sprites\spr_snowHillLeft</sprite>
+      <sprite>sprites\spr_snowHillLeft2</sprite>
+      <sprite>sprites\spr_snowHillLow</sprite>
+      <sprite>sprites\spr_snowHillRight</sprite>
+      <sprite>sprites\spr_snowHillRight2</sprite>
+      <sprite>sprites\spr_snowLedgeLeft</sprite>
+      <sprite>sprites\spr_snowLedgeRight</sprite>
+      <sprite>sprites\spr_snowLeft</sprite>
+      <sprite>sprites\spr_snowMid</sprite>
+      <sprite>sprites\spr_snowRight</sprite>
+      <sprite>sprites\spr_snowWave</sprite>
+    </sprites>
+    <sprites name="Stone">
+      <sprite>sprites\spr_stone</sprite>
+      <sprite>sprites\spr_stoneCenter</sprite>
+      <sprite>sprites\spr_stoneCenter_rounded</sprite>
+      <sprite>sprites\spr_stoneCliffLeft</sprite>
+      <sprite>sprites\spr_stoneCliffLeftAlt</sprite>
+      <sprite>sprites\spr_stoneCliffRight</sprite>
+      <sprite>sprites\spr_stoneCliffRightAlt</sprite>
+      <sprite>sprites\spr_stoneHalf</sprite>
+      <sprite>sprites\spr_stoneHalfLeft</sprite>
+      <sprite>sprites\spr_stoneHalfMid</sprite>
+      <sprite>sprites\spr_stoneHalfRight</sprite>
+      <sprite>sprites\spr_stoneHillLeft</sprite>
+      <sprite>sprites\spr_stoneHillLeft2</sprite>
+      <sprite>sprites\spr_stoneHillRight</sprite>
+      <sprite>sprites\spr_stoneHillRight2</sprite>
+      <sprite>sprites\spr_stoneLedgeLeft</sprite>
+      <sprite>sprites\spr_stoneLedgeRight</sprite>
+      <sprite>sprites\spr_stoneLeft</sprite>
+      <sprite>sprites\spr_stoneMid</sprite>
+      <sprite>sprites\spr_stoneRight</sprite>
+      <sprite>sprites\spr_stoneWall</sprite>
+    </sprites>
+    <sprites name="Spikes">
+      <sprite>sprites\spr_spikesBottom</sprite>
+      <sprite>sprites\spr_spikesBottomAlt</sprite>
+      <sprite>sprites\spr_spikesBottomAlt2</sprite>
+      <sprite>sprites\spr_spikesTop</sprite>
+      <sprite>sprites\spr_spikesTopAlt</sprite>
+      <sprite>sprites\spr_spikesTopAlt2</sprite>
+      <sprite>sprites\spr_spikeTop</sprite>
+    </sprites>
+    <sprites name="Boxes">
+      <sprite>sprites\spr_boxAlt</sprite>
+      <sprite>sprites\spr_box</sprite>
+      <sprite>sprites\spr_boxCoin</sprite>
+      <sprite>sprites\spr_boxCoinAlt</sprite>
+      <sprite>sprites\spr_boxEmpty</sprite>
+      <sprite>sprites\spr_boxExplosive</sprite>
+      <sprite>sprites\spr_boxExplosiveAlt</sprite>
+      <sprite>sprites\spr_boxItem</sprite>
+      <sprite>sprites\spr_boxWarning</sprite>
+      <sprite>sprites\spr_brickWall</sprite>
+    </sprites>
+    <sprites name="Signs">
+      <sprite>sprites\spr_sign</sprite>
+      <sprite>sprites\spr_signExit</sprite>
+      <sprite>sprites\spr_signLeft</sprite>
+      <sprite>sprites\spr_signRight</sprite>
+    </sprites>
+    <sprites name="Ice">
+      <sprite>sprites\spr_iceBlock</sprite>
+      <sprite>sprites\spr_iceBlockAlt</sprite>
+      <sprite>sprites\spr_iceBlockHalf</sprite>
+      <sprite>sprites\spr_iceBlockHalfAlt</sprite>
+      <sprite>sprites\spr_iceWater</sprite>
+      <sprite>sprites\spr_iceWaterAlt</sprite>
+      <sprite>sprites\spr_iceWaterDeep</sprite>
+      <sprite>sprites\spr_iceWaterDeepAlt</sprite>
+      <sprite>sprites\spr_iceWaterDeepStars</sprite>
+      <sprite>sprites\spr_iceWaterDeepStarsAlt</sprite>
+      <sprite>sprites\spr_iceWaterMid</sprite>
+      <sprite>sprites\spr_iceWaterMidAlt</sprite>
     </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
     <sprite>sprites\spr_ladder_top</sprite>
@@ -124,13 +311,21 @@
     <sprite>sprites\sprite39</sprite>
     <sprite>sprites\spr_colon</sprite>
     <sprite>sprites\spr_numbers</sprite>
+    <sprite>sprites\spr_selector1</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\background1</background>
     <background>background\background2</background>
+    <background>background\background3</background>
+    <background>background\background4</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\p_mm_lover</path>
+    <path>paths\path0</path>
+    <path>paths\p_mm_badie</path>
+    <path>paths\p_mm_title</path>
+  </paths>
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>
@@ -145,8 +340,14 @@
       <object>objects\obj_monster_pirana</object>
       <object>objects\obj_rando_piranas</object>
       <object>objects\obj_worm</object>
+      <object>objects\obj_grass_block</object>
+      <object>objects\obj_snail</object>
       <object>objects\obj_frog</object>
       <object>objects\obj_blockers</object>
+      <object>objects\obj_fly</object>
+      <object>objects\obj_spinner</object>
+      <object>objects\obj_gunshot_right</object>
+      <object>objects\obj_gun_right</object>
     </objects>
     <objects name="Grass World">
       <objects name="passable">
@@ -239,8 +440,18 @@
     <object>objects\obj_door</object>
     <object>objects\obj_thanks</object>
     <object>objects\obj_star</object>
+    <object>objects\obj_level_select</object>
+    <object>objects\obj_ls_button1</object>
+    <object>objects\obj_mm_char3</object>
+    <object>objects\obj_mm_title</object>
+    <object>objects\obj_mm_char2</object>
+    <object>objects\obj_mm_char1</object>
+    <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\TESTING_GROUNDS</room>
+    <room>rooms\MAIN_MENU</room>
+    <room>rooms\LEVEL_SELECT</room>
     <room>rooms\RUN</room>
     <room>rooms\room4</room>
     <room>rooms\room5</room>
