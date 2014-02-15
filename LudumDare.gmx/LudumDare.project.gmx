@@ -78,7 +78,6 @@
       <sprite>sprites\spr_umbrella</sprite>
       <sprite>sprites\spr_raygun</sprite>
       <sprite>sprites\spr_laser_ball</sprite>
-      <sprite>sprites\spr_laser</sprite>
       <sprite>sprites\spr_laser_burst</sprite>
     </sprites>
     <sprites name="HUD">
@@ -89,6 +88,14 @@
       <sprite>sprites\spr_disabled_key</sprite>
     </sprites>
     <sprites name="Enemies">
+      <sprites name="Guns">
+        <sprite>sprites\spr_laser_right</sprite>
+        <sprite>sprites\spr_laser_left</sprite>
+        <sprite>sprites\spr_laser</sprite>
+        <sprite>sprites\spr_laser_up</sprite>
+        <sprite>sprites\spr_laser_vert</sprite>
+        <sprite>sprites\spr_laser_down</sprite>
+      </sprites>
       <sprite>sprites\spr_worm</sprite>
       <sprite>sprites\spr_frog</sprite>
       <sprite>sprites\spr_pirana</sprite>
@@ -102,7 +109,6 @@
       <sprite>sprites\spr_spinner_dead</sprite>
       <sprite>sprites\spr_spinner_idle</sprite>
       <sprite>sprites\spr_grass_block</sprite>
-      <sprite>sprites\spr_laser_right</sprite>
     </sprites>
     <sprites name="Controls">
       <sprite>sprites\spr_right</sprite>
@@ -346,8 +352,6 @@
       <object>objects\obj_blockers</object>
       <object>objects\obj_fly</object>
       <object>objects\obj_spinner</object>
-      <object>objects\obj_gunshot_right</object>
-      <object>objects\obj_gun_right</object>
     </objects>
     <objects name="Grass World">
       <objects name="passable">
@@ -423,6 +427,17 @@
       <object>objects\obj_right_button</object>
       <object>objects\obj_left_button</object>
       <object>objects\obj_a_button</object>
+    </objects>
+    <objects name="Guns">
+      <object>objects\obj_gun_right</object>
+      <object>objects\obj_gun_left</object>
+      <object>objects\obj_gun_up</object>
+      <object>objects\obj_gun_down</object>
+      <object>objects\obj_gunshot_right</object>
+      <object>objects\obj_gunshot_left</object>
+      <object>objects\obj_gunshot_up</object>
+      <object>objects\obj_gunshot_down</object>
+      <object>objects\obj_gunshot</object>
     </objects>
     <object>objects\obj_brick_wall</object>
     <object>objects\obj_spike</object>
