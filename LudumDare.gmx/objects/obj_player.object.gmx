@@ -81,6 +81,7 @@ global.health = 2;
 hit_active = false;
 global.coins = 0;
 freeze = false;
+draw_gun = false;
 </string>
           </argument>
         </arguments>
@@ -375,6 +376,52 @@ if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_raygun">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DESTROY RAYGUN
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ACTIVATE RAYGUN DRAWING
+draw_gun = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_passable_platform">
       <action>
         <libid>1</libid>
@@ -609,6 +656,9 @@ global.landed = true;
 }
 
 if( moving == false ){
+  if(_draw_sprite == spr_player_jumping){
+    audio_play_sound(snd_land,10,false);
+  }
   _draw_sprite = spr_player_idle;
 }
 
@@ -793,6 +843,7 @@ _draw_sprite = spr_player_running;
             <kind>1</kind>
             <string>/// HANDLE JUMP
 if (global._can_jump == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false) {
+    audio_play_sound(snd_jump, 10, false);
     vspeed = -21;
     global._can_jump = false;
     global._jump = true;
@@ -867,7 +918,7 @@ message = "YOU CAN'T SWIM"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// DRAW PLAYER
+            <string> /// DRAW PLAYER
 if(global.death_start == true){
 draw_set_blend_mode( bm_add );
  draw_circle_color(100, 100, 50, c_blue, c_black, 0);
@@ -893,8 +944,11 @@ if(jump==true){
     draw_sprite(spr_cmd_jump,0,self.x, self.y-50);
 }
 
+//TODO: wrap this with a variable
+if( draw_gun == true ){
 //draw raygun SOLID
-draw_sprite_ext(spr_raygun,0,self.x,self.y,image_xscale, image_yscale, 0, c_white, 1);
+    draw_sprite_ext(spr_raygun,0,self.x,self.y,image_xscale, image_yscale, 0, c_white, 1);
+}
 //draw umbrella NEEDS WORK
 /*
 if(global._jump == true){

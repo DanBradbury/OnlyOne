@@ -8,6 +8,7 @@
     <sound>sound\sound1</sound>
     <sound>sound\snd_jump</sound>
     <sound>sound\snd_shot</sound>
+    <sound>sound\snd_land</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Characters">
@@ -438,6 +439,7 @@
       <object>objects\obj_gunshot_up</object>
       <object>objects\obj_gunshot_down</object>
       <object>objects\obj_gunshot</object>
+      <object>objects\obj_raygun</object>
     </objects>
     <object>objects\obj_brick_wall</object>
     <object>objects\obj_spike</object>
@@ -465,10 +467,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\TESTING_GROUNDS</room>
+    <room>rooms\room4</room>
     <room>rooms\MAIN_MENU</room>
     <room>rooms\LEVEL_SELECT</room>
     <room>rooms\RUN</room>
-    <room>rooms\room4</room>
     <room>rooms\room5</room>
     <room>rooms\room6</room>
   </rooms>

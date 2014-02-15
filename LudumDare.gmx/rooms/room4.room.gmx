@@ -3,8 +3,8 @@
   <caption></caption>
   <width>3000</width>
   <height>1500</height>
-  <vsnap>70</vsnap>
-  <hsnap>70</hsnap>
+  <vsnap>35</vsnap>
+  <hsnap>35</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -417,7 +417,7 @@ global.total_points = 190;</code>
     <instance objName="obj_grass_half_middle" x="1680" y="980" name="inst_5DEAB134" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_half_middle" x="1960" y="980" name="inst_24B304BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_half_middle" x="2240" y="980" name="inst_A0B983B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass_half_middle" x="2380" y="770" name="inst_A655865E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2380" y="700" name="inst_A655865E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_half_middle" x="2450" y="560" name="inst_9FFBF522" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_half_middle" x="2520" y="350" name="inst_BD351BEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="1260" y="1050" name="inst_4E461F56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -426,7 +426,7 @@ global.total_points = 190;</code>
     <instance objName="obj_passable_platform" x="1680" y="980" name="inst_53EC83B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="1960" y="980" name="inst_2EDA04F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="2240" y="980" name="inst_CD26BBD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_passable_platform" x="2380" y="770" name="inst_D495B6D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2380" y="700" name="inst_D495B6D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="2450" y="560" name="inst_65D05C41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="2520" y="350" name="inst_85CFAA19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water_crest2" x="2940" y="1120" name="inst_BFED29AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -475,11 +475,11 @@ global.total_points = 190;</code>
     <instance objName="obj_passable_platform" x="2730" y="980" name="inst_F7A30064" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="2800" y="980" name="inst_841F5409" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="2870" y="980" name="inst_E2091062" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_rando_piranas" x="2380" y="1260" name="inst_A10E10F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_rando_piranas" x="2450" y="1190" name="inst_2679E1B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_rando_piranas" x="2520" y="1260" name="inst_5C463060" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_rando_piranas" x="2660" y="1260" name="inst_66DCD8F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_rando_piranas" x="2800" y="1260" name="inst_84E65730" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gun_down" x="2380" y="805" name="inst_DF56237F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gun_down" x="2555" y="805" name="inst_34E09E70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2730" y="700" name="inst_8D243559" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2660" y="700" name="inst_91E3430A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2590" y="700" name="inst_E58E00FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rando_piranas" x="1820" y="1190" name="inst_527CF864" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="280" y="1260" name="inst_8808C879" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="280" y="1050" name="inst_B91FABF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -534,6 +534,24 @@ global.total_points = 190;</code>
     <instance objName="obj_plant" x="910" y="350" name="inst_DB1EDAFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plant" x="1680" y="910" name="inst_1538FE4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1190" y="630" name="inst_6584EAF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_right" x="2730" y="700" name="inst_0AC51927" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2450" y="700" name="inst_7C8252A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2520" y="700" name="inst_86CE5B61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2590" y="700" name="inst_00E1C4D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2660" y="700" name="inst_8D21A142" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2310" y="700" name="inst_917B4B57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2240" y="700" name="inst_BD3D1BE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_middle" x="2170" y="700" name="inst_12919F2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_half_left" x="2100" y="700" name="inst_B63A9C6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2100" y="700" name="inst_02389F0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2170" y="700" name="inst_2C098AED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2240" y="700" name="inst_27F3459C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2310" y="700" name="inst_350E786D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2450" y="700" name="inst_D7711F93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2520" y="700" name="inst_91F48AB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2590" y="700" name="inst_DC17AF00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2660" y="700" name="inst_0B44170E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_passable_platform" x="2730" y="700" name="inst_85494910" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
