@@ -82,6 +82,7 @@ hit_active = false;
 global.coins = 0;
 freeze = false;
 draw_gun = false;
+shot_delay = 20;
 </string>
           </argument>
         </arguments>
@@ -150,6 +151,29 @@ global.font = font_add_sprite(spr_numbers,46,false,0);
             <kind>1</kind>
             <string>/// handle trigger out of being hit
 hit = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shot_used = false;
 </string>
           </argument>
         </arguments>
@@ -758,6 +782,38 @@ if(moving == true){
 pauseTime = current_time;
 freeze = true;
 motion_set(0,0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SHOTS FIRED
+if(draw_gun == true &amp;&amp; shot_used == false){
+    if(mov_dir == "right"){
+        instance_create(x,y,obj_rayshot_right);
+    }else{
+        instance_create(x-70,y,obj_rayshot_left);
+    }
+    shot_used = true;
+    alarm[3] = shot_delay;
+end
 </string>
           </argument>
         </arguments>
