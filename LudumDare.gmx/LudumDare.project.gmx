@@ -109,6 +109,9 @@
       <sprite>sprites\spr_snail_shell</sprite>
       <sprite>sprites\spr_fly_move</sprite>
       <sprite>sprites\spr_fly_dead</sprite>
+      <sprite>sprites\spr_bat_dead</sprite>
+      <sprite>sprites\spr_bat_fly</sprite>
+      <sprite>sprites\spr_bat_idle</sprite>
       <sprite>sprites\spr_spinner_right</sprite>
       <sprite>sprites\spr_spinner_dead</sprite>
       <sprite>sprites\spr_spinner_idle</sprite>
@@ -329,6 +332,7 @@
     <background>background\background2</background>
     <background>background\background3</background>
     <background>background\background4</background>
+    <background>background\background5</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\p_mm_lover</path>
@@ -344,6 +348,21 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <objects name="Stone World">
+      <object>objects\obj_stoneLeft</object>
+      <object>objects\obj_stoneRight</object>
+      <object>objects\obj_stoneMid</object>
+      <object>objects\obj_stone</object>
+      <object>objects\obj_stoneCenter</object>
+      <object>objects\obj_stoneCliffLeftAlt</object>
+      <object>objects\obj_stoneCliffRightAlt</object>
+      <object>objects\obj_stoneHalf</object>
+      <object>objects\obj_stoneHalfRight</object>
+      <object>objects\obj_stoneHalfLeft</object>
+      <object>objects\obj_stoneHalfMid</object>
+      <object>objects\obj_stoneHillRight1</object>
+      <object>objects\obj_stoneHillRight2</object>
+    </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
       <object>objects\obj_pirana</object>
@@ -355,6 +374,7 @@
       <object>objects\obj_frog</object>
       <object>objects\obj_blockers</object>
       <object>objects\obj_fly</object>
+      <object>objects\obj_bat</object>
       <object>objects\obj_spinner</object>
     </objects>
     <objects name="Grass World">
@@ -471,10 +491,11 @@
     <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room8</room>
     <room>rooms\TESTING_GROUNDS</room>
-    <room>rooms\room4</room>
     <room>rooms\MAIN_MENU</room>
     <room>rooms\LEVEL_SELECT</room>
+    <room>rooms\room4</room>
     <room>rooms\RUN</room>
     <room>rooms\room5</room>
     <room>rooms\room6</room>
