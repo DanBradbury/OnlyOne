@@ -55,6 +55,7 @@ instance_deactivate_object(obj_moving_platform);
 instance_deactivate_object(obj_pirana);
 instance_deactivate_object(obj_monster_pirana);
 instance_deactivate_object(obj_rando_piranas);
+instance_deactivate_object(obj_bat);
 visible = true;
 
 size = 1.5; // Change this amount to change the amount of blur

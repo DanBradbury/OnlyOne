@@ -670,7 +670,6 @@ if ( (self.x-37) &lt; other.x){
             <string>/// HANDLE COLLISION
 // if we are on top of the floor    
 if(gravity==1 &amp;&amp; global._jump == false){
-        //gravity = 0;
         self.y = other.y;   
         //motion_set(0,0);
         global._can_jump = true; 

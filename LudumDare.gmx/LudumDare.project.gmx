@@ -491,8 +491,8 @@
     <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room8</room>
     <room>rooms\TESTING_GROUNDS</room>
+    <room>rooms\room8</room>
     <room>rooms\MAIN_MENU</room>
     <room>rooms\LEVEL_SELECT</room>
     <room>rooms\room4</room>
