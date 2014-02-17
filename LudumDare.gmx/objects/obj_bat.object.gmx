@@ -95,26 +95,6 @@ sprite_index = spr_bat_idle;
 
 // will need to consider going aggro
 if(idle == false &amp;&amp; killed == false){
-/* OLD MOVEMENT (from fly)
-    if( dir == "left" ){
-        image_xscale = 1;
-        hspeed = move;
-    }else{
-        image_xscale = -1;
-        dir = "right";
-        hspeed = -move;
-    }
-    
-    if(self.x &lt; (start-300) ){
-        dir = "right";
-        hspeed = -move;
-    }else 
-    if(self.x &gt; (start+300) ){
-        dir = "left";
-        hspeed = move;
-    }
-*/
-    
     // START AGGRO-BAT
     move_towards_point(obj_player.x, obj_player.y, 5);
     

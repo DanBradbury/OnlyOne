@@ -50,6 +50,7 @@
       <sprite>sprites\spr_grass_cliff_left</sprite>
       <sprite>sprites\spr_grass_cliff_right</sprite>
       <sprite>sprites\spr_grass_middle</sprite>
+      <sprite>sprites\spr_cliff_indicator</sprite>
       <sprite>sprites\spr_grass_right_round</sprite>
       <sprite>sprites\spr_grass_left_round</sprite>
       <sprite>sprites\spr_grass_center_rounded</sprite>
@@ -115,6 +116,9 @@
       <sprite>sprites\spr_spinner_right</sprite>
       <sprite>sprites\spr_spinner_dead</sprite>
       <sprite>sprites\spr_spinner_idle</sprite>
+      <sprite>sprites\spr_spider_dead</sprite>
+      <sprite>sprites\spr_spiderWalk</sprite>
+      <sprite>sprites\spr_spider</sprite>
       <sprite>sprites\spr_grass_block</sprite>
     </sprites>
     <sprites name="Controls">
@@ -264,6 +268,7 @@
     </sprites>
     <sprites name="Boxes">
       <sprite>sprites\spr_boxAlt</sprite>
+      <sprite>sprites\spr_boxTop</sprite>
       <sprite>sprites\spr_box</sprite>
       <sprite>sprites\spr_boxCoin</sprite>
       <sprite>sprites\spr_boxCoinAlt</sprite>
@@ -293,6 +298,10 @@
       <sprite>sprites\spr_iceWaterDeepStarsAlt</sprite>
       <sprite>sprites\spr_iceWaterMid</sprite>
       <sprite>sprites\spr_iceWaterMidAlt</sprite>
+    </sprites>
+    <sprites name="Door">
+      <sprite>sprites\spr_doorTop_close</sprite>
+      <sprite>sprites\spr_door_closed</sprite>
     </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
     <sprite>sprites\spr_ladder_top</sprite>
@@ -367,6 +376,7 @@
       <object>objects\obj_enemy</object>
       <object>objects\obj_pirana</object>
       <object>objects\obj_monster_pirana</object>
+      <object>objects\obj_monsterSpider</object>
       <object>objects\obj_rando_piranas</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_grass_block</object>
@@ -415,6 +425,7 @@
       <object>objects\obj_fence2</object>
       <object>objects\obj_fence</object>
       <object>objects\obj_grass_middle</object>
+      <object>objects\obj_cliff_indicator</object>
       <object>objects\obj_cliff_middle</object>
     </objects>
     <objects name="Interactables">
@@ -427,6 +438,7 @@
       <object>objects\obj_ladder_mid</object>
       <object>objects\obj_ladder_top</object>
       <object>objects\obj_coin</object>
+      <object>objects\object127</object>
     </objects>
     <objects name="Building Blocks">
       <object>objects\obj_timer</object>
@@ -446,6 +458,7 @@
       <object>objects\obj_shot_select</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_level_end</object>
+      <object>objects\obj_cliff</object>
     </objects>
     <objects name="Controls">
       <object>objects\obj_right_button</object>
@@ -466,6 +479,13 @@
       <object>objects\obj_rayshot_left</object>
       <object>objects\obj_raygun</object>
     </objects>
+    <objects name="Boxes">
+      <object>objects\obj_boxAlt</object>
+      <object>objects\obj_boxTop</object>
+      <object>objects\obj_box</object>
+    </objects>
+    <object>objects\obj_door</object>
+    <object>objects\object128</object>
     <object>objects\obj_brick_wall</object>
     <object>objects\obj_spike</object>
     <object>objects\obj_spike_wall_left</object>
@@ -479,7 +499,6 @@
     <object>objects\obj_bw_right</object>
     <object>objects\obj_moving_platform</object>
     <object>objects\obj_passable_platform</object>
-    <object>objects\obj_door</object>
     <object>objects\obj_thanks</object>
     <object>objects\obj_star</object>
     <object>objects\obj_level_select</object>
@@ -491,12 +510,12 @@
     <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\world1_1</room>
     <room>rooms\TESTING_GROUNDS</room>
     <room>rooms\room8</room>
     <room>rooms\MAIN_MENU</room>
     <room>rooms\LEVEL_SELECT</room>
     <room>rooms\room4</room>
-    <room>rooms\RUN</room>
     <room>rooms\room5</room>
     <room>rooms\room6</room>
   </rooms>
