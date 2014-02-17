@@ -77,6 +77,7 @@ hit = false;
     image_xscale = -1;
     killed = true;
     image_speed = 0;
+    move = 0;
 }else if(hit_active == false &amp;&amp; self.killed == false){
       hit_active = true;
       other.vspeed = -14;
@@ -84,16 +85,28 @@ hit = false;
       global.health -= damage;
       alarm[11] = 30;
       other.hit = true;
-}else if( type == "snail" &amp;&amp; self.killed == true){
+}else if( type == "snail" &amp;&amp; self.killed == true &amp;&amp; safe == false){
+    if( shell_roll == true &amp;&amp; shell_roll_safe == false){
+      hit_active = true;
+      other.vspeed = -14;
+      other.hspeed = self.hspeed*3;
+      global.health -= damage;
+      alarm[11] = 30;
+      other.hit = true;   
+    }
     if(global._can_jump == false &amp;&amp; global._jump == false){
         deactivated = true;
     }else{
-        moving = other.hspeed;
+        shell_roll = true;
+        // how long you are safe from the roll
+        shell_roll_safe = true;
+        alarm[1] = 20;
+        move = other.hspeed;
         
-        if( moving &gt;0 ){
-            moving += 5;
+        if( move &gt;0 ){
+            move = shell_speed;
         }else{
-            moving -= 5;
+            move = -shell_speed;
         } 
     }
 }

@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_enemy</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_snail_walk</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -28,12 +28,64 @@
             <string>gravity = 1;
 move = -3;
 image_speed = 0.1;
+// killed means that the snail is gone but shell is still active
 killed = false;
 hit_active = false;
 type = "snail";
 damage = 1;
+// this is what we will use to control the movement of the snail
 deactivated = false;
+// safe will control not being able to be triggered
+safe = false;
 moving = 0;
+shell_speed = 8;
+shell_roll = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shell_roll_safe = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>safe = false;
 </string>
           </argument>
         </arguments>
@@ -56,23 +108,65 @@ moving = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global._level_started == true &amp;&amp; killed == false){
+            <string>// there was a conditionals for killed but not sure it is needed or the purpose
+if(global._level_started == true){
   hspeed = move;
 }
 if( killed == true){
+    if( sprite_index == spr_snail_walk){
+        safe = true;
+        alarm[0] = 30;
+    }
     sprite_index = spr_snail_shell;
     image_index = 0;
     image_speed = 0;
 }
 
 if( deactivated == true){
-    image_index = 1;
+    //image_index = 1;
 }
 
-if (moving != 0 ){
-    hspeed = moving;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_box">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string> 
+if( move &lt; 0 )
+{
+  if(sprite_index == spr_snail_shell){
+    move = shell_speed;
+  }else{
+    move = 3;
+  }
+  image_xscale = -1;
+  x += 4;
+}else{
+  if(sprite_index == spr_snail_shell){
+    move = -shell_speed;
+  }else{
+    move = -3;
+  }
+  image_xscale = 1;
+  x -= 4;
 }
-
 </string>
           </argument>
         </arguments>
