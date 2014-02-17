@@ -300,7 +300,7 @@
       <sprite>sprites\spr_iceWaterMidAlt</sprite>
     </sprites>
     <sprites name="Door">
-      <sprite>sprites\spr_doorTop_close</sprite>
+      <sprite>sprites\spr_door_open</sprite>
       <sprite>sprites\spr_door_closed</sprite>
     </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
@@ -510,8 +510,8 @@
     <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\TESTING_GROUNDS</room>
     <room>rooms\world1_1</room>
+    <room>rooms\TESTING_GROUNDS</room>
     <room>rooms\room8</room>
     <room>rooms\MAIN_MENU</room>
     <room>rooms\LEVEL_SELECT</room>

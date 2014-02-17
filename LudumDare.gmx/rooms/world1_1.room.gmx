@@ -3,8 +3,8 @@
   <caption></caption>
   <width>6000</width>
   <height>1130</height>
-  <vsnap>8</vsnap>
-  <hsnap>16</hsnap>
+  <vsnap>70</vsnap>
+  <hsnap>70</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -406,7 +406,7 @@ global.total_points = 65;</code>
     <instance objName="obj_spring" x="2380" y="770" name="inst_BDE1821D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_half_middle" x="1890" y="840" name="inst_88F8C9C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="1890" y="840" name="inst_368FBF0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_box" x="5320" y="210" name="inst_B31A2E54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_box" x="5390" y="210" name="inst_B31A2E54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plant" x="1680" y="420" name="inst_8C924F92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plant" x="560" y="630" name="inst_92F26F3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plant" x="630" y="630" name="inst_885CF1B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -561,9 +561,11 @@ global.total_points = 65;</code>
     <instance objName="obj_cliff_middle" x="5390" y="980" name="inst_54CB021D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_box" x="4970" y="350" name="inst_3C65764E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_box" x="4970" y="280" name="inst_2905728E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_box" x="5320" y="350" name="inst_DBB3CB31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_box" x="5320" y="280" name="inst_A5AF67EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_box" x="5390" y="350" name="inst_DBB3CB31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_box" x="5390" y="280" name="inst_A5AF67EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="5530" y="280" name="inst_B9C62850" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_snail" x="5320" y="420" name="inst_4200169E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="5180" y="350" name="inst_70DC4B36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

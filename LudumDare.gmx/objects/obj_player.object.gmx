@@ -103,8 +103,8 @@ shot_delay = 20;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// draw hud for iphone?
-//instance_create(0,0,obj_hud);
+            <string>/// draw hud (includes iphone buttons)
+instance_create(0,0,obj_hud);
 </string>
           </argument>
         </arguments>
@@ -564,6 +564,36 @@ instance_destroy();
             <kind>1</kind>
             <string>///ACTIVATE RAYGUN DRAWING
 draw_gun = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_door">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(other.sprite_index == spr_door_open){
+    global.pause = true;
+    pauseTime = current_time;
+    freeze = true;
+    y = other.y+140;
+    instance_create(0,0, obj_level_end);
+
+}
 </string>
           </argument>
         </arguments>
