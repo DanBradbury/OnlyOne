@@ -2,10 +2,10 @@
 <sound>
   <kind>0</kind>
   <extension>.wav</extension>
-  <origname>C:\Users\Dan\Documents\GitHub\OnlyOne\LudumDare.gmx\\sound\audio\snd_shot.wav</origname>
+  <origname>51157__rutgermuller__light-switch-2.wav</origname>
   <effects>0</effects>
   <volume>
-    <volume>0.83</volume>
+    <volume>0.55</volume>
   </volume>
   <pan>0</pan>
   <bitRates>
@@ -21,8 +21,8 @@
     <bitDepth>16</bitDepth>
   </bitDepths>
   <preload>-1</preload>
-  <data>snd_shot.wav</data>
-  <compressed>1</compressed>
-  <streamed>1</streamed>
+  <data>snd_switch.wav</data>
+  <compressed>0</compressed>
+  <streamed>0</streamed>
   <uncompressOnLoad>0</uncompressOnLoad>
 </sound>

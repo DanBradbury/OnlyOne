@@ -9,6 +9,7 @@
     <sound>sound\snd_jump</sound>
     <sound>sound\snd_shot</sound>
     <sound>sound\snd_land</sound>
+    <sound>sound\snd_switch</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Characters">
@@ -93,14 +94,6 @@
       <sprite>sprites\spr_disabled_key</sprite>
     </sprites>
     <sprites name="Enemies">
-      <sprites name="Guns">
-        <sprite>sprites\spr_laser_right</sprite>
-        <sprite>sprites\spr_laser_left</sprite>
-        <sprite>sprites\spr_laser</sprite>
-        <sprite>sprites\spr_laser_up</sprite>
-        <sprite>sprites\spr_laser_vert</sprite>
-        <sprite>sprites\spr_laser_down</sprite>
-      </sprites>
       <sprite>sprites\spr_worm</sprite>
       <sprite>sprites\spr_frog</sprite>
       <sprite>sprites\spr_pirana</sprite>
@@ -303,6 +296,19 @@
       <sprite>sprites\spr_door_open</sprite>
       <sprite>sprites\spr_door_closed</sprite>
     </sprites>
+    <sprites name="Switches">
+      <sprite>sprites\spr_laser_switch</sprite>
+      <sprite>sprites\spr_switchIndicator</sprite>
+    </sprites>
+    <sprites name="Guns">
+      <sprite>sprites\spr_laser_right</sprite>
+      <sprite>sprites\spr_laser_left</sprite>
+      <sprite>sprites\spr_laser</sprite>
+      <sprite>sprites\spr_laser_up</sprite>
+      <sprite>sprites\spr_laser_vert</sprite>
+      <sprite>sprites\spr_laser_down</sprite>
+      <sprite>sprites\spr_blueLaser</sprite>
+    </sprites>
     <sprite>sprites\spr_ladder_mid</sprite>
     <sprite>sprites\spr_ladder_top</sprite>
     <sprite>sprites\spr_brick_wall</sprite>
@@ -357,6 +363,28 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <objects name="Sand World">
+      <object>objects\obj_sand</object>
+      <object>objects\obj_sandCenter</object>
+      <object>objects\obj_sandCenter_rounded</object>
+      <object>objects\obj_sandCliffLeft</object>
+      <object>objects\obj_sandCliffLeftAlt</object>
+      <object>objects\obj_sandCliffRight</object>
+      <object>objects\obj_sandCliffRightAlt</object>
+      <object>objects\obj_sandHalf</object>
+      <object>objects\obj_sandHalfLeft</object>
+      <object>objects\obj_sandHalfMid</object>
+      <object>objects\obj_sandHalfRight</object>
+      <object>objects\obj_sandHillLeft</object>
+      <object>objects\obj_sandHillLeft2</object>
+      <object>objects\obj_sandHillRight</object>
+      <object>objects\obj_sandHillRight2</object>
+      <object>objects\obj_sandLedgeLeft</object>
+      <object>objects\obj_sandLedgeRight</object>
+      <object>objects\obj_sandLeft</object>
+      <object>objects\obj_sandMid</object>
+      <object>objects\obj_sandRight</object>
+    </objects>
     <objects name="Stone World">
       <object>objects\obj_stoneLeft</object>
       <object>objects\obj_stoneRight</object>
@@ -484,6 +512,12 @@
       <object>objects\obj_boxTop</object>
       <object>objects\obj_box</object>
     </objects>
+    <objects name="Switches">
+      <object>objects\obj_blueLaserGun</object>
+      <object>objects\obj_blueLaserSwitch</object>
+      <object>objects\obj_laserGunTop</object>
+      <object>objects\obj_blueLaserShot</object>
+    </objects>
     <object>objects\obj_door</object>
     <object>objects\object128</object>
     <object>objects\obj_brick_wall</object>
@@ -510,13 +544,13 @@
     <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\world1_1</room>
     <room>rooms\TESTING_GROUNDS</room>
-    <room>rooms\room8</room>
+    <room>rooms\world1_2</room>
+    <room>rooms\world1_1</room>
+    <room>rooms\world1_3</room>
+    <room>rooms\world1_4</room>
     <room>rooms\MAIN_MENU</room>
     <room>rooms\LEVEL_SELECT</room>
-    <room>rooms\room4</room>
-    <room>rooms\room5</room>
     <room>rooms\room6</room>
   </rooms>
   <help>

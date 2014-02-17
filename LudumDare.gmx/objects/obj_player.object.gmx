@@ -83,6 +83,8 @@ global.coins = 0;
 freeze = false;
 draw_gun = false;
 shot_delay = 20;
+// can the user use a switch at this exact moment
+use_switch = false;
 </string>
           </argument>
         </arguments>
@@ -393,6 +395,52 @@ if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
 {
   alarm[2] = 30;
   global.death_start = true;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_laserGunTop">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// HANDLE MOVING PLATFORM
+// if we are on top of the floor    
+if(gravity==1){
+    if(global._jump == true){
+        //vspeed = 0;
+        delay_jump = true;
+        alarm[0] = 5;
+    }else{
+        // we provide a 16 height tollerance because of the height of the platform
+        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
+          gravity = 0;
+          self.y = other.y;   
+          motion_set(0,0);
+          global.landed = true;
+          global._can_jump = true; 
+          if( moving == false ){
+             _draw_sprite = spr_player_idle;
+          }
+
+        }
+    }
+        
 }
 
 </string>
@@ -1213,13 +1261,24 @@ if(global._jump == true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// USE JUMP PAD
+            <string>/* balls old implementation for a jump pad during ludum
+// USE JUMP PAD
 if(jump == true){
     vspeed = -28;
     jump = false;
     ob = collision_rectangle(self.x-sprite_xoffset,self.y,self.x+32-sprite_xoffset, self.y+10, obj_jump_pad, true, true);
     ob.active = false;
     audio_play_sound(snd_jump, 1, false);
+}
+*/
+if(use_switch == true){
+    audio_play_sound(snd_switch, 10, false);    
+    o = obj_blueLaserSwitch;
+    if( o.image_index == 0){
+        o.image_index = 1;
+    }else{
+        o.image_index = 0;
+    }
 }
 </string>
           </argument>
