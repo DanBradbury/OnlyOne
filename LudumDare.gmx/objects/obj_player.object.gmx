@@ -57,9 +57,9 @@ move_accel_max = 5;
 accelerating = false;
 moving = false;
 mov_dir = "right";
-falling = false;
+falling = true;
 jump = false;
-global._jump = false;
+global._jump = true;
 last_touched_pad = self;
 slow_mo = false;
 slow_meter = 10;
@@ -285,12 +285,13 @@ if(global.death_start == true){
 gravity = 1;
 if(vspeed &gt; 0){
     global._jump = false;
+
     hit_active = false;
     if(vspeed &gt; 16){
       vspeed = 16;
     }
     if(vspeed &lt; 0){
-      global._jump = true;
+      global._jump = true;        
     }
 }
 if(delay_jump == true){
@@ -397,251 +398,6 @@ if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
   global.death_start = true;
 }
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_laserGunTop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// HANDLE MOVING PLATFORM
-// if we are on top of the floor    
-if(gravity==1){
-    if(global._jump == true){
-        //vspeed = 0;
-        delay_jump = true;
-        alarm[0] = 5;
-    }else{
-        // we provide a 16 height tollerance because of the height of the platform
-        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
-          gravity = 0;
-          self.y = other.y;   
-          motion_set(0,0);
-          global.landed = true;
-          global._can_jump = true; 
-          if( moving == false ){
-             _draw_sprite = spr_player_idle;
-          }
-
-        }
-    }
-        
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_boxTop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// HANDLE MOVING PLATFORM
-// if we are on top of the floor    
-if(gravity==1){
-    if(global._jump == true){
-        //vspeed = 0;
-        delay_jump = true;
-        alarm[0] = 5;
-    }else{
-        // we provide a 16 height tollerance because of the height of the platform
-        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
-          gravity = 0;
-          self.y = other.y;   
-          motion_set(0,0);
-          global.landed = true;
-          
-          global._can_jump = true; 
-          if( moving == false ){
-             _draw_sprite = spr_player_idle;
-          }
-
-        }
-    }
-        
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_box">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>    if ( (self.x-37) &lt; other.x){
-       self.x = other.x-35;
-    }else{
-      self.x = other.x+105;
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_cliff">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// mix together the wall and the floor
-if( global._jump == false){
-    if ( (self.x-37) &lt; other.x){
-       self.x = other.x-10;
-    }else{
-      self.x = other.x+80
-    }
-}else{
-// if we are on top of the floor    
-if(gravity==1 &amp;&amp; global._jump == false){
-        self.y = other.y;   
-        //motion_set(0,0);
-        global._can_jump = true; 
-global.landed = true;
-}else if(global._jump == true ){
-  vspeed = 8;
-}
-
-if( moving == false ){
-  if(_draw_sprite == spr_player_jumping){
-    audio_play_sound(snd_land,10,false);
-  }
-  _draw_sprite = spr_player_idle;
-}
-
-
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_raygun">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>other</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// DESTROY RAYGUN
-instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///ACTIVATE RAYGUN DRAWING
-draw_gun = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_door">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(other.sprite_index == spr_door_open){
-    global.pause = true;
-    pauseTime = current_time;
-    freeze = true;
-    y = other.y+140;
-    instance_create(0,0, obj_level_end);
-
-}
 </string>
           </argument>
         </arguments>
@@ -769,6 +525,251 @@ instance_create(0,0,obj_death);
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_door">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(other.sprite_index == spr_door_open){
+    global.pause = true;
+    pauseTime = current_time;
+    freeze = true;
+    y = other.y+140;
+    instance_create(0,0, obj_level_end);
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_laserGunTop">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// HANDLE MOVING PLATFORM
+// if we are on top of the floor    
+if(gravity==1){
+    if(global._jump == true){
+        //vspeed = 0;
+        delay_jump = true;
+        alarm[0] = 5;
+    }else{
+        // we provide a 16 height tollerance because of the height of the platform
+        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
+          gravity = 0;
+          self.y = other.y;   
+          motion_set(0,0);
+          global.landed = true;
+          global._can_jump = true; 
+          if( moving == false ){
+             _draw_sprite = spr_player_idle;
+          }
+
+        }
+    }
+        
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_box">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>    if ( (self.x-37) &lt; other.x){
+       self.x = other.x-35;
+    }else{
+      self.x = other.x+105;
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_boxTop">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// HANDLE MOVING PLATFORM
+// if we are on top of the floor    
+if(gravity==1){
+    if(global._jump == true){
+        //vspeed = 0;
+        delay_jump = true;
+        alarm[0] = 5;
+    }else{
+        // we provide a 16 height tollerance because of the height of the platform
+        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
+          gravity = 0;
+          self.y = other.y;   
+          motion_set(0,0);
+          global.landed = true;
+          
+          global._can_jump = true; 
+          if( moving == false ){
+             _draw_sprite = spr_player_idle;
+          }
+
+        }
+    }
+        
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_raygun">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DESTROY RAYGUN
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ACTIVATE RAYGUN DRAWING
+draw_gun = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_cliff">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// mix together the wall and the floor
+if( global._jump == false){
+    if ( (self.x-37) &lt; other.x){
+       self.x = other.x-10;
+    }else{
+      self.x = other.x+80
+    }
+}else{
+// if we are on top of the floor    
+if(gravity==1 &amp;&amp; global._jump == false){
+        self.y = other.y;   
+        //motion_set(0,0);
+        global._can_jump = true; 
+global.landed = true;
+}else if(global._jump == true ){
+  vspeed = 8;
+}
+
+if( moving == false ){
+  if(_draw_sprite == spr_player_jumping){
+    audio_play_sound(snd_land,10,false);
+  }
+  _draw_sprite = spr_player_idle;
+}
+
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_block2">
       <action>
         <libid>1</libid>
@@ -874,7 +875,7 @@ if(gravity==1 &amp;&amp; global._jump == false){
         self.y = other.y;   
         //motion_set(0,0);
         global._can_jump = true; 
-global.landed = true;
+        global.landed = true;
 }else if(global._jump == true ){
   vspeed = 8;
 }
@@ -1333,7 +1334,9 @@ pauseTime = current_time;
             <kind>1</kind>
             <string>/// STOP MOVEMENT
 moving = false;
-_draw_sprite = spr_player_idle;
+if(global._jump == false){
+    _draw_sprite = spr_player_idle;
+}
 move_accel = 0;
 /*
 hspeed = 0;

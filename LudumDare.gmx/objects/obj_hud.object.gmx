@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>num_keys = 0;
 key_grabbed = false;
-YoYo_AddVirtualKey( view_xview[view_current]+180, view_yview[view_current]+500, 150, 122, vk_right);
-YoYo_AddVirtualKey( view_xview[view_current]+30, view_yview[view_current]+500, 150, 122, vk_left);
+YoYo_AddVirtualKey( view_xview[view_current]+185, view_yview[view_current]+425, 120, 97, vk_right);
+YoYo_AddVirtualKey( view_xview[view_current]+30, view_yview[view_current]+425, 120, 97, vk_left);
+
+
 YoYo_AddVirtualKey( view_xview[view_current]+740, view_yview[view_current]+400, 160, 160, vk_space);
 YoYo_AddVirtualKey( view_xview[view_current]+890, view_yview[view_current]+400, 160, 160, vk_shift);
 
@@ -54,29 +56,20 @@ YoYo_AddVirtualKey( view_xview[view_current]+890, view_yview[view_current]+400, 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_right,0,view_xview[view_current]+200, view_yview[view_current]+500, 2,2,0, c_white, 1);
+            <string>/// draw dpad
+draw_sprite_ext(spr_flatdark,0,view_xview[view_current]+50, view_yview[view_current]+350, 2,2,0, c_white, 1);
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_sprite_ext(spr_left,0,view_xview[view_current]+30, view_yview[view_current]+500, 2,2,0, c_white, 1);
+/* DRAW DPAD HITBOXES 
+draw_set_color(c_yellow);
+draw_rectangle(view_xview[view_current]+185, view_yview[view_current]+425, view_xview[view_current]+305,  view_yview[view_current]+522, true);
+draw_rectangle(view_xview[view_current]+50, view_yview[view_current]+425, view_xview[view_current]+168, view_yview[view_current]+522, true);
+
+draw_rectangle(view_xview[view_current]+120, view_yview[view_current]+425, view_xview[view_current]+230, view_yview[view_current]+350,true);
+draw_rectangle(view_xview[view_current]+120, view_yview[view_current]+600, view_xview[view_current]+230, view_yview[view_current]+522,true);
+
+YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+350, 110, 75, vk_up);
+YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+522, 110, 75, vk_down);
+*/
 
 </string>
           </argument>
