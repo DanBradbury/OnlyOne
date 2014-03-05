@@ -85,6 +85,7 @@ draw_gun = false;
 shot_delay = 20;
 // can the user use a switch at this exact moment
 use_switch = false;
+_max_fall_speed = 16;
 </string>
           </argument>
         </arguments>
@@ -272,39 +273,43 @@ delay_jump = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// MAKE THINGS HAPPEN
 image_index += 1;
+gravity = 1;
 
+// if level intro freeze character
 if( global._level_started == false ){
   motion_set(0,0);  
-}else{
-    /// MAKE THINGS HAPPEN
-    if(global.death_start == true){
-        gravity = 0;
-        vspeed = -3;
-    }
-    gravity = 1;
-    if(vspeed &gt; 0){
-        global._jump = false;
-        global._can_jump = false;
-        
-        hit_active = false;
-        if(vspeed &gt; 16){
-          vspeed = 16;
-        }
+}
+
+// if dying create a slow upward float to heaven
+if(global.death_start == true){
+    gravity = 0;
+    vspeed = -3;
+}
+
+// verify that we know when we have terminated the jump 
+if(vspeed &gt; 0){
+    global._jump = false;
+    global._can_jump = false;
+    
+    hit_active = false;
+    if(vspeed &gt; _max_fall_speed){
+      vspeed = _max_fall_speed;
     }
 }
+
+// if we get launched into a -vertical movement
 if(vspeed &lt; 0){
     global._jump = true;        
 }
+
+// dont allow the player to jump
 if(delay_jump == true){
     global._can_jump = false;
 }
 
-if(release==true){
-    hspeed = hspeed - min(abs(hspeed), 1.5545) * sign(hspeed);
-}
-
+// set appropriate sprites
 if( global._can_jump == false ){
     _draw_sprite = spr_player_jumping;
 }
@@ -424,7 +429,8 @@ if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check(vk_right)){
+            <string>/// handle keyboard checks
+if(keyboard_check(vk_right)){
     /// MOVE RIGHT
     if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze == false){
         x += (base_ms+move_accel);
