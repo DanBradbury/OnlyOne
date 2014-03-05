@@ -274,33 +274,37 @@ delay_jump = false;
             <kind>1</kind>
             <string>
 image_index += 1;
+
 if( global._level_started == false ){
   motion_set(0,0);  
 }else{
-/// MAKE THINGS HAPPEN
-if(global.death_start == true){
-       gravity = 0;
-      vspeed = -3;
+    /// MAKE THINGS HAPPEN
+    if(global.death_start == true){
+        gravity = 0;
+        vspeed = -3;
+    }
+    gravity = 1;
+    if(vspeed &gt; 0){
+        global._jump = false;
+        global._can_jump = false;
+        
+        hit_active = false;
+        if(vspeed &gt; 16){
+          vspeed = 16;
+        }
+    }
 }
-gravity = 1;
-if(vspeed &gt; 0){
-    global._jump = false;
-
-    hit_active = false;
-    if(vspeed &gt; 16){
-      vspeed = 16;
-    }
-    if(vspeed &lt; 0){
-      global._jump = true;        
-    }
+if(vspeed &lt; 0){
+    global._jump = true;        
 }
 if(delay_jump == true){
     global._can_jump = false;
 }
-}
-if(release==true ){
+
+if(release==true){
     hspeed = hspeed - min(abs(hspeed), 1.5545) * sign(hspeed);
 }
+
 if( global._can_jump == false ){
     _draw_sprite = spr_player_jumping;
 }
