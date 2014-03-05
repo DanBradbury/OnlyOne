@@ -87,7 +87,7 @@ hit = false;
       alarm[11] = 30;
       other.hit = true;
 }else if( type == "snail" &amp;&amp; self.killed == true &amp;&amp; safe == false){
-    if( shell_roll == true &amp;&amp; shell_roll_safe == false){
+    if( shell_roll == true &amp;&amp; safe == false){
       hit_active = true;
       other.vspeed = -14;
       other.hspeed = self.hspeed*3;
@@ -100,7 +100,7 @@ hit = false;
     }else{
         shell_roll = true;
         // how long you are safe from the roll
-        shell_roll_safe = true;
+        safe = true;
         alarm[1] = 20;
         move = other.hspeed;
         
