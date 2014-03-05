@@ -877,20 +877,16 @@ if ( (self.x-37) &lt; other.x){
 // if we are on top of the floor    
 if(gravity==1 &amp;&amp; global._jump == false){
         self.y = other.y;   
-        //motion_set(0,0);
+        motion_set(0,0);
         global._can_jump = true; 
         global.landed = true;
-}else if(global._jump == true ){
-  vspeed = 8;
 }
-
 if( moving == false ){
   if(_draw_sprite == spr_player_jumping){
     audio_play_sound(snd_land,10,false);
   }
   _draw_sprite = spr_player_idle;
 }
-
 
 </string>
           </argument>
