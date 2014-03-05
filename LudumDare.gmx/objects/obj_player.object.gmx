@@ -407,6 +407,57 @@ if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(keyboard_check(vk_right)){
+    /// MOVE RIGHT
+    if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze == false){
+        hspeed = (base_ms+move_accel);
+        moving = true;
+        mov_dir = "right";
+        image_xscale = 1;
+        _draw_sprite = spr_player_running;
+    }
+
+}else if(keyboard_check(vk_left)){
+    /// MOVE LEFT
+    if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false){
+        hspeed = -(base_ms+move_accel);
+        mov_dir = "left";
+        moving = true;
+        image_xscale = -1;
+        _draw_sprite = spr_player_running;
+    }
+}else if(keyboard_check(vk_space){
+    /// HANDLE JUMP
+    if (global._can_jump == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false) {
+        audio_play_sound(snd_jump, 10, false);
+        vspeed = -21;
+        global._can_jump = false;
+        global._jump = true;
+        global.landed = false;    
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_passable_platform">
       <action>
         <libid>1</libid>
@@ -1015,120 +1066,6 @@ if(draw_gun == true &amp;&amp; shot_used == false){
     shot_used = true;
     alarm[3] = shot_delay;
 end
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="39">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// MOVE RIGHT
-if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze == false){
-hspeed = (base_ms+move_accel);
-moving = true;
-mov_dir = "right";
-image_xscale = 1;
-_draw_sprite = spr_player_running;
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="37">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// MOVE LEFT
-if(global._level_started == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false){
-hspeed = -(base_ms+move_accel);
-mov_dir = "left";
-moving = true;
-image_xscale = -1;
-_draw_sprite = spr_player_running;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// HANDLE JUMP
-if (global._can_jump == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false) {
-    audio_play_sound(snd_jump, 10, false);
-    vspeed = -21;
-    global._can_jump = false;
-    global._jump = true;
-    global.landed = false;    
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="16">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>accelerating = true;
 </string>
           </argument>
         </arguments>
