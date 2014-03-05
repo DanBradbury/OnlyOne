@@ -27,14 +27,14 @@
             <kind>1</kind>
             <string>num_keys = 0;
 key_grabbed = false;
-YoYo_AddVirtualKey( view_xview[view_current]+185, view_yview[view_current]+425, 120, 97, vk_right);
-YoYo_AddVirtualKey( view_xview[view_current]+30, view_yview[view_current]+425, 120, 97, vk_left);
+global._right = YoYo_AddVirtualKey( view_xview[view_current]+185, view_yview[view_current]+425, 120, 97, vk_right);
+global._left = YoYo_AddVirtualKey( view_xview[view_current]+30, view_yview[view_current]+425, 120, 97, vk_left);
 
-YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+350, 110, 75, vk_up);
-YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+522, 110, 75, vk_down);
+global._up = YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+350, 110, 75, vk_up);
+global._down = YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+522, 110, 75, vk_down);
 
-YoYo_AddVirtualKey( view_xview[view_current]+700, view_yview[view_current]+450, 160, 160, vk_space);
-YoYo_AddVirtualKey( view_xview[view_current]+890, view_yview[view_current]+400, 160, 160, vk_shift);
+global._space = YoYo_AddVirtualKey( view_xview[view_current]+700, view_yview[view_current]+450, 160, 160, vk_space);
+global._shift = YoYo_AddVirtualKey( view_xview[view_current]+890, view_yview[view_current]+400, 160, 160, vk_shift);
 
 </string>
           </argument>
@@ -62,17 +62,13 @@ YoYo_AddVirtualKey( view_xview[view_current]+890, view_yview[view_current]+400, 
 draw_sprite_ext(spr_flatdark,0,view_xview[view_current]+50, view_yview[view_current]+350, 2,2,0, c_white, 1);
 
 /* DRAW DPAD HITBOXES 
-draw_set_color(c_yellow);
-draw_rectangle(view_xview[view_current]+185, view_yview[view_current]+425, view_xview[view_current]+305,  view_yview[view_current]+522, true);
-draw_rectangle(view_xview[view_current]+50, view_yview[view_current]+425, view_xview[view_current]+168, view_yview[view_current]+522, true);
-
-draw_rectangle(view_xview[view_current]+120, view_yview[view_current]+425, view_xview[view_current]+230, view_yview[view_current]+350,true);
-draw_rectangle(view_xview[view_current]+120, view_yview[view_current]+600, view_xview[view_current]+230, view_yview[view_current]+522,true);
-
-YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+350, 110, 75, vk_up);
-YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+522, 110, 75, vk_down);
+virtual_key_show(global._up);
+virtual_key_show(global._down);
+virtual_key_show(global._right);
+virtual_key_show(global._left);
+virtual_key_show(global._space);
+virtual_key_show(global._shift);
 */
-
 </string>
           </argument>
         </arguments>
@@ -93,7 +89,8 @@ YoYo_AddVirtualKey( view_xview[view_current]+120, view_yview[view_current]+522, 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_a,0,view_xview[view_current]+700, view_yview[view_current]+450, 2,2,0, c_white, 1);
+            <string>/// DRAW BUTTONS
+draw_sprite_ext(spr_a,0,view_xview[view_current]+700, view_yview[view_current]+450, 2,2,0, c_white, 1);
 draw_sprite_ext(spr_b,0,view_xview[view_current]+890, view_yview[view_current]+400, 2,2,0, c_white, 1);
 
 </string>
@@ -116,8 +113,7 @@ draw_sprite_ext(spr_b,0,view_xview[view_current]+890, view_yview[view_current]+4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.death_start == false){
-// draw health
+            <string>// draw health
 if( global.health == 2 ){
   draw_sprite(spr_heart, 0, view_xview[view_current], view_yview[view_current]);
 }else if( global.health == 1 ){
@@ -125,6 +121,7 @@ if( global.health == 2 ){
 }else if( global.health == 0 ){
   draw_sprite(spr_heart, 2, view_xview[view_current], view_yview[view_current]);
 }
+
 // draw active keys on the map
 for(i=1; i&lt;=global.keys; i++){
   if(num_keys &gt;= i){
@@ -135,12 +132,11 @@ for(i=1; i&lt;=global.keys; i++){
 }
 
 // draw coins
-
 draw_sprite(spr_coin_hud, 0, view_xview[view_current], view_yview[view_current]+50);
 draw_set_halign(fa_left);
 draw_set_font(global.font);
 draw_text(view_xview[view_current]+50, view_yview[view_current]+50, string(global.coins));
-}
+
 </string>
           </argument>
         </arguments>
