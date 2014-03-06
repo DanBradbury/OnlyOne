@@ -82,7 +82,7 @@ hit = false;
 }else if(hit_active == false &amp;&amp; self.killed == false){
       hit_active = true;
       other.vspeed = -14;
-      other.hspeed = self.hspeed*3;
+      hspeed =0;
       global.health -= damage;
       alarm[11] = 30;
       other.hit = true;
