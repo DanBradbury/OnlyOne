@@ -26,13 +26,67 @@
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-image_speed = 0.3;
+image_speed = 0.1;
 
 killed = false;
 hit_active = false;
 
 type = "spider";
 damage = 2;
+_jump_height = -20;
+_leap_height = -12;
+_leap_range = 15;
+_move_speed = 10;
+
+STATE = "IDLE"; // start in idle
+ACTION = "LEAP";
+//JUMP, LEAP, DEFEND
+// points used to return back to when defending
+home_x = x;
+home_y = y;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(ACTION=="JUMP"){
+    if(STATE=="IDLE"){
+        vspeed = _jump_height;
+        STATE = "JUMPING";
+    }
+}
+
+if(ACTION=="LEAP"){
+    if(STATE=="IDLE"){
+        vspeed = _leap_height;
+        hspeed = sign(obj_player.x-x) * _leap_range;
+        STATE = "LEAPING";
+        ACTION = "DEFEND";
+    }
+}
+
+if(ACTION=="DEFEND"){
+    if(STATE=="IDLE"){
+        x += sign(home_x-x) * _move_speed;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -58,6 +112,8 @@ damage = 2;
             <string>if(gravity==1){
         self.y = other.y;   
         motion_set(0,0);
+        
+        STATE = "IDLE";
 }
 </string>
           </argument>
