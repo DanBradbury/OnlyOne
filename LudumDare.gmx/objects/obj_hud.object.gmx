@@ -137,6 +137,25 @@ draw_set_halign(fa_left);
 draw_set_font(global.font);
 draw_text(view_xview[view_current]+50, view_yview[view_current]+50, string(global.coins));
 
+//draw key indicator
+if( global.death_start == false &amp;&amp; global.pause == false ){
+    // determine how much we need to change the yview
+    delta_y = 0;
+    if(obj_key.y &lt; obj_player.y){
+        diff = abs(obj_player.y-obj_key.y);
+        if(diff &gt; 30){
+            delta_y = 0;
+        }
+        if(diff &lt; 30){
+            delta_y = view_yview[view_current]+obj_player.y;
+        }
+    }
+    if(obj_key.x &gt; obj_player.x){
+        draw_sprite(spr_key, 0, view_wport[0]-100, view_yview[view_current]+delta_y);
+    }  
+}
+
+
 </string>
           </argument>
         </arguments>
