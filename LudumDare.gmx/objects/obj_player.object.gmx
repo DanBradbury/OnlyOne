@@ -369,12 +369,7 @@ if( self.x &gt; room_width){
           <argument>
             <kind>1</kind>
             <string>/// CONSIDER ACCELLERATION
-if(moving==true &amp;&amp; accelerating == true){
-    if(mov_dir=="right"){
-            hspeed += move_accel;
-    }else{
-        hspeed -= move_accel;
-    }
+if(moving==true &amp;&amp; global._can_jump == true){
     // check to see if we should accelerate more
     if( move_accel &lt; move_accel_max ){
         move_accel += accel;

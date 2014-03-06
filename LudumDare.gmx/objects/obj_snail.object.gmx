@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>gravity = 1;
-move = -3;
+move_speed = 5;
+move = -move_speed;
 image_speed = 0.1;
 // killed means that the snail is gone but shell is still active
 killed = false;
@@ -38,7 +39,7 @@ deactivated = false;
 // safe will control not being able to be triggered
 safe = false;
 moving = 0;
-shell_speed = 8;
+shell_speed = 20;
 shell_roll = false;
 </string>
           </argument>
@@ -282,13 +283,13 @@ if(moving !=0){
           <argument>
             <kind>1</kind>
             <string> 
-if( move == -3 )
+if( move == -move_speed )
 {
-  move = 3;
+  move = move_speed;
   image_xscale = -1;
   x += 3;
 }else{
-  move = -3;
+  move = -move_speed;
   image_xscale = 1;
 }
 </string>
