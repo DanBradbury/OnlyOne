@@ -74,6 +74,7 @@ global.total_points = 65;</code>
     <instance objName="obj_boxAlt" x="420" y="490" name="inst_E9D72BFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snail" x="630" y="560" name="inst_DC129392" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boxAlt" x="420" y="420" name="inst_1F249B7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="768" y="70" name="inst_4CCCE5D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
