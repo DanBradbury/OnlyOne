@@ -50,6 +50,8 @@ image_speed = 0.5;
           <argument>
             <kind>1</kind>
             <string>/// CUSTOM VARIABLES
+action = "IDLE";
+move_speed = 0.0;
 base_ms = 14.00;
 accel = 0.2545
 move_accel = 0;
@@ -286,6 +288,7 @@ if(global.death_start == true){
 
 // verify that we know when we have terminated the jump 
 if(vspeed &gt; 0){
+    action = "FALLING";
     global._jump = false;
     global._can_jump = false;
     
@@ -371,6 +374,10 @@ if(moving==true &amp;&amp; global._can_jump == true){
         move_accel += accel;
     }
 }
+
+if(move_speed = 0){
+    if(action!="JUMP" &amp;&amp; action != "FALLING"){action="IDLE";}
+}
 </string>
           </argument>
         </arguments>
@@ -424,7 +431,9 @@ if( global.health &lt;= 0 &amp;&amp; global.death_start == false)
 if(keyboard_check(vk_right)){
     /// MOVE RIGHT
     if( global.death_start == false &amp;&amp; freeze == false){
-        x += (base_ms+move_accel);
+        move_speed = base_ms+move_accel
+        x += move_speed;
+        if(action!="JUMP"){action = "RUNNING";}
         moving = true;
         mov_dir = "right";
         image_xscale = 1;
@@ -434,25 +443,30 @@ if(keyboard_check(vk_right)){
 }else if(keyboard_check(vk_left)){
     /// MOVE LEFT
     if( global.death_start == false &amp;&amp; freeze = false){
-        x -= (base_ms+move_accel);
+        move_speed = -(base_ms+move_accel)
+        x += move_speed;
+        if(action!="JUMP"){action = "RUNNING";}
         mov_dir = "left";
         moving = true;
         image_xscale = -1;
         _draw_sprite = spr_player_running;
     }
-}else if(keyboard_check(vk_space)){
-    /// HANDLE JUMP
-    if (global._can_jump == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false) {
-        audio_play_sound(snd_jump, 10, false);
-        vspeed = -21;
-        global._can_jump = false;
-        global._jump = true;
-        global.landed = false;    
-    }
 }else if(keyboard_check(vk_escape)){
     instance_create(0,0,obj_pause);
     global.pause = true;
     pauseTime = current_time;
+}
+
+if(keyboard_check(vk_space)){
+    /// HANDLE JUMP
+    if (global._can_jump == true &amp;&amp; global.death_start == false &amp;&amp; freeze = false) {
+        audio_play_sound(snd_jump, 10, false);
+        vspeed = -21;
+        action = "JUMP";
+        global._can_jump = false;
+        global._jump = true;
+        global.landed = false;    
+    }
 }
 </string>
           </argument>
@@ -963,11 +977,12 @@ if ( (self.x-37) &lt; other.x){
             <kind>1</kind>
             <string>/// HANDLE COLLISION
 // if we are on top of the floor    
-if(gravity==1 &amp;&amp; global._jump == false){
-        self.y = other.y;   
-        motion_set(0,0);
+if(gravity==1 ){
+        self.y = other.y;        
+        motion_set(0,0);            
         global._can_jump = true; 
         global.landed = true;
+        if(action!="RUNNING"){action = "LANDED";}
 }
 if( moving == false ){
   if(_draw_sprite == spr_player_jumping){
@@ -1212,10 +1227,10 @@ if(global._jump == true){
 draw_set_font(devF);
 draw_set_color(c_white);
 
-draw_text(10,10, "Move Speed: "+string(base_ms));
+draw_text(10,10, "Move Speed: "+string(move_speed));
 draw_text(10,35, "Acceleration: "+string(move_accel));
 
-draw_text(10, 85, "Sprite State: "+string(_draw_sprite));
+draw_text(10, 85, "State: "+string(action));
 </string>
           </argument>
         </arguments>
@@ -1314,7 +1329,8 @@ move_accel = 0;
 /*
 hspeed = 0;
 */
-hspeed = hspeed - min(abs(hspeed), 0.2545) * sign(hspeed)
+hspeed = hspeed - min(abs(hspeed), 3.2545) * sign(hspeed)
+move_speed = hspeed;
 release = true;
 </string>
           </argument>
@@ -1351,6 +1367,7 @@ _draw_sprite = spr_player_idle;
 move_accel = 0;
 */
 hspeed = hspeed - min(abs(hspeed), 0.2545) * sign(hspeed)
+move_speed = hspeed;
 </string>
           </argument>
         </arguments>
