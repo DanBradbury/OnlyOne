@@ -247,7 +247,7 @@ if(selected=="RESUME"){
 instance_activate_all(); // Activate all the objects again
 //instance_activate( obj_player );
 global.pause = false;
-obj_timer.offset = (current_time - obj_timer.pauseTime) + obj_timer.offset;
+//obj_timer.offset = (current_time - obj_timer.pauseTime) + obj_timer.offset;
 instance_destroy();
 </string>
           </argument>
@@ -277,7 +277,7 @@ if(selected=="QUIT"){
 }else if(selected=="RESUME"){
     instance_activate_all(); // Activate all the objects again
     global.pause = false;
-    obj_timer.offset = (current_time - obj_timer.pauseTime) + obj_timer.offset;
+    //obj_timer.offset = (current_time - obj_timer.pauseTime) + obj_timer.offset;
     instance_destroy();
 }else if(selected=="RESTART"){
     room_restart();
