@@ -74,6 +74,7 @@ global.key_available = false;</code>
     <instance objName="obj_stoneMid" x="1330" y="490" name="inst_FADAEA5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stoneMid" x="1400" y="490" name="inst_0C00ABD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stoneMid" x="1470" y="490" name="inst_C7588906" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stone" x="280" y="420" name="inst_03E66603" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

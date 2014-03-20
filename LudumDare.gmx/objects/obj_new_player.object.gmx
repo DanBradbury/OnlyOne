@@ -977,12 +977,22 @@ if ( (self.x-37) &lt; other.x){
             <kind>1</kind>
             <string>/// HANDLE COLLISION
 // if we are on top of the floor    
-if(gravity==1 ){
-        self.y = other.y;        
-        motion_set(0,0);            
-        global._can_jump = true; 
-        global.landed = true;
-        if(action!="RUNNING"){action = "LANDED";}
+if(gravity==1){
+        if(action=="RUNNING" &amp;&amp; other.y &lt; self.y-10){
+            if ( (self.x-37) &lt; other.x){
+                self.x = other.x-40;
+            }else{
+                self.x = other.x+105;
+            }  
+        }else{        
+            self.y = other.y;
+            motion_set(0,0);
+            global._can_jump = true; 
+            global.landed = true;
+            if(action!="RUNNING"){action = "LANDED";}
+        }        
+                 
+        
 }
 if( moving == false ){
   if(_draw_sprite == spr_player_jumping){
