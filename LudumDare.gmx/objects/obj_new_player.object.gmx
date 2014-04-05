@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// CHANGE PREDEFINED PROPERTIES
+            <string>/// CHANGE/DEFINE PREDEFINED PROPERTIES
 image_speed = 0.5;
-
 
 </string>
           </argument>
@@ -87,7 +86,7 @@ draw_gun = false;
 shot_delay = 20;
 // can the user use a switch at this exact moment
 use_switch = false;
-_max_fall_speed = 16;
+_max_fall_speed = 100;
 </string>
           </argument>
         </arguments>
@@ -156,6 +155,29 @@ global.font = font_add_sprite(spr_numbers,46,false,0);
             <kind>1</kind>
             <string>/// handle trigger out of being hit
 hit = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global._dropping = false;
 </string>
           </argument>
         </arguments>
@@ -529,26 +551,28 @@ if mouse_wheel_up(){
             <string>/// HANDLE MOVING PLATFORM
 // if we are on top of the floor    
 if(gravity==1){
-    if(global._jump == true){
+    if(global._jump == true &amp;&amp; action != "FALLING"){
         //vspeed = 0;
         delay_jump = true;
         alarm[0] = 5;
     }else{
+
         // we provide a 16 height tollerance because of the height of the platform
-        if( self.y &lt; other.y+20 &amp;&amp; global._dropping == false){
-          gravity = 0;
+        if(self.y &lt; other.y+50 &amp;&amp;  global._dropping == false){
+          alarm[4] = 10;
+          action = "LANDED";
+          //gravity = 0;
           self.y = other.y;   
           motion_set(0,0);
           global.landed = true;
           can_drop = true;
-          global._can_jump = true; 
+          global._can_jump = true;
           if( moving == false ){
              _draw_sprite = spr_player_idle;
           }
 
         }
-    }
-        
+    }   
 }
 
 </string>
@@ -978,19 +1002,30 @@ if ( (self.x-37) &lt; other.x){
             <string>/// HANDLE COLLISION
 // if we are on top of the floor    
 if(gravity==1){
+/*
         if(action=="RUNNING" &amp;&amp; other.y &lt; self.y-10){
             if ( (self.x-37) &lt; other.x){
                 self.x = other.x-40;
             }else{
                 self.x = other.x+105;
             }  
-        }else{        
+        }else{     
+*/   
+        if(vspeed == 0 &amp;&amp; move_speed != 0){
+            if ( (self.x-37) &lt; other.x){
+                self.x = other.x-40;
+            }else{
+                self.x = other.x+105;
+            }
+        }
+        else{
             self.y = other.y;
             motion_set(0,0);
             global._can_jump = true; 
             global.landed = true;
             if(action!="RUNNING"){action = "LANDED";}
-        }        
+        }
+//        }        
                  
         
 }
@@ -1237,10 +1272,68 @@ if(global._jump == true){
 draw_set_font(devF);
 draw_set_color(c_white);
 
-draw_text(10,10, "Move Speed: "+string(move_speed));
-draw_text(10,35, "Acceleration: "+string(move_accel));
+draw_text(view_xview[view_current]+10,view_yview[view_current]+10, "Move Speed: "+string(move_speed));
+draw_text(view_xview[view_current]+10,view_yview[view_current]+35, "Acceleration: "+string(move_accel));
+draw_text(view_xview[view_current]+10,view_yview[view_current]+55, "Vspeed: "+string(vspeed));
 
-draw_text(10, 85, "State: "+string(action));
+draw_text(view_xview[view_current]+10, view_yview[view_current]+85, "State: "+string(action));
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw hitboxes
+i = instance_number(obj_floor)-1;
+draw_set_alpha(0.33);
+for(q=0;q &lt; i; q++){
+    fl = instance_find(obj_floor, q);
+    draw_set_color(c_white);
+    draw_text(fl.x, fl.y, "floor");
+    draw_set_color(c_red);
+    draw_rectangle(fl.bbox_left, fl.bbox_top, fl.bbox_right, fl.bbox_bottom, false);
+}
+// draw player hitboxes
+draw_set_color(c_green);
+draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);
+
+// draw passable platform hitboxes
+pp = instance_number(obj_passable_platform);
+for(k=0;k&lt;pp;k++){
+    p1 = instance_find(obj_passable_platform, k);
+    draw_set_color(c_white);
+    draw_text(p1.x, p1.y, "half");
+    draw_set_color(c_red);
+    draw_rectangle(p1.bbox_left, p1.bbox_top, p1.bbox_right, p1.bbox_bottom, false);
+}
+
+// draw enemy hitboxes
+e = instance_number(obj_enemy);
+for(g=0;g&lt;e;g++){
+    e1 = instance_find(obj_enemy, g);
+    draw_set_color(c_white);
+    draw_text(e1.x, e1.y, "enemy");
+    draw_set_color(c_red);
+    draw_rectangle(e1.bbox_left, e1.bbox_top, e1.bbox_right, e1.bbox_bottom, false);
+}
+draw_set_alpha(1);
+
 </string>
           </argument>
         </arguments>

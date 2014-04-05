@@ -110,9 +110,10 @@ shell_roll = false;
           <argument>
             <kind>1</kind>
             <string>// there was a conditionals for killed but not sure it is needed or the purpose
-if(global._level_started == true){
-  hspeed = move;
-}
+//if(global._level_started == true){
+  //hspeed = move;
+  x += move;
+//}
 if( killed == true){
     if( sprite_index == spr_snail_walk){
         safe = true;
