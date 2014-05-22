@@ -12,12 +12,15 @@
   <showcolour>-1</showcolour>
   <code>// INIT GLOBALS
 global.run_speed = -9;
-
-instance_create(0,0, obj_floor);
+instance_create(0,0, obj_runnerFloor);
 instance_create(room_width/2, room_height/2, obj_runnerPlayer);
 //instance_create(0,0, obj_handler);
 instance_create(0,0, obj_start_game);
-background_hspeed[view_current] = global.run_speed/4;</code>
+background_hspeed[view_current] = global.run_speed/4;
+
+// just added from splash creation event (better place?)
+global.attempts = 0;
+global.wave = 1;global.mode = "HARD";</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>
@@ -37,7 +40,7 @@ background_hspeed[view_current] = global.run_speed/4;</code>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="bg_cactus" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="background4" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

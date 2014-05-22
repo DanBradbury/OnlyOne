@@ -604,12 +604,12 @@
     <object>objects\obj_levelSelect</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\runnerLevel</room>
     <room>rooms\worldSelect</room>
     <room>rooms\levelSelect</room>
     <room>rooms\BOSS_DEN</room>
     <room>rooms\room13</room>
     <room>rooms\logo</room>
-    <room>rooms\runnerLevel</room>
     <room>rooms\experimentLevel</room>
     <room>rooms\world1_1</room>
     <room>rooms\world1_2</room>
