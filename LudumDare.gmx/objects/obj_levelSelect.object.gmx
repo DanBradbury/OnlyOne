@@ -26,6 +26,29 @@
           <argument>
             <kind>1</kind>
             <string>global._back = YoYo_AddVirtualKey(0,0,200,200,vk_enter);
+
+level1 = ds_map_create();
+ds_map_add(level1, "direction", RIGHT);
+ds_map_add(level1, "levelType", PLATFORM);
+ds_map_add(level1, "maxScore", 0);
+ds_map_add(level1, "completed", false);
+
+level2 = ds_map_create();
+ds_map_add(level2, "direction", DOWN);
+ds_map_add(level2, "levelType", RUNNER);
+ds_map_add(level2, "maxScore", 0);
+ds_map_add(level2, "completed", false);
+
+level3 = ds_map_create();
+ds_map_add(level3, "direction", NONE);
+ds_map_add(level3, "levelType", BOSS);
+ds_map_add(level3, "maxScore", 0);
+ds_map_add(level3, "completed", false);
+
+world1 = ds_list_create();
+ds_list_add(world1, level1);
+ds_list_add(world1, level2);
+ds_list_add(world1, level3);
 </string>
           </argument>
         </arguments>
@@ -76,6 +99,53 @@
             <string>draw_set_font(menu_title); draw_set_color(c_red);
 
 draw_text(0,0, "Back");
+
+i = ds_list_size(world1);
+hor = 0; vert = 0;
+for(j=0;j&lt;i;j++){
+    v = ds_list_find_value(world1, j);
+    
+    
+    if(ds_map_find_value(v,"completed")==true){
+        draw_sprite(spr_levelCircle, 0, 100+(j*100), 100);
+        if(ds_map_find_value(v,"direction")==RIGHT){
+            draw_sprite(spr_horizontal, 0, 100+55, 100+10.5);    
+        }else{
+            draw_sprite(spr_vertical, 0, 100, 100); 
+        }
+        
+    }else{
+       
+       deltaX = (j*100);
+       if(j!=0){
+        deltaX += 55;
+       }
+       deltaX -= vert*100;
+       
+       deltaY = vert*100;
+        
+        if(ds_map_find_value(v, "levelType")==BOSS){
+            draw_sprite(spr_boss, 0, 100+deltaX, 100+deltaY+55);
+        }else{
+            if(ds_map_find_value(v, "levelType")==PLATFORM){
+                draw_sprite(spr_levelCircle, 0, 100+deltaX, 100);
+            }else if(ds_map_find_value(v, "levelType") == RUNNER){
+                draw_sprite(spr_levelCircle, 1, 100+deltaX, 100);
+            }
+        }
+        if(ds_map_find_value(v,"direction")==RIGHT){
+            draw_sprite(spr_horizontal, 1, 100+deltaX+55, 100);    
+        }else{
+            draw_sprite(spr_vertical, 1, 100+deltaX, 100+42); 
+        }
+    }
+    if( ds_map_find_value(v, "directon")==RIGHT){
+        hor += 1;   
+    }else if(ds_map_find_value(v, "direction") ==DOWN){
+        vert += 1;
+    }  
+    
+}
 
 </string>
           </argument>

@@ -604,9 +604,9 @@
     <object>objects\obj_levelSelect</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\runnerLevel</room>
     <room>rooms\worldSelect</room>
     <room>rooms\levelSelect</room>
+    <room>rooms\runnerLevel</room>
     <room>rooms\BOSS_DEN</room>
     <room>rooms\room13</room>
     <room>rooms\logo</room>
@@ -620,6 +620,16 @@
     <room>rooms\LEVEL_SELECT</room>
     <room>rooms\room6</room>
   </rooms>
+  <constants number="8">
+    <constant name="NONE">-1</constant>
+    <constant name="DOWN">0</constant>
+    <constant name="RIGHT">1</constant>
+    <constant name="UP">2</constant>
+    <constant name="LEFT">3</constant>
+    <constant name="PLATFORM">0</constant>
+    <constant name="RUNNER">1</constant>
+    <constant name="BOSS">2</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
