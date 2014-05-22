@@ -75,7 +75,7 @@ image_index = 0;
             <string>/// TURN JUMPING OFF
 if( global._can_jump == false &amp;&amp; global._jump == false ){
     image_index = 1;
-    obj_platformPlayer.vspeed = -25;
+    obj_platformPlayer.vspeed = -35;
     obj_platformPlayer.hspeed = 0;
     alarm[0] = 60;
     audio_play_sound(snd_spring,10,false);

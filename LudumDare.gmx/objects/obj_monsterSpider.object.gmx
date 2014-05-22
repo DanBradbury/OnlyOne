@@ -43,6 +43,40 @@ STATE = "MOVE"; // start in MOVE
 // points used to return back to when defending
 home_x = x;
 home_y = y;
+
+shot_counter = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shot_counter += 1;
+if( shot_counter == 5)
+{
+    STATE = "ROAM";
+}else
+{
+    instance_create(x,y, obj_web);
+    alarm[1] = 10;
+    STATE = "IDLE";
+}
 </string>
           </argument>
         </arguments>
@@ -91,28 +125,32 @@ home_y = y;
             <kind>1</kind>
             <string>if(STATE=="MOVE")
 {
-    x -= _move_speed;
+    x -= _move_speed; // TODO: make this into hunt
     
-    if( distance_to_point(obj_player.x, obj_player.y) &lt; 500 )
+    if( distance_to_point(obj_platformPlayer.x, obj_platformPlayer.y) &lt; 500 )
     {
-        STATE = "THROW";
+        STATE = "SHOOTING";
     }
 }else if( STATE == "JUMPING" )
 {
     STATE = "INJUMP";
     vspeed = _jump_height; 
-}else if( STATE = "THROW" ){
+}else if( STATE == "THROW" ){
     STATE = "THROWING";
     
     instance_create(x,y, obj_spiderlings);
     alarm[0] = 65;
+}else if( STATE == "SHOOTING" ){
+    instance_create(x,y, obj_web); shot_counter += 1;
+    alarm[1] = 10;
+    STATE = "IDLE";
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_floor">
+    <event eventtype="4" ename="obj_floorPlatform">
       <action>
         <libid>1</libid>
         <id>603</id>

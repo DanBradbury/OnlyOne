@@ -349,6 +349,7 @@
     <sprite>sprites\spr_quit_button</sprite>
     <sprite>sprites\spr_pause_button</sprite>
     <sprite>sprites\spr_sound_button</sprite>
+    <sprite>sprites\spr_web</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -488,6 +489,7 @@
     </objects>
     <objects name="Interactables">
       <object>objects\obj_spring</object>
+      <object>objects\obj_superSpring</object>
       <object>objects\obj_button</object>
       <object>objects\obj_key</object>
       <object>objects\obj_yellow_box</object>
@@ -580,16 +582,21 @@
     <object>objects\obj_splash</object>
     <object>objects\obj_end_game</object>
     <object>objects\obj_start_game</object>
-    <object>objects\obj_floor</object>
+    <object>objects\obj_runnerFloor</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_snail</object>
     <object>objects\obj_frog</object>
     <object>objects\obj_fly</object>
+    <object>objects\obj_floor</object>
+    <object>objects\obj_player</object>
+    <object>objects\obj_web</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\worldSelect</room>
+    <room>rooms\BOSS_DEN</room>
+    <room>rooms\room13</room>
     <room>rooms\logo</room>
     <room>rooms\runnerLevel</room>
-    <room>rooms\BOSS_DEN</room>
     <room>rooms\experimentLevel</room>
     <room>rooms\world1_1</room>
     <room>rooms\world1_2</room>

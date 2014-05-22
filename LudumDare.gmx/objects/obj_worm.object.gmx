@@ -67,7 +67,7 @@ if( killed == true){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_floor">
+    <event eventtype="4" ename="obj_runnerFloor">
       <action>
         <libid>1</libid>
         <id>603</id>

@@ -58,7 +58,7 @@ global._shift = YoYo_AddVirtualKey( view_xview[view_current]+890, view_yview[vie
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// draw dpad
+            <string>/// draw dpad - XXX: FLAWED
 draw_sprite_ext(spr_flatdark,0,view_xview[view_current]+50, view_yview[view_current]+350, 2,2,0, c_white, 1);
 
 /* DRAW DPAD HITBOXES 
@@ -138,25 +138,25 @@ draw_set_font(global.font);
 draw_text(view_xview[view_current]+50, view_yview[view_current]+50, string(global.coins));
 
 //draw key indicator
-if( global.key_available == true &amp;&amp; global.death_start == false &amp;&amp; global.pause == false &amp;&amp; abs(obj_player.x-obj_key.x)&gt;450){
+if( global.key_available == true &amp;&amp; global.death_start == false &amp;&amp; global.pause == false &amp;&amp; abs(obj_platformPlayer.x-obj_key.x)&gt;450){
     // determine how much we need to change the yview
     delta_y = 0;
-    if(obj_key.y &lt; obj_player.y){
-        diff = abs(obj_player.y-obj_key.y);
+    if(obj_key.y &lt; obj_platformPlayer.y){
+        diff = abs(obj_platformPlayer.y-obj_key.y);
         if(diff &gt; view_hport[0]/2){
             diff = view_hport[0]/2;
         }
         delta_y = -diff;   
-    }else if(obj_key.y &gt; obj_player.y){
-        diff = abs(obj_key.y-obj_player.y);
+    }else if(obj_key.y &gt; obj_platformPlayer.y){
+        diff = abs(obj_key.y-obj_platformPlayer.y);
          if(diff &gt; view_hport[0]/2){
             diff = view_hport[0]/2;
         }
         delta_y = diff;
     }
-    if(obj_key.x &gt; obj_player.x){
+    if(obj_key.x &gt; obj_platformPlayer.x){
         draw_sprite(spr_key, 0, view_wport[0]-100, view_hport[0]/2+delta_y);
-    }else if(obj_player.x &gt; obj_key.x){
+    }else if(obj_platformPlayer.x &gt; obj_key.x){
         draw_sprite(spr_key, 0, view_xport[0]+10, view_hport[0]/2+delta_y);
     }
 }
