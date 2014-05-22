@@ -350,6 +350,16 @@
     <sprite>sprites\spr_pause_button</sprite>
     <sprite>sprites\spr_sound_button</sprite>
     <sprite>sprites\spr_web</sprite>
+    <sprite>sprites\sprite286</sprite>
+    <sprite>sprites\spr_world1</sprite>
+    <sprite>sprites\spr_world2</sprite>
+    <sprite>sprites\spr_world3</sprite>
+    <sprite>sprites\spr_worldSelector</sprite>
+    <sprite>sprites\spr_levelCircle</sprite>
+    <sprite>sprites\spr_horizontal</sprite>
+    <sprite>sprites\spr_vertical</sprite>
+    <sprite>sprites\spr_boss</sprite>
+    <sprite>sprites\spr_selector</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -590,9 +600,12 @@
     <object>objects\obj_floor</object>
     <object>objects\obj_player</object>
     <object>objects\obj_web</object>
+    <object>objects\obj_worldSelect</object>
+    <object>objects\obj_levelSelect</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\worldSelect</room>
+    <room>rooms\levelSelect</room>
     <room>rooms\BOSS_DEN</room>
     <room>rooms\room13</room>
     <room>rooms\logo</room>

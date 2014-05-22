@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>0</showcolour>
-  <code>instance_create(0,0,obj_worldSelect);</code>
+  <code>instance_create(0,0,obj_levelSelect);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <makerSettings>
