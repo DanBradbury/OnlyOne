@@ -116,7 +116,7 @@ global.key_available = false;</code>
     <instance objName="obj_passable_platform" x="140" y="1680" name="inst_7EC6BC38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="210" y="1680" name="inst_5F160D75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_passable_platform" x="280" y="1680" name="inst_6614D0AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_snail" x="1260" y="490" name="inst_CDD2AB22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_snailPlatformer" x="1260" y="490" name="inst_CDD2AB22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

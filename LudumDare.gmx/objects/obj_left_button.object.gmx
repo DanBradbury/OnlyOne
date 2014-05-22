@@ -43,7 +43,7 @@ YoYo_AddVirtualKey( view_xview[view_current]+30, view_yview[view_current]+500, 1
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>obj_player</whoName>
+        <whoName>obj_platformPlayer</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -82,7 +82,7 @@ if device_mouse_check_button(0, mb_left)
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>obj_player</whoName>
+        <whoName>obj_platformPlayer</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>

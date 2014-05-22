@@ -25,31 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
-move = -3;
-image_speed = 0.1;
-killed = false;
-hit_active = false;
-type = "fly";
-damage = 1;
-deactivated = false;
-moving = 0;
-
-// have an origin point
-start = self.x;
-dir = "left";
-
-//fly loop
-jump_timer = 5;
-jump_power = -3;
-alarm[0] = jump_timer;
-
+            <string>/// SETUP POINT DRAW
+draw_points = false; points_counted = false;
+yoffset = 10;
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -66,10 +48,8 @@ alarm[0] = jump_timer;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(killed == false){
-    vspeed = jump_power;
-    alarm[0] = jump_timer;
-}
+            <string>hspeed = -11;
+image_speed = 0.1;
 </string>
           </argument>
         </arguments>
@@ -92,39 +72,22 @@ alarm[0] = jump_timer;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// move around - 300 distance range
+            <string>/// calculate the points that you are drawing
+if(x &lt; obj_runnerPlayer.x &amp;&amp; obj_runnerPlayer.dead == false){
+    draw_points = true;
+}
+if(draw_points == true){
+    yoffset += 10;
+}
 
-// will need to consider going aggro
-if(killed == false){
-    if( dir == "left" ){
-        image_xscale = 1;
-        hspeed = move;
-    }else{
-        image_xscale = -1;
-        dir = "right";
-        hspeed = -move;
-    }
-    
-    if(self.x &lt; (start-300) ){
-        dir = "right";
-        hspeed = -move;
-    }else if(self.x &gt; (start+300) ){
-        dir = "left";
-        hspeed = move;
-    }
-}
-if(killed == true){
-    hspeed = 0;
-    //vspeed = 0;
-    //gravity = 1;
-    sprite_index = spr_fly_dead;
+if(yoffset == 400){
+    obj_runnerPlayer.points += 15;
+    points_counted = true;
 }
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_floor">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -141,16 +104,19 @@ if(killed == true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-self.y = other.y;
-motion_set(0,0);
-vspeed = 0;
+            <string>/// puase everything
+if(global.paused == true){
+    hspeed = 0; image_speed = 0;
+}else{
+    hspeed = -11;
+    image_speed = 0.1;
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_player">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -167,22 +133,13 @@ vspeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( killed == false &amp;&amp; global._can_jump == false &amp;&amp;  global._jump == false){
-    //instance_destroy();
-    /// add a little jump when landing on top
-    other.vspeed = -18;
-    image_xscale = -1;
-    killed = true;
-    image_speed = 0;
-    sprite_index = spr_fly_dead;
-}else if(hit_active == false &amp;&amp; self.killed == false){
-      hit_active = true;
-      other.vspeed = -8;
-      other.hspeed = self.hspeed*6;
-      global.health -= damage;
-      alarm[11] = 30;
-      other.hit = true;
+            <string>/// draw the points
+draw_set_color(c_black);
+draw_set_font(point_font);
+if(draw_points == true &amp;&amp; points_counted == false){
+    draw_text(room_width/2, y-sprite_yoffset-yoffset, "+15");
 }
+
 </string>
           </argument>
         </arguments>
@@ -201,7 +158,7 @@ vspeed = 0;
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>37,36</point>
-    <point>38,38</point>
+    <point>0,0</point>
+    <point>28,28</point>
   </PhysicsShapePoints>
 </object>

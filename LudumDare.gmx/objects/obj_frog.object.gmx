@@ -25,10 +25,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
-gravity = 1;
-alarm[0] = random_range(5,15);
-alarm[1] = random_range(50, 100);
+            <string>/// SETUP POINT DRAW
+draw_points = false; points_counted = false;
+yoffset = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hspeed = global.run_speed;;
+alarm[0] = 10;//jumping timer
+falling = false; jumping =false;
+
+move = false;
 </string>
           </argument>
         </arguments>
@@ -51,8 +75,12 @@ alarm[1] = random_range(50, 100);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 2;
-alarm[1] = random_range(50, 100);
+            <string>hspeed = global.run_speed;
+vspeed = 0;
+if(global.paused==false){
+    alarm[0] = 25;//jumping timer
+}        
+
 </string>
           </argument>
         </arguments>
@@ -75,16 +103,17 @@ alarm[1] = random_range(50, 100);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1;
-vspeed = -8;
-hspeed = -3;
-alarm[0] = random_range(60, 90);
+            <string>vspeed = -12;
+hspeed = global.run_speed -4;
+alarm[1] = 10;
+sprite_index = spr_frog_leap;
+jumping = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_floor">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -101,11 +130,106 @@ alarm[0] = random_range(60, 90);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gravity==1){
-        self.y = other.y;   
-        image_index = 0;
-        motion_set(0,0);
+            <string>/// calculate the points that you are drawing
+if(x &lt; obj_runnerPlayer.x &amp;&amp; obj_runnerPlayer.dead == false){
+    draw_points = true;
 }
+if(draw_points == true){
+    yoffset += 10;
+}
+
+if(yoffset == 400){
+    obj_runnerPlayer.points += 20;
+    points_counted = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>y += 8;
+if(y &gt;=512){ // want to always land on the floor
+    falling = false;
+    if(jumping==false){
+        sprite_index = spr_frog;
+    }
+    y = 512;
+    jumping = false;   
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// puase everything
+if(global.paused == true){
+    hspeed = 0; image_speed = 0; move = false;
+}else{
+    hspeed = global.run_speed;
+    if(move == false){  
+        alarm[0] = 25;
+        move = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw the points
+draw_set_color(c_green);
+draw_set_font(point_font);
+if(draw_points == true &amp;&amp; points_counted == false){
+    draw_text(room_width/2, y-sprite_yoffset-yoffset, "+20");
+}
+
 </string>
           </argument>
         </arguments>
@@ -124,7 +248,7 @@ alarm[0] = random_range(60, 90);
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>30,30</point>
+    <point>29,39</point>
+    <point>29,29</point>
   </PhysicsShapePoints>
 </object>

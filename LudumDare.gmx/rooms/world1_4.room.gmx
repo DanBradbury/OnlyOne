@@ -43,7 +43,7 @@ global.total_points = 65;</code>
   </backgrounds>
   <views>
     <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1680" hview="1120" xport="0" yport="0" wport="960" hport="640" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
-    <view visible="-1" objName="obj_player" xview="0" yview="0" wview="960" hview="640" xport="0" yport="0" wport="960" hport="640" hborder="400" vborder="400" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_platformPlayer" xview="0" yview="0" wview="960" hview="640" xport="0" yport="0" wport="960" hport="640" hborder="400" vborder="400" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -108,7 +108,7 @@ global.total_points = 65;</code>
     <instance objName="obj_stoneCenter" x="630" y="1050" name="inst_934B1B06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stoneCenter" x="700" y="1050" name="inst_75FEED14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_start" x="0" y="280" name="inst_A65C0EA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="70" y="700" name="inst_4E0B72EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platformPlayer" x="70" y="700" name="inst_4E0B72EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stoneHillRight2" x="770" y="840" name="inst_05F1E6E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stoneHillRight1" x="770" y="770" name="inst_8180FC63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stoneHillRight1" x="840" y="840" name="inst_FC997E64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

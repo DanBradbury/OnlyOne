@@ -56,7 +56,7 @@ instance_create(0,0, obj_level_end);
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_player">
+    <event eventtype="4" ename="obj_platformPlayer">
       <action>
         <libid>1</libid>
         <id>603</id>

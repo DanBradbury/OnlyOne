@@ -21,10 +21,12 @@
           <sprite>sprites\spr_laser_shot</sprite>
         </sprites>
         <sprite>sprites\spr_player_idle</sprite>
+        <sprite>sprites\spr_player</sprite>
         <sprite>sprites\spr_player_running</sprite>
         <sprite>sprites\spr_player_running_mad</sprite>
         <sprite>sprites\spr_player_jumping</sprite>
         <sprite>sprites\spr_player_hurt</sprite>
+        <sprite>sprites\spr_player_hit</sprite>
         <sprite>sprites\spr_player_climb</sprite>
         <sprite>sprites\spr_player_idle_old</sprite>
         <sprite>sprites\spr_player_running_old</sprite>
@@ -115,6 +117,7 @@
       <sprite>sprites\spr_spiderWalk</sprite>
       <sprite>sprites\spr_spider</sprite>
       <sprite>sprites\spr_grass_block</sprite>
+      <sprite>sprites\spr_bee</sprite>
     </sprites>
     <sprites name="Controls">
       <sprite>sprites\spr_right</sprite>
@@ -343,6 +346,9 @@
     <sprite>sprites\spr_colon</sprite>
     <sprite>sprites\spr_numbers</sprite>
     <sprite>sprites\spr_selector1</sprite>
+    <sprite>sprites\spr_quit_button</sprite>
+    <sprite>sprites\spr_pause_button</sprite>
+    <sprite>sprites\spr_sound_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -351,6 +357,7 @@
     <background>background\background3</background>
     <background>background\background4</background>
     <background>background\background5</background>
+    <background>background\background6</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\p_mm_lover</path>
@@ -358,15 +365,26 @@
     <path>paths\p_mm_badie</path>
     <path>paths\p_mm_title</path>
   </paths>
+  <scripts name="scripts">
+    <script>scripts\spawn_enemy.gml</script>
+    <script>scripts\start_wave.gml</script>
+    <script>scripts\spawn_snail.gml</script>
+    <script>scripts\deactivate_waves.gml</script>
+    <script>scripts\change_sound_setting.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\menu_title</font>
     <font>fonts\menu_items</font>
     <font>fonts\tutorial_font</font>
     <font>fonts\font3</font>
     <font>fonts\devF</font>
+    <font>fonts\future_font</font>
+    <font>fonts\point_font</font>
+    <font>fonts\mode_font</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_player</object>
+    <object>objects\obj_platformPlayer</object>
+    <object>objects\obj_runnerPlayer</object>
     <object>objects\obj_new_player</object>
     <objects name="Ice World">
       <object>objects\obj_tundra</object>
@@ -411,19 +429,21 @@
       <object>objects\obj_stoneHillRight2</object>
     </objects>
     <objects name="Enemies">
-      <object>objects\obj_enemy</object>
+      <object>objects\obj_enemyPlatformer</object>
       <object>objects\obj_pirana</object>
       <object>objects\obj_monster_pirana</object>
       <object>objects\obj_monsterSpider</object>
       <object>objects\obj_rando_piranas</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_grass_block</object>
-      <object>objects\obj_snail</object>
-      <object>objects\obj_frog</object>
+      <object>objects\obj_snailPlatformer</object>
+      <object>objects\obj_frogPlatformer</object>
       <object>objects\obj_blockers</object>
-      <object>objects\obj_fly</object>
+      <object>objects\obj_flyPlatformer</object>
       <object>objects\obj_bat</object>
       <object>objects\obj_spinner</object>
+      <object>objects\obj_spiderlings</object>
+      <object>objects\obj_bee</object>
     </objects>
     <objects name="Grass World">
       <objects name="passable">
@@ -484,7 +504,7 @@
       <object>objects\obj_ramp</object>
       <object>objects\obj_death_device</object>
       <object>objects\obj_hud</object>
-      <object>objects\obj_floor</object>
+      <object>objects\obj_floorPlatform</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_bounce_wall</object>
       <object>objects\obj_block</object>
@@ -552,10 +572,25 @@
     <object>objects\obj_mm_char2</object>
     <object>objects\obj_mm_char1</object>
     <object>objects\obj_main_menu</object>
+    <object>objects\obj_wave1</object>
+    <object>objects\obj_wave2</object>
+    <object>objects\obj_wave4</object>
+    <object>objects\obj_wave3</object>
+    <object>objects\obj_wave5</object>
+    <object>objects\obj_splash</object>
+    <object>objects\obj_end_game</object>
+    <object>objects\obj_start_game</object>
+    <object>objects\obj_floor</object>
+    <object>objects\obj_enemy</object>
+    <object>objects\obj_snail</object>
+    <object>objects\obj_frog</object>
+    <object>objects\obj_fly</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\experimentLevel</room>
+    <room>rooms\logo</room>
+    <room>rooms\runnerLevel</room>
     <room>rooms\BOSS_DEN</room>
+    <room>rooms\experimentLevel</room>
     <room>rooms\world1_1</room>
     <room>rooms\world1_2</room>
     <room>rooms\world1_3</room>

@@ -76,7 +76,7 @@ if( killed == true){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_passable_platform">
+    <event eventtype="4" ename="obj_floor">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -102,7 +102,7 @@ if( killed == true){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_floor">
+    <event eventtype="4" ename="obj_passable_platform">
       <action>
         <libid>1</libid>
         <id>603</id>

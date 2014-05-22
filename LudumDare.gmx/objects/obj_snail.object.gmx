@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_enemy</parentName>
-  <maskName>spr_snail_walk</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,68 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 1;
-move_speed = 5;
-move = -move_speed;
+            <string>/// SETUP POINT DRAW
+draw_points = false; points_counted = false;
+yoffset = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hspeed = -10;
 image_speed = 0.1;
-// killed means that the snail is gone but shell is still active
-killed = false;
-hit_active = false;
-type = "snail";
-damage = 1;
-// this is what we will use to control the movement of the snail
-deactivated = false;
-// safe will control not being able to be triggered
-safe = false;
-moving = 0;
-shell_speed = 20;
-shell_roll = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>shell_roll_safe = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>safe = false;
 </string>
           </argument>
         </arguments>
@@ -109,31 +72,22 @@ shell_roll = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// there was a conditionals for killed but not sure it is needed or the purpose
-//if(global._level_started == true){
-  //hspeed = move;
-  x += move;
-//}
-if( killed == true){
-    if( sprite_index == spr_snail_walk){
-        safe = true;
-        alarm[0] = 30;
-    }
-    sprite_index = spr_snail_shell;
-    image_index = 0;
-    image_speed = 0;
+            <string>/// calculate the points that you are drawing
+if(x &lt; obj_runnerPlayer.x &amp;&amp; obj_runnerPlayer.dead == false){
+    draw_points = true;
+}
+if(draw_points == true){
+    yoffset += 10;
 }
 
-if( deactivated == true){
-    //image_index = 1;
+if(yoffset == 400){
+    obj_runnerPlayer.points += 10;
+    points_counted = true;
 }
-
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_passable_platform">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -150,57 +104,18 @@ if( deactivated == true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gravity==1){
-        self.y = other.y;   
-        motion_set(0,0);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_box">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string> 
-if( move &lt; 0 )
-{
-  if(sprite_index == spr_snail_shell){
-    move = shell_speed;
-  }else{
-    move = 3;
-  }
-  image_xscale = -1;
-  x += 4;
+            <string>/// puase everything
+if(global.paused == true){
+    hspeed = 0; image_speed = 0;
 }else{
-  if(sprite_index == spr_snail_shell){
-    move = -shell_speed;
-  }else{
-    move = -3;
-  }
-  image_xscale = 1;
-  x -= 4;
+    hspeed = -10;image_speed = 0.1;
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_floor">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -217,82 +132,15 @@ if( move &lt; 0 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gravity==1){
-        self.y = other.y;   
-        motion_set(0,0);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_ramp">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// HANDLE RAMP EFFECT
-if(moving !=0){ 
- self.x += 1;
- self.y = other.y+3
-}else{
-    if(gravity==1){
-        gravity = 0;
-        self.y = other.y;   
-        motion_set(0,0);
-    }
-    global._can_jump = true; 
+            <string>/// draw the points
+draw_sprite(sprite_index, image_index, x,y);
+
+draw_set_color(c_maroon);
+draw_set_font(point_font);
+if(draw_points == true &amp;&amp; points_counted == false){
+    draw_text(room_width/2, y-sprite_yoffset-yoffset, "+10");
 }
 
-
-//motion_set(0,0);
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_blockers">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string> 
-if( move == -move_speed )
-{
-  move = move_speed;
-  image_xscale = -1;
-  x += 3;
-}else{
-  move = -move_speed;
-  image_xscale = 1;
-}
 </string>
           </argument>
         </arguments>
@@ -311,7 +159,7 @@ if( move == -move_speed )
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>32,32</point>
+    <point>30,40</point>
+    <point>30,30</point>
   </PhysicsShapePoints>
 </object>
