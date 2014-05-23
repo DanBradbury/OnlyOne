@@ -109,7 +109,7 @@ for(j=0;j&lt;i;j++){
     if(ds_map_find_value(v,"completed")==true){
         draw_sprite(spr_levelCircle, 0, 100+(j*100), 100);
         if(ds_map_find_value(v,"direction")==RIGHT){
-            draw_sprite(spr_horizontal, 0, 100+55, 100+10.5);    
+            draw_sprite(spr_horizontal, 0, 100+20, 100+10.5);    
         }else{
             draw_sprite(spr_vertical, 0, 100, 100); 
         }
@@ -122,10 +122,11 @@ for(j=0;j&lt;i;j++){
        }
        deltaX -= vert*100;
        
-       deltaY = vert*100;
+       deltaY = vert*102;
+
         
         if(ds_map_find_value(v, "levelType")==BOSS){
-            draw_sprite(spr_boss, 0, 100+deltaX, 100+deltaY+55);
+            draw_sprite(spr_boss, 0, 100+deltaX+15, 100+deltaY+40);
         }else{
             if(ds_map_find_value(v, "levelType")==PLATFORM){
                 draw_sprite(spr_levelCircle, 0, 100+deltaX, 100);
@@ -134,9 +135,9 @@ for(j=0;j&lt;i;j++){
             }
         }
         if(ds_map_find_value(v,"direction")==RIGHT){
-            draw_sprite(spr_horizontal, 1, 100+deltaX+55, 100);    
+            draw_sprite(spr_horizontal, 1, 100+deltaX+55, 100+10.5);    
         }else{
-            draw_sprite(spr_vertical, 1, 100+deltaX, 100+42); 
+            draw_sprite(spr_vertical, 1, 100+deltaX+20, 100+42); 
         }
     }
     if( ds_map_find_value(v, "directon")==RIGHT){
