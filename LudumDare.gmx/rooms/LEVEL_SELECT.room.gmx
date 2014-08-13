@@ -17,6 +17,7 @@ instance_create(50,400,obj_ls_button1);
 //instance_create(250,400,obj_mm_button1);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
+  <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
